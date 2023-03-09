@@ -6,21 +6,71 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:53:04 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/08 18:16:12 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/09 16:43:38 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 #include <iostream>
 
+using namespace std;
 
 Contact::~Contact(void)
 {
-	std::cout << "Destructor called" << std::endl;
-	return ;
+
 }
 
-Contact::Contact(int n)
+Contact::Contact(void)
 {
-	number = n;
+
+}
+
+void	Contact::SetFirstName(string name)
+{
+	first_name = name;
+}
+
+void	Contact::SetLastname(string name)
+{
+	last_name = name;
+}
+
+void	Contact::SetNickname(string name)
+{
+	nickname = name;
+}
+
+void	Contact::SetSecret(string str)
+{
+	secret = str;
+}
+
+void	Contact::SetNumber(string nbr)
+{
+	number = nbr;
+}
+
+string	Contact::GetFirstname(void)
+{
+	return (this->first_name);
+}
+
+string	Contact::GetLastName(void)
+{
+	return (this->last_name);
+}
+
+string	Contact::GetNickname(void)
+{
+	return (this->nickname);
+}
+
+string	Contact::GetSecret(void)
+{
+	return (this->secret);
+}
+
+string	Contact::GetNumber(void)
+{
+	return (this->number);
 }
