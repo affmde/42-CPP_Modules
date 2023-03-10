@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:34:45 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/09 17:40:39 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/10 14:23:10 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,23 +37,26 @@ void	PhoneBook::Add(Contact contact)
 
 void	PhoneBook::Menu(void)
 {
-	string n;
+	string input;
 
-	cout << "Press 1 to add a new contact." << endl;
-	cout << "Press 2 to search for a contact" << endl;
-	cout << "Press 3 to exit the PhoneBook." << endl;
-	cin >> n;
-	if (n.compare("1") == 0)
-		this->NewContactMenu();
-	else if (n.compare("2") == 0)
-		this->Search();
-	else if (n.compare("3") == 0)
-		exit(0);
-	else
+	while (1)
 	{
-		cout << "Invalid number." << endl;
-		PhoneBook::Menu();
+		if (cin.eof())
+			exit (0);
+		cout << "Write \"ADD\" to add a new contact." << endl;
+		cout << "Write \"SEARCH\" to search for a contact" << endl;
+		cout << "Write \"EXIT\" to exit the PhoneBook." << endl;
+		getline(cin, input, '\n');
+		if (input.compare("ADD") == 0)
+			this->NewContactMenu();
+		else if (input.compare("SEARCH") == 0)
+			this->Search();
+		else if (input.compare("EXIT") == 0 || cin.eof())
+			exit(0);
+		else
+			cout << "Invalid input." << endl;
 	}
+
 }
 
 int	IsDigit(string number)
@@ -100,31 +103,47 @@ void	PhoneBook::NewContactMenu(void)
 	string	darkest_secret;
 	string	number;
 
-	cin.ignore(10000,'\n');
-	cin.clear();
-	cout << "\033[104mWhat is your first name?\e[0m" << endl;
-	getline(cin, first_name, '\n');
-	newContact.SetFirstName(first_name);
-	cout << "\033[104mWhat is your last name?\e[0m" << endl;
-	getline(cin, last_name, '\n');
-	newContact.SetLastname(last_name);
-	cout << "\033[104mWhat is your nickname?\e[0m" << endl;
-	getline(cin, nickname, '\n');
-	newContact.SetNickname(nickname);
-	cout << "\033[104mWhat is your darkest secret?\e[0m" << endl;
-	getline(cin, darkest_secret, '\n');
-	newContact.SetSecret(darkest_secret);
-	cout << "\033[104mWhat is the phone number?\e[0m" << endl;
-	getline(cin, number, '\n');
-	newContact.SetNumber(number);
-	if (!CheckValidContact(&newContact))
-		cout << "\033[92mContact saved successfully\e[0m" << endl;
-	else
+	if (!cin.eof())
 	{
-		cout << "\033[31mContact is not valid\e[0m" << endl;
-		return ;
+		cout << "\033[104mWhat is your first name?\e[0m" << endl;
+		getline(cin, first_name, '\n');
+		newContact.SetFirstName(first_name);
 	}
-	this->Add(newContact);
+	if (!cin.eof())
+	{
+		cout << "\033[104mWhat is your last name?\e[0m" << endl;
+		getline(cin, last_name, '\n');
+		newContact.SetLastname(last_name);
+	}
+	if (!cin.eof())
+	{
+		cout << "\033[104mWhat is your nickname?\e[0m" << endl;
+		getline(cin, nickname, '\n');
+		newContact.SetNickname(nickname);
+	}
+	if (!cin.eof())
+	{
+		cout << "\033[104mWhat is your darkest secret?\e[0m" << endl;
+		getline(cin, darkest_secret, '\n');
+		newContact.SetSecret(darkest_secret);
+	}
+	if (!cin.eof())
+	{
+		cout << "\033[104mWhat is the phone number?\e[0m" << endl;
+		getline(cin, number, '\n');
+		newContact.SetNumber(number);
+	}
+	if (!cin.eof())
+	{
+		if (!CheckValidContact(&newContact))
+			cout << "\033[92mContact saved successfully\e[0m" << endl;
+		else
+		{
+			cout << "\033[31mContact is not valid\e[0m" << endl;
+			return ;
+		}
+		this->Add(newContact);
+	}
 }
 
 void	PrintArg(string str)
@@ -168,7 +187,10 @@ void	PhoneBook::Search(void)
 	cin >> index;
 	cin.clear();
 	cin.ignore();
-	this->DisplayContact(index);
+	if (!cin.eof())
+	{
+		this->DisplayContact(index);
+	}
 }
 
 void	PhoneBook::DisplayContact(int index)
