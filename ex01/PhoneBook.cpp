@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:34:45 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/10 14:23:10 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/10 14:59:05 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,9 +202,17 @@ void	PhoneBook::DisplayContact(int index)
 	}
 	if (this->contacts[index].GetFirstname().length() > 0)
 	{
-		cout << "\033[46mName: " << this->contacts[index].GetFirstname() << " " << this->contacts[index].GetLastName() << " phone number: " << this->contacts[index].GetNumber() << "\e[0m";
-		cout << endl;
+		cout << "\033[33mFirst name: \e[0m" << this->contacts[index].GetFirstname() << endl;
+		cout << "\033[33mLast name: \e[0m" << this->contacts[index].GetLastName() << endl;
+		cout << "\033[33mNickname: \e[0m" << this->contacts[index].GetNickname() << endl;
+		cout << "\033[33mDarkest secret: \e[0m" << this->contacts[index].GetSecret() << endl;
+		cout << "\033[33mNumber: \e[0m" << this->contacts[index].GetNumber() << endl;
+		char a = 'a';
+		cout << "Press ENTER to continue.";
+		while(a != '\n')
+			a = getchar();
 	}
 	else
 		cout << "\e[38;5;196mNumber not available\e[0m" << endl;
+
 }

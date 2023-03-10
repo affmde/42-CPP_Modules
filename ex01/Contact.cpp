@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:53:04 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/09 16:43:38 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/10 14:53:01 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ using namespace std;
 
 Contact::~Contact(void)
 {
-
+	
 }
 
 Contact::Contact(void)
