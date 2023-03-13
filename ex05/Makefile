@@ -1,4 +1,4 @@
-NAME = club
+NAME = harl
 FLAGS = -Wall -Werror -Wextra
 SRCS = main.cpp Harl.cpp
 OBJ = $(SRCS:.cpp=.o)
