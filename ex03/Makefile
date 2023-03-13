@@ -1,4 +1,4 @@
-NAME = zombie
+NAME = club
 FLAGS = -Wall -Werror -Wextra
 SRCS = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 OBJ = $(SRCS:.cpp=.o)
