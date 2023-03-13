@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.cpp                                         :+:      :+:    :+:   */
+/*   replace.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 17:10:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/13 18:30:16 by andrferr         ###   ########.fr       */
+/*   Created: 2023/03/13 16:15:15 by andrferr          #+#    #+#             */
+/*   Updated: 2023/03/13 17:53:34 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanB.hpp"
+#ifndef REPLACE_HPP
+# define REPLACE_HPP
 
-HumanB::HumanB(string n)
+#include <iostream>
+
+using namespace std;
+
+class Replace
 {
-	this->name = n;
-	weapon = NULL;
-}
+	public:
+	Replace(string line);
+	~Replace(void);
+	string	ChangeLine(string str1, string str2);
 
-HumanB::~HumanB(void)
-{
+	private:
+	string line;
+};
 
-}
-
-void	HumanB::attack(void)
-{
-	cout << name << " attacks with their " << weapon->getType() << endl;
-}
-
-void	HumanB::setWeapon(Weapon &w)
-{
-	weapon = &w;
-}
-
+#endif
