@@ -6,18 +6,16 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:53:04 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/10 14:53:01 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/14 15:59:09 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 #include <iostream>
 
-using namespace std;
-
 Contact::~Contact(void)
 {
-	
+
 }
 
 Contact::Contact(void)
@@ -25,52 +23,52 @@ Contact::Contact(void)
 
 }
 
-void	Contact::SetFirstName(string name)
+void	Contact::SetFirstName(std::string name)
 {
 	first_name = name;
 }
 
-void	Contact::SetLastname(string name)
+void	Contact::SetLastname(std::string name)
 {
 	last_name = name;
 }
 
-void	Contact::SetNickname(string name)
+void	Contact::SetNickname(std::string name)
 {
 	nickname = name;
 }
 
-void	Contact::SetSecret(string str)
+void	Contact::SetSecret(std::string str)
 {
 	secret = str;
 }
 
-void	Contact::SetNumber(string nbr)
+void	Contact::SetNumber(std::string nbr)
 {
 	number = nbr;
 }
 
-string	Contact::GetFirstname(void)
+std::string	Contact::GetFirstname(void)
 {
 	return (this->first_name);
 }
 
-string	Contact::GetLastName(void)
+std::string	Contact::GetLastName(void)
 {
 	return (this->last_name);
 }
 
-string	Contact::GetNickname(void)
+std::string	Contact::GetNickname(void)
 {
 	return (this->nickname);
 }
 
-string	Contact::GetSecret(void)
+std::string	Contact::GetSecret(void)
 {
 	return (this->secret);
 }
 
-string	Contact::GetNumber(void)
+std::string	Contact::GetNumber(void)
 {
 	return (this->number);
 }

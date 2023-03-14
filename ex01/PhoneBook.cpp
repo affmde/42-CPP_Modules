@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:34:45 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/10 14:59:05 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/14 16:56:41 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <string.h>
 #include <iomanip>
 
-using namespace std;
 
 PhoneBook::PhoneBook(void)
 {
@@ -37,29 +36,29 @@ void	PhoneBook::Add(Contact contact)
 
 void	PhoneBook::Menu(void)
 {
-	string input;
+	std::string input;
 
 	while (1)
 	{
-		if (cin.eof())
+		if (std::cin.eof())
 			exit (0);
-		cout << "Write \"ADD\" to add a new contact." << endl;
-		cout << "Write \"SEARCH\" to search for a contact" << endl;
-		cout << "Write \"EXIT\" to exit the PhoneBook." << endl;
-		getline(cin, input, '\n');
+		std::cout << "Write \"ADD\" to add a new contact." << std::endl;
+		std::cout << "Write \"SEARCH\" to search for a contact" << std::endl;
+		std::cout << "Write \"EXIT\" to exit the PhoneBook." << std::endl;
+		getline(std::cin, input, '\n');
 		if (input.compare("ADD") == 0)
 			this->NewContactMenu();
 		else if (input.compare("SEARCH") == 0)
 			this->Search();
-		else if (input.compare("EXIT") == 0 || cin.eof())
+		else if (input.compare("EXIT") == 0 || std::cin.eof())
 			exit(0);
 		else
-			cout << "Invalid input." << endl;
+			std::cout << "Invalid input." << std::endl;
 	}
 
 }
 
-int	IsDigit(string number)
+int	IsDigit(std::string number)
 {
 	int i;
 
@@ -97,65 +96,65 @@ int	CheckValidContact(Contact *contact)
 void	PhoneBook::NewContactMenu(void)
 {
 	Contact	newContact;
-	string	first_name;
-	string	last_name;
-	string	nickname;
-	string	darkest_secret;
-	string	number;
+	std::string	first_name;
+	std::string	last_name;
+	std::string	nickname;
+	std::string	darkest_secret;
+	std::string	number;
 
-	if (!cin.eof())
+	if (!std::cin.eof())
 	{
-		cout << "\033[104mWhat is your first name?\e[0m" << endl;
-		getline(cin, first_name, '\n');
+		std::cout << "\033[104mWhat is your first name?\e[0m" << std::endl;
+		std::getline(std::cin, first_name, '\n');
 		newContact.SetFirstName(first_name);
 	}
-	if (!cin.eof())
+	if (!std::cin.eof())
 	{
-		cout << "\033[104mWhat is your last name?\e[0m" << endl;
-		getline(cin, last_name, '\n');
+		std::cout << "\033[104mWhat is your last name?\e[0m" << std::endl;
+		std::getline(std::cin, last_name, '\n');
 		newContact.SetLastname(last_name);
 	}
-	if (!cin.eof())
+	if (!std::cin.eof())
 	{
-		cout << "\033[104mWhat is your nickname?\e[0m" << endl;
-		getline(cin, nickname, '\n');
+		std::cout << "\033[104mWhat is your nickname?\e[0m" << std::endl;
+		std::getline(std::cin, nickname, '\n');
 		newContact.SetNickname(nickname);
 	}
-	if (!cin.eof())
+	if (!std::cin.eof())
 	{
-		cout << "\033[104mWhat is your darkest secret?\e[0m" << endl;
-		getline(cin, darkest_secret, '\n');
+		std::cout << "\033[104mWhat is your darkest secret?\e[0m" << std::endl;
+		std::getline(std::cin, darkest_secret, '\n');
 		newContact.SetSecret(darkest_secret);
 	}
-	if (!cin.eof())
+	if (!std::cin.eof())
 	{
-		cout << "\033[104mWhat is the phone number?\e[0m" << endl;
-		getline(cin, number, '\n');
+		std::cout << "\033[104mWhat is the phone number?\e[0m" << std::endl;
+		std::getline(std::cin, number, '\n');
 		newContact.SetNumber(number);
 	}
-	if (!cin.eof())
+	if (!std::cin.eof())
 	{
 		if (!CheckValidContact(&newContact))
-			cout << "\033[92mContact saved successfully\e[0m" << endl;
+			std::cout << "\033[92mContact saved successfully\e[0m" << std::endl;
 		else
 		{
-			cout << "\033[31mContact is not valid\e[0m" << endl;
+			std::cout << "\033[31mContact is not valid\e[0m" << std::endl;
 			return ;
 		}
 		this->Add(newContact);
 	}
 }
 
-void	PrintArg(string str)
+void	PrintArg(std::string str)
 {
-	cout << setfill (' ') << setw (10);
+	std::cout << std::setfill (' ') << std::setw (10);
 	if (str.length() <=10)
-		cout << str;
+		std::cout << str;
 	else
 	{
-		string name = str.substr(0,10);
+		std::string name = str.substr(0,10);
 		name[9] = '.';
-		cout << name;
+		std::cout << name;
 	}
 }
 
@@ -164,30 +163,30 @@ void	PhoneBook::Search(void)
 	int	index;
 
 	PrintArg("Index");
-	cout << "|";
+	std::cout << "|";
 	PrintArg("First Name");
-	cout << "|";
+	std::cout << "|";
 	PrintArg("Last Name");
-	cout << "|";
+	std::cout << "|";
 	PrintArg("Nickname");
-	cout << endl;
+	std::cout << std::endl;
 
 	for (int i = 0; i < 8; i++)
 	{
-		cout << setfill (' ') << setw(10);
-		cout << i << '|';
+		std::cout << std::setfill (' ') << std::setw(10);
+		std::cout << i << '|';
 		PrintArg(this->contacts[i].GetFirstname());
-		cout << '|';
+		std::cout << '|';
 		PrintArg(this->contacts[i].GetLastName());
-		cout << '|';
+		std::cout << '|';
 		PrintArg(this->contacts[i].GetNickname());
-		cout << endl;
+		std::cout << std::endl;
 	}
-	cout << "\e[1;33mWrite the index of the number you want to search\e[0m" << endl;
-	cin >> index;
-	cin.clear();
-	cin.ignore();
-	if (!cin.eof())
+	std::cout << "\e[1;33mWrite the index of the number you want to search\e[0m" << std::endl;
+	std::cin >> index;
+	std::cin.clear();
+	std::cin.ignore();
+	if (!std::cin.eof())
 	{
 		this->DisplayContact(index);
 	}
@@ -197,22 +196,22 @@ void	PhoneBook::DisplayContact(int index)
 {
 	if (index < 0 || index > 8)
 	{
-		cout << "\e[48;5;0mNumber not available. This phonebook can only store up to 8 contacts.\e[0m" << endl;
+		std::cout << "\e[48;5;0mNumber not available. This phonebook can only store up to 8 contacts.\e[0m" << std::endl;
 		return ;
 	}
 	if (this->contacts[index].GetFirstname().length() > 0)
 	{
-		cout << "\033[33mFirst name: \e[0m" << this->contacts[index].GetFirstname() << endl;
-		cout << "\033[33mLast name: \e[0m" << this->contacts[index].GetLastName() << endl;
-		cout << "\033[33mNickname: \e[0m" << this->contacts[index].GetNickname() << endl;
-		cout << "\033[33mDarkest secret: \e[0m" << this->contacts[index].GetSecret() << endl;
-		cout << "\033[33mNumber: \e[0m" << this->contacts[index].GetNumber() << endl;
+		std::cout << "\033[33mFirst name: \e[0m" << this->contacts[index].GetFirstname() << std::endl;
+		std::cout << "\033[33mLast name: \e[0m" << this->contacts[index].GetLastName() << std::endl;
+		std::cout << "\033[33mNickname: \e[0m" << this->contacts[index].GetNickname() << std::endl;
+		std::cout << "\033[33mDarkest secret: \e[0m" << this->contacts[index].GetSecret() << std::endl;
+		std::cout << "\033[33mNumber: \e[0m" << this->contacts[index].GetNumber() << std::endl;
 		char a = 'a';
-		cout << "Press ENTER to continue.";
+		std::cout << "Press ENTER to continue.";
 		while(a != '\n')
 			a = getchar();
 	}
 	else
-		cout << "\e[38;5;196mNumber not available\e[0m" << endl;
+		std::cout << "\e[38;5;196mNumber not available\e[0m" << std::endl;
 
 }
