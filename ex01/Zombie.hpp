@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 16:23:04 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/14 17:07:57 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/14 17:26:39 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,5 @@ class Zombie
 	private:
 	std::string name;
 };
-
-Zombie	*zombieHorde(int N, std::string name);
 
 #endif

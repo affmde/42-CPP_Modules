@@ -6,11 +6,13 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 16:22:05 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/10 16:46:10 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/14 17:26:51 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
+
+Zombie	*zombieHorde(int N, std::string name);
 
 int	main(void)
 {

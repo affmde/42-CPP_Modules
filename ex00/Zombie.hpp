@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:05:39 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/14 17:06:38 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/14 17:27:21 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,4 @@ class Zombie
 	std::string name;
 };
 
-Zombie	*newZombie(std::string name);
-void	randomChump(std::string name);
 #endif
