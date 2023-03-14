@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 18:33:43 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/13 19:42:34 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/14 17:15:26 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,12 @@
 
 #include <iostream>
 
-using namespace std;
-
 class Harl
 {
 	public:
 	Harl(void);
 	~Harl(void);
-	void	complain(string level);
+	void	complain(std::string level);
 
 	private:
 	void	debug(void);

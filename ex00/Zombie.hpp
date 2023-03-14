@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:05:39 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/10 16:18:05 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/14 17:06:38 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,18 @@
 
 #include <iostream>
 
-using namespace std;
-
 class Zombie
 {
 	public:
 	Zombie(void);
 	~Zombie(void);
 	void	Announce(void);
-	void	SetName(string str);
-	string	GetName(void);
+	void	SetName(std::string str);
+	std::string	GetName(void);
 	private:
-	string name;
+	std::string name;
 };
 
-Zombie	*newZombie(string name);
-void	randomChump(string name);
+Zombie	*newZombie(std::string name);
+void	randomChump(std::string name);
 #endif

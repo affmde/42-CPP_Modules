@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 18:33:31 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/14 11:32:46 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/14 17:19:13 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,27 +24,27 @@ Harl::~Harl(void)
 
 void	Harl::debug(void)
 {
-	cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-specialketchup burger. I really do!" << endl;
+	std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-specialketchup burger. I really do!" << std::endl;
 }
 
 void	Harl::info(void)
 {
-	cout << "I cannot believe adding extra bacon costs more money.\nYou didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!" << endl;
+	std::cout << "I cannot believe adding extra bacon costs more money.\nYou didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!" << std::endl;
 }
 
 void	Harl::warning(void)
 {
-	cout << "I think I deserve to have some extra bacon for free." << endl << "I’ve been coming for years whereas you started working here since last month." << endl;
+	std::cout << "I think I deserve to have some extra bacon for free." << std::endl << "I’ve been coming for years whereas you started working here since last month." << std::endl;
 }
 
 void	Harl::error(void)
 {
-	cout << "This is unacceptable! I want to speak to the manager now." << endl;
+	std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
-void	Harl::complain(string level)
+void	Harl::complain(std::string level)
 {
-	string	possible_complains[4] = {
+	std::string	possible_complains[4] = {
 		"DEBUG",
 		"INFO",
 		"WARNING",
@@ -64,10 +64,10 @@ void	Harl::complain(string level)
 	}
 }
 
-void	Harl::filter(string level)
+void	Harl::filter(std::string level)
 {
 	int	n = -1;
-	string	possible_complains[4] = {
+	std::string	possible_complains[4] = {
 		"DEBUG",
 		"INFO",
 		"WARNING",
@@ -84,23 +84,23 @@ void	Harl::filter(string level)
 	switch(n)
 	{
 		case 0:
-			cout << "[ DEBUG ]" << endl;
+			std::cout << "[ DEBUG ]" << std::endl;
 			this->complain("DEBUG");
-			cout << endl;
+			std::cout << std::endl;
 		case 1:
-			cout << "[ INFO ]" << endl;
+			std::cout << "[ INFO ]" << std::endl;
 			this->complain("INFO");
-			cout << endl;
+			std::cout << std::endl;
 		case 2:
-			cout << "[ WARNING ]" << endl;
+			std::cout << "[ WARNING ]" << std::endl;
 			this->complain("WARNING");
-			cout << endl;
+			std::cout << std::endl;
 		case 3:
-			cout << "[ ERROR ]" << endl;
+			std::cout << "[ ERROR ]" << std::endl;
 			this->complain("ERROR");
-			cout << endl;
+			std::cout << std::endl;
 			break ;
 		default:
-			cout << "[ Probably complaining about insignificant problems ]" << endl;
+			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 	}
 }

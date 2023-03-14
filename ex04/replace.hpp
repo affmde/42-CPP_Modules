@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 16:15:15 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/13 17:53:34 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/14 17:13:13 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,15 @@
 
 #include <iostream>
 
-using namespace std;
-
 class Replace
 {
 	public:
-	Replace(string line);
+	Replace(std::string line);
 	~Replace(void);
-	string	ChangeLine(string str1, string str2);
+	std::string	ChangeLine(std::string str1, std::string str2);
 
 	private:
-	string line;
+	std::string line;
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:08:33 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/13 15:48:12 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/14 17:10:27 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,15 @@
 #include <iostream>
 #include "Weapon.hpp"
 
-using namespace std;
-
 class HumanA
 {
 	public:
-	HumanA(string name, Weapon &w);
+	HumanA(std::string name, Weapon &w);
 	~HumanA(void);
 	void	attack(void);
 
 	private:
-	string name;
+	std::string name;
 	Weapon &weapon;
 };
 

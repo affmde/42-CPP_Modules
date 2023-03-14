@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 16:01:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/13 18:28:42 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/14 17:14:34 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 #include <fstream>
 #include "replace.hpp"
 
-using namespace std;
-
-int	CheckInputStrings(string str1, string str2)
+int	CheckInputStrings(std::string str1, std::string str2)
 {
 	if (str1.empty() || str2.empty())
 	{
-		cout << "Empty strings are not accepted." << endl;
+		std::cout << "Empty strings are not accepted." << std::endl;
 		return (1);
 	}
 	return (0);
@@ -28,15 +26,15 @@ int	CheckInputStrings(string str1, string str2)
 
 int	main(int argc, char **argv)
 {
-	ifstream	infile;
-	ofstream	outfile;
-	string		line;
-	string		outfile_name;
-	string		rep = ".replace";
+	std::ifstream	infile;
+	std::ofstream	outfile;
+	std::string		line;
+	std::string		outfile_name;
+	std::string		rep = ".replace";
 
 	if (argc != 4)
 	{
-		cout << "Wrong number of arguments" << endl;
+		std::cout << "Wrong number of arguments" << std::endl;
 		return (1);
 	}
 	if (CheckInputStrings(argv[2], argv[3]))
@@ -44,7 +42,7 @@ int	main(int argc, char **argv)
 	infile.open(argv[1]);
 	if (infile.fail())
 	{
-		cout << argv[1] << " file doesn not exist. Please enter a valid file." << endl;
+		std::cout << argv[1] << " file doesn not exist. Please enter a valid file." << std::endl;
 		return (0);
 	}
 	outfile_name = argv[1] + rep;
@@ -56,8 +54,8 @@ int	main(int argc, char **argv)
 			Replace replace(line);
 			if (outfile.is_open())
 			{
-				string out = replace.ChangeLine(argv[2], argv[3]);
-				outfile << out << endl;
+				std::string out = replace.ChangeLine(argv[2], argv[3]);
+				outfile << out << std::endl;
 			}
 		}
 	}
