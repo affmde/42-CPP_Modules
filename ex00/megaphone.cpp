@@ -6,29 +6,11 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:06:31 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/08 14:32:17 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/15 11:52:46 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-
-void	ToUppercase(char *c)
-{
-	if (*c >= 97 && *c <= 122)
-		*c -= 32;
-}
-
-void	StrToUppercase(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		ToUppercase(&str[i]);
-		i++;
-	}
-}
 
 int	main(int argc, char **argv)
 {
@@ -42,8 +24,10 @@ int	main(int argc, char **argv)
 	i = 1;
 	while (argv[i])
 	{
-		StrToUppercase(argv[i]);
-		std::cout << argv[i] << (i == argc - 1 ? "" : " ");
+		for (int j = 0; j < (int)strlen(argv[i]); j++)
+			putchar(toupper(argv[i][j]));
+		if (i < argc - 1)
+				std::cout << " ";
 		i++;
 	}
 	std::cout << std::endl;
