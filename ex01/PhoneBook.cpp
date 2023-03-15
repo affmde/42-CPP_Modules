@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:34:45 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/14 16:56:41 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/15 11:59:48 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	PhoneBook::Menu(void)
 		else if (input.compare("EXIT") == 0 || std::cin.eof())
 			exit(0);
 		else
-			std::cout << "Invalid input." << std::endl;
+			std::cout << "\033[31mInvalid input.\e[0m" << std::endl;
 	}
 
 }
