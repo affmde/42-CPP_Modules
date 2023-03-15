@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 13:32:24 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/15 14:56:03 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/15 15:58:26 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Fixed
 
 	private:
 	int					number;
-	static const int	bits;
+	static const int	bits = 8;
 };
 
 #endif
