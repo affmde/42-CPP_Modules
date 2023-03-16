@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 13:32:24 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/16 16:39:33 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/16 17:24:37 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ class Fixed
 	~Fixed(void);
 	int		getRawBits(void) const;
 	void	setRowBits(int const raw);
-	Fixed &operator+(const Fixed &);
-	Fixed &operator-(const Fixed &);
-	Fixed &operator*(const Fixed &);
-	Fixed &operator/(const Fixed &);
+	Fixed operator+(const Fixed &);
+	Fixed operator-(const Fixed &);
+	Fixed operator*(const Fixed &);
+	Fixed operator/(const Fixed &);
 	Fixed &operator++(void);
 	Fixed &operator--(void);
 	Fixed &operator++(int);
@@ -42,6 +42,10 @@ class Fixed
 	bool operator<=(const Fixed &);
 	bool operator==(const Fixed &);
 	bool operator!=(const Fixed &);
+	static Fixed	&min(Fixed &a, Fixed &b);
+	static const Fixed	&min(const Fixed &a, const Fixed &b);
+	static Fixed	&max(Fixed &a, Fixed &b);
+	static const Fixed	&max(const Fixed &a, const Fixed &b);
 	private:
 	int					fixed_point;
 	static const int	fractional_bits = 8;

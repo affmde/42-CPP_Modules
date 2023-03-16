@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 13:32:50 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/16 16:40:45 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/16 17:30:04 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,41 +79,38 @@ std::ostream &operator<<(std::ostream &o, Fixed const &fixed)
 
 //Overload arithmetic operators
 
-Fixed & Fixed::operator+(const Fixed &fixed)
+Fixed Fixed::operator+(const Fixed &fixed)
 {
-	this->fixed_point += fixed.fixed_point;
-	return (*this);
+	return (Fixed(this->fixed_point + fixed.getRawBits()));
 }
 
-Fixed & Fixed::operator-(const Fixed &fixed)
+Fixed Fixed::operator-(const Fixed &fixed)
 {
-	this->fixed_point -= fixed.fixed_point;
-	return (*this);
+	return (Fixed(this->toFloat() - fixed.toFloat()));
 }
 
-Fixed & Fixed::operator*(const Fixed &fixed)
+Fixed Fixed::operator*(const Fixed &fixed)
 {
-	this->fixed_point *= fixed.fixed_point;
-	return (*this);
+
+	return (Fixed(this->toFloat() * fixed.toFloat()));
 }
 
-Fixed & Fixed::operator/(const Fixed &fixed)
+Fixed Fixed::operator/(const Fixed &fixed)
 {
-	this->fixed_point /= fixed.fixed_point;
-	return (*this);
+	return (Fixed(this->toFloat() / fixed.toFloat()));
 }
 
 //Overload Increment and Decrement Operator
 
 Fixed & Fixed::operator++(void)
 {
-	this->fixed_point++;
+	++this->fixed_point;
 	return (*this);
 }
 
 Fixed & Fixed::operator--(void)
 {
-	this->fixed_point--;
+	--this->fixed_point;
 	return (*this);
 }
 
@@ -134,41 +131,75 @@ Fixed & Fixed::operator--(int)
 bool Fixed::operator>(const Fixed &fixed)
 {
 	bool is_higher;
-	is_higher = this->fixed_point > fixed.fixed_point ? true : false;
+	is_higher = this->getRawBits() > fixed.getRawBits() ? true : false;
 	return (is_higher);
 }
 
 bool Fixed::operator<(const Fixed &fixed)
 {
 	bool is_smaller;
-	is_smaller = this->fixed_point < fixed.fixed_point ? true : false;
+	is_smaller = this->getRawBits() < fixed.getRawBits() ? true : false;
 	return (is_smaller);
 }
 
 bool Fixed::operator>=(const Fixed &fixed)
 {
 	bool is_higher;
-	is_higher = this->fixed_point >= fixed.fixed_point ? true : false;
+	is_higher = this->getRawBits() >= fixed.getRawBits() ? true : false;
 	return (is_higher);
 }
 
 bool Fixed::operator<=(const Fixed &fixed)
 {
 	bool is_smaller;
-	is_smaller = this->fixed_point <= fixed.fixed_point ? true : false;
+	is_smaller = this->getRawBits() <= fixed.getRawBits() ? true : false;
 	return (is_smaller);
 }
 
 bool Fixed::operator==(const Fixed &fixed)
 {
 	bool is_equal;
-	is_equal = this->fixed_point == fixed.fixed_point ? true : false;
+	is_equal = this->getRawBits() == fixed.getRawBits() ? true : false;
 	return (is_equal);
 }
 
 bool Fixed::operator!=(const Fixed &fixed)
 {
 	bool is_not_equal;
-	is_not_equal = this->fixed_point != fixed.fixed_point ? true : false;
+	is_not_equal = this->getRawBits() != fixed.getRawBits() ? true : false;
 	return (is_not_equal);
+}
+
+//Member functions
+
+Fixed	&Fixed::min(Fixed &a, Fixed &b)
+{
+	if (a.getRawBits() < b.getRawBits())
+		return (a);
+	else
+		return (b);
+}
+
+const Fixed	&Fixed::min(const Fixed &a, const Fixed &b)
+{
+	if (a.getRawBits() < b.getRawBits())
+		return (a);
+	else
+		return (b);
+}
+
+Fixed	&Fixed::max(Fixed &a, Fixed &b)
+{
+	if (a.getRawBits() > b.getRawBits())
+		return (a);
+	else
+		return (b);
+}
+
+const Fixed	&Fixed::max(const Fixed &a, const Fixed &b)
+{
+	if (a.getRawBits() > b.getRawBits())
+		return (a);
+	else
+		return (b);
 }
