@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 13:32:24 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/16 17:24:37 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/17 15:23:08 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ class Fixed
 	Fixed operator/(const Fixed &);
 	Fixed &operator++(void);
 	Fixed &operator--(void);
-	Fixed &operator++(int);
-	Fixed &operator--(int);
+	Fixed operator++(int);
+	Fixed operator--(int);
 	bool operator>(const Fixed &);
 	bool operator<(const Fixed &);
 	bool operator>=(const Fixed &);

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 13:32:50 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/16 17:30:04 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/17 15:26:11 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Fixed::Fixed(int n)
 Fixed::Fixed(float f)
 {
 	std::cout << "Float constructor started" << std::endl;
-	this->fixed_point = std::roundf(f * (1 << fractional_bits));
+	this->fixed_point = roundf(f * (1 << fractional_bits));
 }
 
 Fixed::Fixed(const Fixed &fixed)
@@ -114,16 +114,18 @@ Fixed & Fixed::operator--(void)
 	return (*this);
 }
 
-Fixed & Fixed::operator++(int)
+Fixed Fixed::operator++(int)
 {
+	Fixed fixed = *this;
 	this->fixed_point++;
-	return (*this);
+	return (fixed);
 }
 
-Fixed & Fixed::operator--(int)
+Fixed Fixed::operator--(int)
 {
+	Fixed	fixed = *this;
 	this->fixed_point--;
-	return (*this);
+	return (fixed);
 }
 
 //Overload the comparision operators
