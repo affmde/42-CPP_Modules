@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 13:32:24 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/15 15:58:26 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/20 14:15:50 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 class Fixed
 {
 	public:
+	Fixed(void);
 	Fixed(int n = 0);
 	Fixed(const Fixed &fixed);
 	Fixed &operator=(const Fixed&);

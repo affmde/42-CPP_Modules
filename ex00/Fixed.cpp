@@ -6,12 +6,18 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 13:32:50 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/15 15:50:04 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/20 14:16:43 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
+
+
+Fixed::Fixed(void)
+{
+	this->number = 0;
+}
 
 Fixed::Fixed(int n)
 {
