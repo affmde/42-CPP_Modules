@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:14:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/20 14:59:35 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/20 15:10:20 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,5 @@ void	ClapTrap::beRepaired(unsigned int amount)
 
 void	ClapTrap::takeDamage(unsigned int damage)
 {
-	this->energy_points -= damage;
+	this->hit_points -= damage;
 }
