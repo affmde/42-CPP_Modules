@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 18:47:08 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/18 19:09:39 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/20 09:03:07 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ class	Point
 	Point &Point::operator=(const Point&);
 	~Point(void);
 
+
+	void	setX(Fixed);
+	void	setY(Fixed);
+	Fixed	getX(void) const;
+	Fixed	getY(void) const;
 
 	private:
 	const Fixed	x;
