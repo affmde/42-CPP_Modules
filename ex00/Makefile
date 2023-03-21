@@ -1,6 +1,6 @@
-NAME = diamondTrap
+NAME = animal
 FLAGS = -Wall -Werror -Wextra
-SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
+SRCS = main.cpp Cat.cpp Dog.cpp Animal.cpp WrongAnimal.cpp WrongCat.cpp
 OBJ = $(SRCS:.cpp=.o)
 
 
