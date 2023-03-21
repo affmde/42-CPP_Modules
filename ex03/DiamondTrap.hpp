@@ -6,14 +6,14 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 15:22:59 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/20 15:53:58 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/21 08:50:35 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 
-class	DiamondTrap : public ScavTrap, public FragTrap
+class	DiamondTrap : virtual public ScavTrap, virtual public FragTrap
 {
 	public:
 		DiamondTrap(void);
