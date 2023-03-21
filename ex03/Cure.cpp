@@ -1,49 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.cpp                                            :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/21 17:57:46 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/21 18:20:45 by andrferr         ###   ########.fr       */
+/*   Created: 2023/03/21 18:13:34 by andrferr          #+#    #+#             */
+/*   Updated: 2023/03/21 18:21:49 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Ice.hpp"
+#include "Cure.hpp"
 
-Ice::Ice(void)
+Cure::Cure(void)
 {
-	std::cout << "Ice default constructor called" << std::endl;
-	this->type = "ice";
+	std::cout << "Cure default constructor called" << std::endl;
+	this->type = "cure";
 }
 
-Ice::Ice(const Ice &other)
+Cure::Cure(const Cure &other)
 {
-	std::cout << "Ice copy constructor called" << std::endl;
+	std::cout << "Cure copy constructr called" << std::endl;
 	*this = other;
 }
 
-Ice &Ice::operator=(const Ice &other)
+Cure &Cure::operator=(const Cure &other)
 {
-	std::cout << "Ice copy assignement operator called" << std::endl;
+	std::cout << "Cure copy assignement constructor called" << std::endl;
 	this->type = other.getType();
 	return (*this);
 }
 
-Ice::~Ice(void)
+Cure::~Cure(void)
 {
-	std::cout << "Ice destructor called" << std::endl;
+	std::cout << "Cure destructor called" << std::endl;
 }
-
 
 
 //Member Functions
 
-AMateria *Ice::clone(void) const
+AMateria	*Cure::clone(void) const
 {
-	Ice *ice = new Ice();
-	return (ice);
+	Cure *cure = new Cure();
+	return (cure);
 }
-
-

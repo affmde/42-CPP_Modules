@@ -1,41 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.hpp                                       :+:      :+:    :+:   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/21 17:50:04 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/21 18:28:18 by andrferr         ###   ########.fr       */
+/*   Created: 2023/03/21 18:25:46 by andrferr          #+#    #+#             */
+/*   Updated: 2023/03/21 18:32:29 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AMATERIA_HPP
-# define AMATERIA_HPP
+#include "AMateria.hpp"
 
-#include <iostream>
-#include <Character.hpp>
-
-class	AMateria
+class Character
 {
 	public:
-		AMateria(void);
-		AMateria(std::string const &type);
-		AMateria(const AMateria&);
-		AMateria &operator=(const AMateria&);
-		~AMateria(void);
-
-		//Member functions
-		std::string const getType(void) const;
-		virtual AMateria *clone(void) const = 0;
-		virtual void use(ICharacter &target);
+		Character(void);
+		Character(const Character&);
+		Character &operator=(const Character&);
+		~Character(void);
 
 	protected:
-		std::string type;
+
 
 	private:
+		AMateria *slots[4];
 
 };
-
-
-#endif;

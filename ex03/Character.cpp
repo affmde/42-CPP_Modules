@@ -1,35 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.hpp                                            :+:      :+:    :+:   */
+/*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/21 17:54:43 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/21 18:18:23 by andrferr         ###   ########.fr       */
+/*   Created: 2023/03/21 18:27:20 by andrferr          #+#    #+#             */
+/*   Updated: 2023/03/21 18:33:12 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICE_HPP
-# define ICE_HPP
+#include "Character.hpp"
 
-#include "AMateria.hpp"
-
-
-class Ice : AMateria
+Character::Character(void)
 {
-	public:
-		Ice(void);
-		Ice(const Ice&);
-		Ice &operator=(const Ice&);
-		~Ice(void);
-
-	protected:
-
-
-	private:
-		virtual AMateria *clone() const;
-};
-
-
-#endif
+	std::cout << "Character default constructor called" << std::endl;
+}
