@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 18:01:25 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/21 18:23:11 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/22 11:05:41 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,12 @@ AMateria &AMateria::operator=(const AMateria &other)
 AMateria::~AMateria(void)
 {
 	std::cout << "AMteria destructor called" << std::endl;
+}
+
+
+//MEMBER FUNCTIONS
+
+void	AMateria::use(ICharacter &target)
+{
+	
 }

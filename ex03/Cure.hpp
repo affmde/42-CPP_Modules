@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 18:10:46 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/21 18:21:04 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/22 10:47:48 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "AMateria.hpp"
 
 
-class	Cure : AMateria
+class	Cure : public AMateria
 {
 	public:
 		Cure(void);

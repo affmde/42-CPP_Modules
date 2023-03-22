@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 17:54:43 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/21 18:18:23 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/22 11:07:11 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,16 @@
 #include "AMateria.hpp"
 
 
-class Ice : AMateria
+class Ice : public AMateria
 {
 	public:
 		Ice(void);
 		Ice(const Ice&);
 		Ice &operator=(const Ice&);
 		~Ice(void);
+
+		//Member Functions
+		virtual void use(ICharacter &target);
 
 	protected:
 
