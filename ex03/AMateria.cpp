@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 18:01:25 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/22 11:05:41 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/22 15:06:25 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,11 @@ AMateria::~AMateria(void)
 
 void	AMateria::use(ICharacter &target)
 {
-	
+	std::cout << "Here" << std::endl;
+	(void)target;
+}
+
+std::string	const AMateria::getType(void) const
+{
+	return (this->type);
 }

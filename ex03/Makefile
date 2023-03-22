@@ -1,4 +1,4 @@
-NAME = animal
+NAME = materia
 FLAGS = -Wall -Werror -Wextra
 SRCS = main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp
 OBJ = $(SRCS:.cpp=.o)

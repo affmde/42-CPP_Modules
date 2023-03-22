@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 18:25:46 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/22 10:56:51 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/22 15:17:10 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class Character : public ICharacter
 
 
 	private:
-		AMateria	*slots[4];
+		AMateria	**slots;
 		std::string name;
 
 };

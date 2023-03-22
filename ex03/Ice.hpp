@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 17:54:43 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/22 11:07:11 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/22 14:13:12 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define ICE_HPP
 
 #include "AMateria.hpp"
-
+#include "ICharacter.hpp"
 
 class Ice : public AMateria
 {
@@ -26,12 +26,13 @@ class Ice : public AMateria
 
 		//Member Functions
 		virtual void use(ICharacter &target);
+		virtual AMateria *clone(void) const;
 
 	protected:
 
 
 	private:
-		virtual AMateria *clone() const;
+
 };
 
 

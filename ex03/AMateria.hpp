@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 17:50:04 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/22 10:58:52 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/22 14:05:49 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define AMATERIA_HPP
 
 #include <iostream>
-#include "ICharacter.hpp"
+//#include "ICharacter.hpp"
+
+class ICharacter;
 
 class	AMateria
 {
@@ -23,7 +25,7 @@ class	AMateria
 		AMateria(std::string const &type);
 		AMateria(const AMateria&);
 		AMateria &operator=(const AMateria&);
-		~AMateria(void);
+		virtual ~AMateria(void);
 
 		//Member functions
 		std::string const getType(void) const;
