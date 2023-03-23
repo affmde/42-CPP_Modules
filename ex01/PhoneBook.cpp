@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:34:45 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/15 12:08:54 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/23 17:16:32 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,14 @@ PhoneBook::~PhoneBook(void)
 
 }
 
+//Member Functions
+
 void	PhoneBook::Add(Contact contact)
 {
-	contacts[index] = contact;
-	index++;
-	if (index >= 8)
-		index = 0;
+	this->contacts[index] = contact;
+	this->index++;
+	if (this->index >= 8)
+		this->index = 0;
 }
 
 
@@ -207,7 +209,7 @@ void	PhoneBook::DisplayContact(int index)
 		std::cout << "\033[33mDarkest secret: \e[0m" << this->contacts[index].GetSecret() << std::endl;
 		std::cout << "\033[33mNumber: \e[0m" << this->contacts[index].GetNumber() << std::endl;
 		int a = 'a';
-		std::cout << "Press ENTER to continue.";
+		std::cout << "Press ENTER to continue";
 		while(a != '\n' && a != EOF)
 			a = getchar();
 	}

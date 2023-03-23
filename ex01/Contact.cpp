@@ -6,46 +6,42 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:53:04 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/14 15:59:09 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/23 17:13:15 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 #include <iostream>
 
-Contact::~Contact(void)
-{
+Contact::Contact(void){}
 
-}
+Contact::~Contact(void){}
 
-Contact::Contact(void)
-{
-
-}
+//Member Functions
 
 void	Contact::SetFirstName(std::string name)
 {
-	first_name = name;
+	this->first_name = name;
 }
 
 void	Contact::SetLastname(std::string name)
 {
-	last_name = name;
+	this->last_name = name;
 }
 
 void	Contact::SetNickname(std::string name)
 {
-	nickname = name;
+	this->nickname = name;
 }
 
 void	Contact::SetSecret(std::string str)
 {
-	secret = str;
+	this->secret = str;
 }
 
 void	Contact::SetNumber(std::string nbr)
 {
-	number = nbr;
+	this->number = nbr;
 }
 
 std::string	Contact::GetFirstname(void)
