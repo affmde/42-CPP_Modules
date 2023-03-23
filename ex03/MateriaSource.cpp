@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 16:04:24 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/23 10:53:57 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/23 11:01:25 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	MateriaSource::learnMateria(AMateria *materia)
 			return ;
 		}
 	}
+	std::cout << "You have no more space to learn new materias" << std::endl;
 	delete materia;
 }
 
