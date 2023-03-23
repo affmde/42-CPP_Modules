@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 14:46:24 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/21 14:52:20 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/23 17:05:40 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ WrongCat::~WrongCat(void)
 
 void	WrongCat::makeSound(void) const
 {
-	WrongAnimal::makeSound();
+	std::cout << "Im a wrong cat so i want to Bark: AO AO AO AO" << std::endl;
 }
 
 

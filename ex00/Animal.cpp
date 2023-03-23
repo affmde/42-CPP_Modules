@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 12:35:08 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/21 14:56:41 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/23 16:56:34 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	Animal::makeSound(void) const
 {
 	std::cout << "I'm just an animal. I dont know what is my sound" << std::endl;
 }
+
+//Member Functions
 
 std::string Animal::getType(void) const
 {

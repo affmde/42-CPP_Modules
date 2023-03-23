@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 14:30:21 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/21 14:36:51 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/23 17:05:52 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ class	WrongAnimal
 		WrongAnimal(void);
 		WrongAnimal(const WrongAnimal&);
 		WrongAnimal &operator=(const WrongAnimal&);
-		~WrongAnimal(void);
+		virtual ~WrongAnimal(void);
 
 		//Member functions
-		virtual void	makeSound(void) const;
+		void	makeSound(void) const;
 		std::string		getType(void) const;
 
 	protected:

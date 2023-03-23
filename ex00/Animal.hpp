@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 12:33:21 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/21 14:26:51 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/23 16:58:44 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class	Animal
 		Animal(void);
 		Animal(const Animal&);
 		Animal &operator=(const Animal&);
-		~Animal(void);
+		virtual ~Animal(void);
 
 		//Member Funtions
 		virtual void	makeSound(void) const;

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 14:44:14 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/21 14:51:36 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/23 17:05:56 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ class WrongCat : public WrongAnimal
 		~WrongCat();
 
 		//Member functions
-		virtual void	makeSound(void) const;
-		
+		void	makeSound(void) const;
+
 	protected:
 
 
