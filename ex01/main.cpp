@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 12:28:23 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/21 17:29:22 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/23 16:52:00 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 int	main(void)
 {
+	/*Test for constructor logs*/
 	// int	nbr_of_animals = 2;
 	// Animal **animals;
 	// animals = new Animal *[nbr_of_animals];
@@ -31,31 +32,43 @@ int	main(void)
 	// 	delete animals[i];
 	// delete animals;
 
-	// Dog a;
+
+	/*Test of assignment and checking if idea functions worked*/
+	// Cat a;
 	// a.addIdeaAt(0, "HAHAHAHAHAHHAHAA");
 	// std::cout << "A: " << a.getIdeaAt(0) << std::endl;
-	// Dog b = a;
+	// Cat b = a;
 	// std::cout << "B: " << b.getIdeaAt(0) << std::endl;
 	// b.addIdeaAt(0, "Now i changed");
 	// std::cout << "A: my idea is " << a.getIdeaAt(0) << std::endl;
 	// std::cout << "B: My idea is " << b.getIdeaAt(0) << std::endl;
 
+	/*Testing more assignmet operaions*/
+	// Cat *a = new Cat();
+	// a->addIdeaAt(85, "I want to miaw");
+	// Cat b(*a);
+	// Cat c = b;
+	// std::cout << "A: My idea is " << (*a).getIdeaAt(85) << std::endl;
+	// std::cout << "B: My idea is " << b.getIdeaAt(85) << std::endl;
+	// std::cout << "C: My idea is " << c.getIdeaAt(85) << std::endl;
+	// (*a).addIdeaAt(85, "I am A");
+	// b.addIdeaAt(85, "I am B");
+	// std::cout << "A: My idea is " << (*a).getIdeaAt(85) << std::endl;
+	// std::cout << "B: My idea is " << b.getIdeaAt(85) << std::endl;
+	// std::cout << "C: My idea is " << c.getIdeaAt(85) << std::endl;
+	// c.addIdeaAt(85, "I am c");
+	// std::cout << "A: My idea is " << (*a).getIdeaAt(85) << std::endl;
+	// std::cout << "B: My idea is " << b.getIdeaAt(85) << std::endl;
+	// std::cout << "C: My idea is " << c.getIdeaAt(85) << std::endl;
 
-	Cat *a = new Cat();
-	a->addIdeaAt(85, "I want to miaw");
-	Cat b(*a);
-	Cat c = b;
-	std::cout << "A: My idea is " << (*a).getIdeaAt(85) << std::endl;
-	std::cout << "B: My idea is " << b.getIdeaAt(85) << std::endl;
-	std::cout << "C: My idea is " << c.getIdeaAt(85) << std::endl;
-	(*a).addIdeaAt(85, "I am A");
-	b.addIdeaAt(85, "I am B");
-	std::cout << "A: My idea is " << (*a).getIdeaAt(85) << std::endl;
-	std::cout << "B: My idea is " << b.getIdeaAt(85) << std::endl;
-	std::cout << "C: My idea is " << c.getIdeaAt(85) << std::endl;
-	c.addIdeaAt(85, "I am c");
-	std::cout << "A: My idea is " << (*a).getIdeaAt(85) << std::endl;
-	std::cout << "B: My idea is " << b.getIdeaAt(85) << std::endl;
-	std::cout << "C: My idea is " << c.getIdeaAt(85) << std::endl;
+
+	/*Testing handling of too much ideas or wrong index*/
+	// Dog *a = new Dog();
+	// for (int i = 0; i < 120; i++)
+	// 	a->addIdeaAt(i, "I am a dog");
+	// for (int i = 0; i < 100; i++)
+	// 	std::cout << i + 1 << ": " << a->getIdeaAt(i) << std::endl;
+	// delete a;
+
 	return 0;
 }

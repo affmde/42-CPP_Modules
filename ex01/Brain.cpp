@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:09:10 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/21 17:03:22 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/23 16:51:35 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ Brain::~Brain(void)
 
 void	Brain::addIdeaAt(int index, std::string idea)
 {
+	if (index < 0 || index > 99)
+	{
+		std::cout << "I have no space in my memory for more ideas" << std::endl;
+		return ;
+	}
 	this->ideas[index] = idea;
 }
 
