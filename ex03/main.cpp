@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 17:49:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/23 10:37:11 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/23 16:26:26 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "Cure.hpp"
 #include "Character.hpp"
 #include "MateriaSource.hpp"
+#include "Garbage.hpp"
 
 int	main(void)
 {
@@ -33,60 +34,86 @@ int	main(void)
 	// delete me;
 	// delete src;
 
-	// Ice a;
-	// Cure b;
-	// std::cout << a.getType() << std::endl;
-	// Character andre("Andre");
-	// Ice c;
-	// andre.equip(&a);
-	// andre.equip(&b);
-	// andre.use(0, andre);
-	// andre.use(1, andre);
-	// andre.equip(&c);
-	// andre.use(0, andre);
-	// andre.use(0, andre);
-
+	/*Testing copy assignment of materias*/
 	// MateriaSource *src = new MateriaSource();
-	// src->learnMateria(new Ice());
+	// src->learnMateria(new Cure());
 	// AMateria *tmp;
-	// AMateria *a = src->createMateria("ice");
+	// AMateria *a = src->createMateria("cure");
 	// std::cout << a->getType() << std::endl;
-	// tmp = src->createMateria("ice");
-	// std::cout << tmp->getType() << std::endl;
+	// tmp = a;
+	// Ice *aa = new Ice();
+	// Ice bb(*aa);
+	// std::cout << "tmp type: " << tmp->getType() << std::endl;
+	// std::cout << "copy_tmp type: " << tmp->getType() << std::endl;
+	// std::cout << bb.getType() << std::endl;
 	// delete src;
 	// delete a;
-	// delete tmp;
+	// delete aa;
 
+
+	/*Testing assignment of new Character*/
 	// Character Andre("Andre");
-	// Ice a;
-	// Andre.equip(&a);
+	// MateriaSource	*src = new MateriaSource();
+	// src->learnMateria(new Ice());
+	// AMateria *m1 = src->createMateria("ice");
+	// Andre.equip(m1);
 	// Character b("Filipe");
-	// b.equip(&a);
 	// b = Andre;
 	// b.use(0, Andre);
+	// Character c(b);
+	// delete src;
+
+
 
 	/*Testing Multiple equips*/
-	ICharacter *andre = new Character("Andre");
-	MateriaSource *src = new MateriaSource();
-	src->learnMateria(new Ice());
-	src->learnMateria(new Cure());
-	AMateria *tmp;
+	// ICharacter *andre = new Character("Andre");
+	// MateriaSource *src = new MateriaSource();
+	// src->learnMateria(new Ice());
+	// src->learnMateria(new Cure());
+	// AMateria *tmp;
 
-	for (int i = 0; i < 10; i++)
-	{
-		if (i % 2 == 0)
-		{
-			tmp = src->createMateria("ice");
-			andre->equip(tmp);
-		}
-		else
-		{
-			tmp = src->createMateria("cure");
-			andre->equip(tmp);
-		}
-	}
-	delete andre;
-	delete src;
+	// for (int i = 0; i < 10; i++)
+	// {
+	// 	if (i % 2 == 0)
+	// 	{
+	// 		tmp = src->createMateria("ice");
+	// 		andre->equip(tmp);
+	// 	}
+	// 	else
+	// 	{
+	// 		tmp = src->createMateria("cure");
+	// 		andre->equip(tmp);
+	// 	}
+	// }
+	// delete andre;
+	// delete src;
+
+
+	/*Testing the unequiping and lack of leaks*/
+	// MateriaSource *src = new MateriaSource();
+	// src->learnMateria(new Ice());
+	// src->learnMateria(new Cure());
+	// AMateria	*tmp;
+	// Character	andre("Andre");
+	// for (int i = 0; i < 10; i++)
+	// {
+	// 	if (i % 2 == 0)
+	// 	{
+	// 		tmp = src->createMateria("ice");
+	// 		andre.equip(tmp);
+	// 	}
+	// 	else
+	// 	{
+	// 		tmp = src->createMateria("cure");
+	// 		andre.equip(tmp);
+	// 	}
+	// }
+	// andre.unequip(2);
+	// andre.unequip(1);
+
+	// delete src;
+
+
 
 	return 0;
 }

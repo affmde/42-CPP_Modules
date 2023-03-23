@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 18:25:46 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/22 17:11:38 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/23 15:52:43 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CHARACTER_HPP
 
 #include "ICharacter.hpp"
+#include "Garbage.hpp"
 
 class Character : public ICharacter
 {
@@ -34,9 +35,9 @@ class Character : public ICharacter
 
 
 	private:
+		Garbage garbage;
 		AMateria	*slots[4];
 		std::string name;
-
 };
 
 

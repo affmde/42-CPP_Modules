@@ -1,43 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.hpp                                       :+:      :+:    :+:   */
+/*   Garbage.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/21 17:50:04 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/23 13:25:51 by andrferr         ###   ########.fr       */
+/*   Created: 2023/03/23 13:09:17 by andrferr          #+#    #+#             */
+/*   Updated: 2023/03/23 14:10:27 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AMATERIA_HPP
-# define AMATERIA_HPP
+#ifndef GARBAGE_HPP
+# define GARBAGE_HPP
 
 #include <iostream>
-//#include "ICharacter.hpp"
+#include "AMateria.hpp"
 
-class ICharacter;
-
-class	AMateria
+class	Garbage
 {
 	public:
-		AMateria(void);
-		AMateria(std::string const &type);
-		AMateria(const AMateria&);
-		AMateria &operator=(const AMateria&);
-		virtual ~AMateria(void);
+		Garbage(void);
+		Garbage(const Garbage&);
+		Garbage	&operator=(const Garbage&);
+		~Garbage(void);
 
-		//Member functions
-		std::string const getType(void) const;
-		virtual AMateria *clone(void) const = 0;
-		virtual void use(ICharacter &target);
-		AMateria	*next;
+		//Member Functions
+		void	pushBack(AMateria *materia);
+		void	printList();
+		void	deleteList();
+		AMateria *materia_list;
 
 	protected:
-		std::string	type;
-	private:
 
+
+
+	private:
 };
+
 
 
 #endif

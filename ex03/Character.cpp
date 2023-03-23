@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 18:27:20 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/23 10:54:45 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/23 16:25:14 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Character::Character(void)
 
 Character::Character(std::string name)
 {
-	std::cout << "Character string cosntructor called" << std::endl;
+	std::cout << "Character string constructor called" << std::endl;
 	this->name = name;
 	for (int i = 0; i < 4; i++)
 		this->slots[i] = NULL;
@@ -32,10 +32,7 @@ Character::Character(const Character &other)
 {
 	std::cout << "Character copy constructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
-	{
-		delete this->slots[i];
 		this->slots[i] = other.slots[i];
-	}
 	this->name = other.name;
 }
 
@@ -45,15 +42,20 @@ Character &Character::operator=(const Character &other)
 	this->name = other.name;
 	for(int i = 0; i < 4; i++)
 	{
-		delete this->slots[i];
-		*this->slots[i] = *other.slots[i];
+		if (this->slots[i])
+			delete this->slots[i];
+		if (other.slots[i])
+			this->slots[i] = other.slots[i]->clone();
+		else
+			this->slots[i] = NULL;
 	}
+	this->garbage = other.garbage;
 	return (*this);
 }
 
 Character::~Character(void)
 {
-	std::cout << "Charatcer destructor called" << std::endl;
+	std::cout << "Character destructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
 		delete this->slots[i];
 }
@@ -76,14 +78,16 @@ void	Character::equip(AMateria* m)
 			return ;
 		}
 	}
-	std::cout << "Unable to equip. Your inventory is full" << std::endl;
+	std::cout << "Unable to equip. Your inventory is full. Materia is dropped on the floor." << std::endl;
+	this->garbage.pushBack(m);
 }
 
 void	Character::unequip(int idx)
 {
 	if (this->slots[idx] != NULL)
 	{
-		//!!!!!! Still need to implement here a place to where to throw the dropped AMateria!!!!!!!!!!
+		std::cout << this->name << " unequiped a " << this->slots[idx]->getType() << std::endl;
+		this->garbage.pushBack(this->slots[idx]);
 		this->slots[idx] = NULL;
 		return ;
 	}
@@ -95,7 +99,10 @@ void	Character::use(int idx, ICharacter& target)
 	if (idx < 0 || idx > 3)
 		return ;
 	if (!this->slots[idx])
+	{
+		std::cout << "That slots is empty" << std::endl;
 		return ;
+	}
 	this->slots[idx]->use(target);
 	delete this->slots[idx];
 	this->slots[idx] = NULL;
