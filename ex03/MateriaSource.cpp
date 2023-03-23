@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 16:04:24 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/22 17:17:53 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/23 10:53:57 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,8 @@ MateriaSource	&MateriaSource::operator=(const MateriaSource &other)
 MateriaSource::~MateriaSource(void)
 {
 	std::cout << "MateriaSource destructor called" << std::endl;
-	//delete[] materias;
 	for (int i = 0; i < 4; i++)
-	{
 		delete this->materias[i];
-	}
-
 }
 
 
@@ -62,6 +58,7 @@ void	MateriaSource::learnMateria(AMateria *materia)
 			return ;
 		}
 	}
+	delete materia;
 }
 
 AMateria	*MateriaSource::createMateria(std::string const &type)
@@ -71,9 +68,9 @@ AMateria	*MateriaSource::createMateria(std::string const &type)
 		if(this->materias[i]->getType() == type)
 		{
 			if (!type.compare("ice"))
-				return (new Ice());
+				return (this->materias[i]->clone());
 			else
-				return (new Cure());
+				return (this->materias[i]->clone());
 		}
 	}
 

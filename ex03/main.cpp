@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 17:49:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/22 18:05:15 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/23 10:37:11 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,21 @@
 
 int	main(void)
 {
-	IMateriaSource* src = new MateriaSource();
-	src->learnMateria(new Ice());
-	src->learnMateria(new Cure());
-	ICharacter* me = new Character("me");
-	AMateria* tmp;
-	tmp = src->createMateria("ice");
-	me->equip(tmp);
-	tmp = src->createMateria("cure");
-	me->equip(tmp);
-	ICharacter* bob = new Character("bob");
-	me->use(0, *bob);
-	me->use(1, *bob);
-	delete bob;
-	delete me;
-	delete src;
+	// IMateriaSource* src = new MateriaSource();
+	// src->learnMateria(new Ice());
+	// src->learnMateria(new Cure());
+	// ICharacter* me = new Character("me");
+	// AMateria* tmp;
+	// tmp = src->createMateria("ice");
+	// me->equip(tmp);
+	// tmp = src->createMateria("cure");
+	// me->equip(tmp);
+	// ICharacter* bob = new Character("bob");
+	// me->use(0, *bob);
+	// me->use(1, *bob);
+	// delete bob;
+	// delete me;
+	// delete src;
 
 	// Ice a;
 	// Cure b;
@@ -64,5 +64,29 @@ int	main(void)
 	// b.equip(&a);
 	// b = Andre;
 	// b.use(0, Andre);
+
+	/*Testing Multiple equips*/
+	ICharacter *andre = new Character("Andre");
+	MateriaSource *src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+	AMateria *tmp;
+
+	for (int i = 0; i < 10; i++)
+	{
+		if (i % 2 == 0)
+		{
+			tmp = src->createMateria("ice");
+			andre->equip(tmp);
+		}
+		else
+		{
+			tmp = src->createMateria("cure");
+			andre->equip(tmp);
+		}
+	}
+	delete andre;
+	delete src;
+
 	return 0;
 }

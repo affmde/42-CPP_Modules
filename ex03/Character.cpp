@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 18:27:20 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/22 18:09:51 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/23 10:54:45 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,11 @@ void	Character::equip(AMateria* m)
 		if (this->slots[i] == NULL)
 		{
 			this->slots[i] = m;
+			std::cout << m->getType() << " equiped successfuly!" << std::endl;
 			return ;
 		}
 	}
+	std::cout << "Unable to equip. Your inventory is full" << std::endl;
 }
 
 void	Character::unequip(int idx)
@@ -83,7 +85,9 @@ void	Character::unequip(int idx)
 	{
 		//!!!!!! Still need to implement here a place to where to throw the dropped AMateria!!!!!!!!!!
 		this->slots[idx] = NULL;
+		return ;
 	}
+	std::cout << "You can not unequip this materia" << std::endl;
 }
 
 void	Character::use(int idx, ICharacter& target)
