@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 17:52:03 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/14 17:01:41 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/24 17:45:27 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,5 +147,5 @@ void	Account::displayAccountsInfos(void)
 	std::cout << "accounts:" << getNbAccounts() << ";";
 	std::cout << "total:" << _totalAmount << ";";
 	std::cout << "deposits:" << getNbDeposits() << ";";
-	std::cout << "withdrawls:" << getNbWithdrawals() << std::endl;
+	std::cout << "withdrawals:" << getNbWithdrawals() << std::endl;
 }

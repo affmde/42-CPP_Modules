@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:34:45 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/24 16:09:04 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/24 17:42:45 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,10 @@ int	checkValidContact(Contact *contact)
 	if (!(contact->getNumber().length() > 0))
 		return (1);
 	if (contact->getNumber().length() > 12)
+	{
+		std::cout << "\e[1;33mNumber can't contain more than 12 numbers\e[0m" << std::endl;
 		return (1);
+	}
 	if (isDigit(contact->getNumber()))
 		return (1);
 	if (!(contact->getSecret().length() > 0))
@@ -160,9 +163,30 @@ void	PrintArg(std::string str)
 	}
 }
 
+int		index_string_to_number(std::string str)
+{
+	if (!str.compare("0"))
+		return (0);
+	if (!str.compare("1"))
+		return (1);
+	if (!str.compare("2"))
+		return (2);
+	if (!str.compare("3"))
+		return (3);
+	if (!str.compare("4"))
+		return (4);
+	if (!str.compare("5"))
+		return (5);
+	if (!str.compare("6"))
+		return (6);
+	if (!str.compare("7"))
+		return (7);
+	return (100);
+}
+
 void	PhoneBook::search(void)
 {
-	int	index;
+	std::string	index;
 
 	PrintArg("Index");
 	std::cout << "|";
@@ -185,18 +209,21 @@ void	PhoneBook::search(void)
 		std::cout << std::endl;
 	}
 	std::cout << "\e[1;33mWrite the index of the number you want to search\e[0m" << std::endl;
-	std::cin >> index;
-	std::cin.clear();
-	std::cin.ignore(10000, '\n');
+	std::getline(std::cin, index, '\n');
 	if (!std::cin.eof())
 	{
-		this->displayContact(index);
+		if (isDigit(index))
+		{
+			std::cout << "\e[38;5;196mThat is not a number\e[0m" << std::endl;
+			return ;
+		}
+		this->displayContact(index_string_to_number(index));
 	}
 }
 
 void	PhoneBook::displayContact(int index)
 {
-	if (index < 0 || index > 8)
+	if (index < 0 || index > 7)
 	{
 		std::cout << "\e[48;5;0mNumber not available. This phonebook can only store up to 8 contacts.\e[0m" << std::endl;
 		return ;
