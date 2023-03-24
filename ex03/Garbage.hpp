@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:09:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/23 14:10:27 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/24 10:19:44 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,11 @@ class	Garbage
 		void	pushBack(AMateria *materia);
 		void	printList();
 		void	deleteList();
-		AMateria *materia_list;
 
 	protected:
 
-
-
 	private:
+		AMateria *materia_list;
 };
 
 
