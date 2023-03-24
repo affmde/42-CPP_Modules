@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:34:45 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/23 17:16:32 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/24 13:54:28 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,7 @@ void	PhoneBook::Search(void)
 	std::cout << "\e[1;33mWrite the index of the number you want to search\e[0m" << std::endl;
 	std::cin >> index;
 	std::cin.clear();
-	std::cin.ignore();
+	std::cin.ignore(10000, '\n');
 	if (!std::cin.eof())
 	{
 		this->DisplayContact(index);
