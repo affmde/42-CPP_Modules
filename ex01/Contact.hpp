@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:59:09 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/23 17:11:04 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/24 16:09:55 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@ class Contact {
 		~Contact(void);
 
 		//Member Functions
-		void	SetFirstName(std::string name);
-		void	SetLastname(std::string name);
-		void	SetNickname(std::string name);
-		void	SetSecret(std::string str);
-		void	SetNumber(std::string nbr);
-		std::string	GetFirstname(void);
-		std::string GetLastName(void);
-		std::string GetNickname(void);
-		std::string	GetNumber(void);
-		std::string	GetSecret(void);
+		void	setFirstName(std::string name);
+		void	setLastname(std::string name);
+		void	setNickname(std::string name);
+		void	setSecret(std::string str);
+		void	setNumber(std::string nbr);
+		std::string	getFirstName(void);
+		std::string	getLastName(void);
+		std::string	getNickname(void);
+		std::string	getNumber(void);
+		std::string	getSecret(void);
 };
 
 #endif

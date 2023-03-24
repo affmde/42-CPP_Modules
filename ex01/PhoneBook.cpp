@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:34:45 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/24 13:54:28 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/24 16:09:04 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ PhoneBook::~PhoneBook(void)
 
 //Member Functions
 
-void	PhoneBook::Add(Contact contact)
+void	PhoneBook::add(Contact contact)
 {
 	this->contacts[index] = contact;
 	this->index++;
@@ -49,9 +49,9 @@ void	PhoneBook::Menu(void)
 		std::cout << "Write \"EXIT\" to exit the PhoneBook." << std::endl;
 		getline(std::cin, input, '\n');
 		if (input.compare("ADD") == 0)
-			this->NewContactMenu();
+			this->newContactMenu();
 		else if (input.compare("SEARCH") == 0)
-			this->Search();
+			this->search();
 		else if (input.compare("EXIT") == 0 || std::cin.eof())
 			exit(0);
 		else
@@ -60,7 +60,7 @@ void	PhoneBook::Menu(void)
 
 }
 
-int	IsDigit(std::string number)
+int	isDigit(std::string number)
 {
 	int i;
 
@@ -74,28 +74,28 @@ int	IsDigit(std::string number)
 	return (0);
 }
 
-int	CheckValidContact(Contact *contact)
+int	checkValidContact(Contact *contact)
 {
-	if (!(contact->GetFirstname().length() > 0))
+	if (!(contact->getFirstName().length() > 0))
 		return (1);
-	if (!(contact->GetLastName().length() > 0))
+	if (!(contact->getLastName().length() > 0))
 		return (1);
-	if (!(contact->GetNickname().length() > 0))
+	if (!(contact->getNickname().length() > 0))
 		return (1);
-	if (!(contact->GetNumber().length() > 0))
+	if (!(contact->getNumber().length() > 0))
 		return (1);
-	if (!(contact->GetNumber().length() > 0))
+	if (!(contact->getNumber().length() > 0))
 		return (1);
-	if (contact->GetNumber().length() > 12)
+	if (contact->getNumber().length() > 12)
 		return (1);
-	if (IsDigit(contact->GetNumber()))
+	if (isDigit(contact->getNumber()))
 		return (1);
-	if (!(contact->GetSecret().length() > 0))
+	if (!(contact->getSecret().length() > 0))
 		return (1);
 	return (0);
 }
 
-void	PhoneBook::NewContactMenu(void)
+void	PhoneBook::newContactMenu(void)
 {
 	Contact	newContact;
 	std::string	first_name;
@@ -108,42 +108,42 @@ void	PhoneBook::NewContactMenu(void)
 	{
 		std::cout << "\033[104mWhat is your first name?\e[0m" << std::endl;
 		std::getline(std::cin, first_name, '\n');
-		newContact.SetFirstName(first_name);
+		newContact.setFirstName(first_name);
 	}
 	if (!std::cin.eof())
 	{
 		std::cout << "\033[104mWhat is your last name?\e[0m" << std::endl;
 		std::getline(std::cin, last_name, '\n');
-		newContact.SetLastname(last_name);
+		newContact.setLastname(last_name);
 	}
 	if (!std::cin.eof())
 	{
 		std::cout << "\033[104mWhat is your nickname?\e[0m" << std::endl;
 		std::getline(std::cin, nickname, '\n');
-		newContact.SetNickname(nickname);
+		newContact.setNickname(nickname);
 	}
 	if (!std::cin.eof())
 	{
 		std::cout << "\033[104mWhat is your darkest secret?\e[0m" << std::endl;
 		std::getline(std::cin, darkest_secret, '\n');
-		newContact.SetSecret(darkest_secret);
+		newContact.setSecret(darkest_secret);
 	}
 	if (!std::cin.eof())
 	{
 		std::cout << "\033[104mWhat is the phone number?\e[0m" << std::endl;
 		std::getline(std::cin, number, '\n');
-		newContact.SetNumber(number);
+		newContact.setNumber(number);
 	}
 	if (!std::cin.eof())
 	{
-		if (!CheckValidContact(&newContact))
+		if (!checkValidContact(&newContact))
 			std::cout << "\033[92mContact saved successfully\e[0m" << std::endl;
 		else
 		{
 			std::cout << "\033[31mContact is not valid\e[0m" << std::endl;
 			return ;
 		}
-		this->Add(newContact);
+		this->add(newContact);
 	}
 }
 
@@ -160,7 +160,7 @@ void	PrintArg(std::string str)
 	}
 }
 
-void	PhoneBook::Search(void)
+void	PhoneBook::search(void)
 {
 	int	index;
 
@@ -177,11 +177,11 @@ void	PhoneBook::Search(void)
 	{
 		std::cout << std::setfill (' ') << std::setw(10);
 		std::cout << i << '|';
-		PrintArg(this->contacts[i].GetFirstname());
+		PrintArg(this->contacts[i].getFirstName());
 		std::cout << '|';
-		PrintArg(this->contacts[i].GetLastName());
+		PrintArg(this->contacts[i].getLastName());
 		std::cout << '|';
-		PrintArg(this->contacts[i].GetNickname());
+		PrintArg(this->contacts[i].getNickname());
 		std::cout << std::endl;
 	}
 	std::cout << "\e[1;33mWrite the index of the number you want to search\e[0m" << std::endl;
@@ -190,24 +190,24 @@ void	PhoneBook::Search(void)
 	std::cin.ignore(10000, '\n');
 	if (!std::cin.eof())
 	{
-		this->DisplayContact(index);
+		this->displayContact(index);
 	}
 }
 
-void	PhoneBook::DisplayContact(int index)
+void	PhoneBook::displayContact(int index)
 {
 	if (index < 0 || index > 8)
 	{
 		std::cout << "\e[48;5;0mNumber not available. This phonebook can only store up to 8 contacts.\e[0m" << std::endl;
 		return ;
 	}
-	if (this->contacts[index].GetFirstname().length() > 0)
+	if (this->contacts[index].getFirstName().length() > 0)
 	{
-		std::cout << "\033[33mFirst name: \e[0m" << this->contacts[index].GetFirstname() << std::endl;
-		std::cout << "\033[33mLast name: \e[0m" << this->contacts[index].GetLastName() << std::endl;
-		std::cout << "\033[33mNickname: \e[0m" << this->contacts[index].GetNickname() << std::endl;
-		std::cout << "\033[33mDarkest secret: \e[0m" << this->contacts[index].GetSecret() << std::endl;
-		std::cout << "\033[33mNumber: \e[0m" << this->contacts[index].GetNumber() << std::endl;
+		std::cout << "\033[33mFirst name: \e[0m" << this->contacts[index].getFirstName() << std::endl;
+		std::cout << "\033[33mLast name: \e[0m" << this->contacts[index].getLastName() << std::endl;
+		std::cout << "\033[33mNickname: \e[0m" << this->contacts[index].getNickname() << std::endl;
+		std::cout << "\033[33mDarkest secret: \e[0m" << this->contacts[index].getSecret() << std::endl;
+		std::cout << "\033[33mNumber: \e[0m" << this->contacts[index].getNumber() << std::endl;
 		int a = 'a';
 		std::cout << "Press ENTER to continue";
 		while(a != '\n' && a != EOF)

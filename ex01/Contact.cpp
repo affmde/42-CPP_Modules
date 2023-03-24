@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:53:04 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/23 17:13:15 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/24 16:07:57 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,52 +19,52 @@ Contact::~Contact(void){}
 
 //Member Functions
 
-void	Contact::SetFirstName(std::string name)
+void	Contact::setFirstName(std::string name)
 {
 	this->first_name = name;
 }
 
-void	Contact::SetLastname(std::string name)
+void	Contact::setLastname(std::string name)
 {
 	this->last_name = name;
 }
 
-void	Contact::SetNickname(std::string name)
+void	Contact::setNickname(std::string name)
 {
 	this->nickname = name;
 }
 
-void	Contact::SetSecret(std::string str)
+void	Contact::setSecret(std::string str)
 {
 	this->secret = str;
 }
 
-void	Contact::SetNumber(std::string nbr)
+void	Contact::setNumber(std::string nbr)
 {
 	this->number = nbr;
 }
 
-std::string	Contact::GetFirstname(void)
+std::string	Contact::getFirstName(void)
 {
 	return (this->first_name);
 }
 
-std::string	Contact::GetLastName(void)
+std::string	Contact::getLastName(void)
 {
 	return (this->last_name);
 }
 
-std::string	Contact::GetNickname(void)
+std::string	Contact::getNickname(void)
 {
 	return (this->nickname);
 }
 
-std::string	Contact::GetSecret(void)
+std::string	Contact::getSecret(void)
 {
 	return (this->secret);
 }
 
-std::string	Contact::GetNumber(void)
+std::string	Contact::getNumber(void)
 {
 	return (this->number);
 }
