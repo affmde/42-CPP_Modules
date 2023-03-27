@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 11:19:33 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/27 15:12:01 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/27 17:47:04 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,20 @@ Bureaucrat::Bureaucrat(int grade)
 	try
 	{
 		if (grade > 150)
-			this->GradeToLowException();
+			throw GradeToHighException();
 		else if (grade < 1)
-			this->GradeToLowException();
+			throw GradeToLowException();
 		else
 			this->grade = grade;
 	}
-	catch(Bureaucrat &exception)
+	catch(const Bureaucrat::GradeToHighException& e)
 	{
-		std::cout << exception.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
-
-
+	catch(const Bureaucrat::GradeToLowException& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 }
 
 //Member Functions
@@ -53,7 +55,7 @@ std::string	Bureaucrat::getName(void)
 void	Bureaucrat::incrementGrade(void)
 {
 	if (this->grade <= 1)
-		this->GradeToHighException();
+		throw GradeToHighException();
 	else
 		this->grade--;
 }
@@ -61,25 +63,8 @@ void	Bureaucrat::incrementGrade(void)
 void	Bureaucrat::decrementGrade(void)
 {
 	if (this->grade >=150)
-	{
-		std::cout << "Here" << std::endl;
-		this->GradeToLowException();
-	}
+		throw GradeToLowException();
 	else
 		this->grade++;
 }
 
-// const char	*Bureaucrat::what(void)
-// {
-// 	return ("Error: ");
-// }
-
-void	Bureaucrat::GradeToHighException(void)
-{
-	throw Bureaucrat();
-}
-
-void	Bureaucrat::GradeToLowException(void)
-{
-	throw Bureaucrat();
-}
