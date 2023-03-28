@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 11:19:33 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/27 17:47:04 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/28 10:18:10 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,13 @@ Bureaucrat::Bureaucrat(void)
 Bureaucrat::Bureaucrat(int grade)
 {
 	std::cout << "Bureaucat Int constructor started" << std::endl;
-	try
-	{
-		if (grade > 150)
-			throw GradeToHighException();
-		else if (grade < 1)
-			throw GradeToLowException();
-		else
-			this->grade = grade;
-	}
-	catch(const Bureaucrat::GradeToHighException& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch(const Bureaucrat::GradeToLowException& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
+	if (grade > 150)
+		throw GradeToLowException();
+	else if (grade < 1)
+		throw GradeToHighException();
+	else
+		this->grade = grade;
+
 }
 
 //Member Functions
