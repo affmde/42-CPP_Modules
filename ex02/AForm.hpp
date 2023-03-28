@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 20:53:34 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/28 21:04:42 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/28 21:28:08 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ class	AForm
 		int					getReqSignGrade(void) const;
 		int					getReqExecGrade(void) const;
 		void				beSigned(Bureaucrat	&);
-		virtual void		execute(Bureaucrat const & executor) = 0;
+		virtual void		execute(Bureaucrat const & executor) const = 0;
 
 	protected:
 
@@ -60,6 +60,6 @@ class	AForm
 
 };
 
-std::ostream	&operator<<(std::ostream &,Form const &f);
+std::ostream	&operator<<(std::ostream &,AForm const &f);
 
 #endif

@@ -1,6 +1,6 @@
 NAME = form
 FLAGS = -Wall -Werror -Wextra
-SRCS = main.cpp Bureaucrat.cpp Form.cpp
+SRCS = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp
 OBJ = $(SRCS:.cpp=.o)
 FSANITIZERFLAG = -fsanitize=address -static-libsan -g
 

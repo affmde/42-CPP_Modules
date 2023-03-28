@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 11:19:33 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/28 20:10:10 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/28 21:27:40 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	Bureaucrat::decrementGrade(void)
 }
 
 
-void	Bureaucrat::signForm(Form &form)
+void	Bureaucrat::signForm(AForm &form)
 {
 	if (form.getIsSigned())
 		std::cout << this->name << " couldn't sign " << form.getName() << " because it was already signed" << std::endl;

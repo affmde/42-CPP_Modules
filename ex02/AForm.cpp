@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 20:55:41 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/28 21:02:18 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/28 21:28:40 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,11 @@ void		AForm::beSigned(Bureaucrat &b)
 			throw (GradeTooLowException());
 		this->is_signed = true;
 	}
+}
+
+void		AForm::execute(Bureaucrat const &execute) const
+{
+	(void)execute;
 }
 
 

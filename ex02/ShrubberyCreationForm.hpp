@@ -6,27 +6,44 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 20:51:06 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/28 20:52:43 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/28 21:59:02 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SHRUBBERYCREATIONFORM_HPP
 # define SHRUBBERYCREATIONFORM_HPP
 
+#include <iostream>
+#include "AForm.hpp"
 
-class	ShruberryCreationForm
+class	ShrubberyCreationForm : public AForm
 {
 	public:
+		ShrubberyCreationForm(std::string &target);
+		ShrubberyCreationForm(const ShrubberyCreationForm &);
+		ShrubberyCreationForm	&operator=(const ShrubberyCreationForm&);
+		~ShrubberyCreationForm(void);
 
+
+		//Exceptions
+		class	FormNotSigned : std::exception{
+			public:
+				const char *what(void) const throw(){
+					return ("Form is not signed yet");
+				};
+		};
+		
+		//Member Functions
+		void	execute(Bureaucrat const & executor) const;
 
 	protected:
 
 
 	private:
-
+		std::string target;
 
 	
-}
+};
 
 
 #endif
