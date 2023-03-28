@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:09:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/14 17:11:47 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/28 16:24:11 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,17 @@
 class HumanB
 {
 	public:
-	HumanB(std::string n);
-	~HumanB(void);
-	void	setWeapon(Weapon &w);
-	void	attack(void);
+		HumanB(std::string n);
+		~HumanB(void);
+
+		//Member Functions
+		void	setWeapon(Weapon &w);
+		void	attack(void);
 
 
 	private:
-	std::string	name;
-	Weapon	*weapon;
+		std::string	name;
+		Weapon	*weapon;
 };
 
 

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 16:15:04 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/14 17:13:41 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/28 16:25:58 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ Replace::~Replace(void)
 {
 
 }
+
+//Member functions
 
 std::string	Replace::ChangeLine(std::string str1, std::string str2)
 {

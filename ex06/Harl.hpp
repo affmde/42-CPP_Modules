@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 18:33:43 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/14 17:28:03 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/28 16:43:51 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,19 @@
 class Harl
 {
 	public:
-	Harl(void);
-	~Harl(void);
-	void	complain(std::string level);
-	void	filter(std::string level);
+		Harl(void);
+		~Harl(void);
+
+		//Member Function
+		void	complain(std::string level);
+		void	filter(std::string level);
 
 	private:
-	void	debug(void);
-	void	info(void);
-	void	warning(void);
-	void	error(void);
-
-	void	(Harl::*fp)();
+		void	debug(void);
+		void	info(void);
+		void	warning(void);
+		void	error(void);
+		void	(Harl::*fp)();
 };
 
 #endif

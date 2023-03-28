@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:08:02 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/14 17:11:23 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/28 16:22:48 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ Weapon::~Weapon()
 {
 
 }
+
+//Member Functions
 
 void	Weapon::setType(std::string str)
 {

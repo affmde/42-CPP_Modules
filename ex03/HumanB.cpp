@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:10:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/14 17:12:01 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/28 16:24:27 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ HumanB::~HumanB(void)
 {
 
 }
+
+//Member Functions
 
 void	HumanB::attack(void)
 {

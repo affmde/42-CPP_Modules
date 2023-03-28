@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:06:10 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/14 17:07:04 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/28 16:07:32 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ Zombie::~Zombie(void)
 {
 	std::cout << name << " is leaving. Goodbye!" << std::endl;
 }
+
+
+//Member Functions
 
 void	Zombie::SetName(std::string str)
 {
