@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 11:18:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/28 11:34:24 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/28 15:41:32 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ class	Bureaucrat
 		std::string			getName(void) const;
 		void				incrementGrade(void);
 		void				decrementGrade(void);
+		void				signForm(Form &);
 
 		class	GradeTooHighException : std::exception{
 			public:

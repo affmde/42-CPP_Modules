@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 11:19:33 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/28 11:34:39 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/28 15:41:28 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ Bureaucrat::Bureaucrat(const Bureaucrat &other)
 Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &other)
 {
 	std::cout << "Bureaucrat copy assignement operator called" << std::endl;
-	//this->name = other.name;
 	this->grade = other.grade;
 	return (*this);
 }
@@ -77,6 +76,20 @@ void	Bureaucrat::decrementGrade(void)
 		this->grade++;
 }
 
+
+void	Bureaucrat::signForm(Form &form)
+{
+	if (form.getIsSigned())
+		std::cout << this->name << " signed " << form.getName() << std::endl;
+	else
+	{
+		std::cout << this->name << " couldn't sign " << form.getName() << " because ";
+		if (this->getGrade() < form.getReqSignGrade())
+			throw form::GradeTooHighException();
+		else
+			throw form::GradeTooLowException();
+	}
+}
 
 //Overload Function
 
