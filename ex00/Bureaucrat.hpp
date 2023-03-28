@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 11:18:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/28 10:12:23 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/28 10:54:37 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,15 @@ class	Bureaucrat
 {
 	public:
 		Bureaucrat(void);
+		Bureaucrat(const Bureaucrat&);
 		Bureaucrat(int grade);
+		Bureaucrat	&operator=(const Bureaucrat&);
+		~Bureaucrat(void);
 
 
 		//Member Functions
-		int					getGrade(void);
-		std::string			getName(void);
+		int					getGrade(void) const;
+		std::string			getName(void) const;
 		void				incrementGrade(void);
 		void				decrementGrade(void);
 
@@ -50,5 +53,6 @@ class	Bureaucrat
 		int					grade;
 };
 
+std::ostream	&operator<<(std::ostream &os, Bureaucrat const &b);
 
 #endif

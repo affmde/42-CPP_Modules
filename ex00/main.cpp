@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 11:17:58 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/28 10:21:22 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/28 10:48:48 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,22 +39,38 @@ int	main(void)
 
 
 	/*Testing bad value at construction*/
-	try
-	{
-		Bureaucrat(0);
-	}
-	catch(const Bureaucrat::GradeToLowException& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch(const Bureaucrat::GradeToHighException& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
+	// try
+	// {
+	// 	Bureaucrat a(0);
+	// }
+	// catch(const Bureaucrat::GradeToLowException& e)
+	// {
+	// 	std::cout << e.what() << std::endl;
+	// }
+	// catch(const Bureaucrat::GradeToHighException& e)
+	// {
+	// 	std::cout << e.what() << std::endl;
+	// }
 
+	// try
+	// {
+	// 	Bureaucrat a(170);
+	// }
+	// catch(const Bureaucrat::GradeToLowException& e)
+	// {
+	// 	std::cout << e.what() << std::endl;
+	// }
+	// catch(const Bureaucrat::GradeToHighException& e)
+	// {
+	// 	std::cout << e.what() << std::endl;
+	// }
+
+
+	/*Testing << operator overload*/
 	try
 	{
-		Bureaucrat(170);
+		Bureaucrat a(120);
+		std::cout << a << std::endl;
 	}
 	catch(const Bureaucrat::GradeToLowException& e)
 	{
