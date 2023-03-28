@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 11:17:58 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/28 15:25:03 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/28 20:16:53 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,27 @@ int	main(void)
 	// {
 	// 	std::cerr << e.what() << '\n';
 	// }
+
+	/*Testing bureaucrat sign form*/
+	Bureaucrat andre("Andre", 2);
+	try
+	{
+		Form a("Sign football player", 3, 1);
+		std::cout << "Form: " << a.getName() << " signed status: " << a.getIsSigned() << std::endl;
+		andre.signForm(a);
+		std::cout << "Form: " << a.getName() << " signed status: " << a.getIsSigned() << std::endl;
+	}
+	catch(Form::GradeTooHighException &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	catch(Form::GradeTooLowException &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	catch(Bureaucrat::GradeTooLowException &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 	return (0);
 }

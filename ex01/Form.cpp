@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 13:40:28 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/28 15:21:02 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/28 20:17:06 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Form::Form(void) : name("Unknown"), req_exec_grade(10), req_sign_grade(20)
 Form::Form(std::string name, int min_grade_sign, int min_grade_exec) : name(name), req_exec_grade(min_grade_exec), req_sign_grade(min_grade_sign)
 {
 	std::cout << "Form variables constructor called" << std::endl;
-	if (min_grade_exec > 150 || min_grade_exec > 150)
+	if (min_grade_exec > 150 || min_grade_sign > 150)
 		throw (GradeTooLowException());
 	if (min_grade_exec < 1 || min_grade_sign < 1)
 		throw (GradeTooHighException());
@@ -71,7 +71,7 @@ int			Form::getReqSignGrade(void) const
 
 void		Form::beSigned(Bureaucrat &b)
 {
-	if (!this->is_signed)
+	if (this->getIsSigned() == false)
 	{
 		if (b.getGrade() > this->getReqSignGrade())
 			throw (GradeTooLowException());

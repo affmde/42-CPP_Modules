@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 10:29:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/28 15:13:05 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/28 20:08:56 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define FORM_HPP
 
 #include <iostream>
+
+class Bureaucrat;
 #include "Bureaucrat.hpp"
 
 class	Form
@@ -28,13 +30,13 @@ class	Form
 		class	GradeTooHighException : std::exception {
 			public:
 				const char *what(void) const throw(){
-					return ("You have too high expectations. Maximum expectation is 1");
+					return ("You have too high expectations. Maximum expectation is 1.");
 				};
 		};
 		class	GradeTooLowException : std::exception {
 			public:
 				const char *what(void) const throw(){
-					return ("Too low expectations. please increase it to 150 at least");
+					return ("Too low expectations. Please increase it to 150 at least.");
 				};
 		};
 
