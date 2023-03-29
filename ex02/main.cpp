@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 20:31:35 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/28 22:00:10 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/29 13:33:09 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	main(void)
 	{
 		std::cout << e.what() << std::endl;
 	}
-	
-	
+
+
 	delete a;
 	return (0);
 }

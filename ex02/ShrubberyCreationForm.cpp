@@ -6,11 +6,12 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 21:12:08 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/28 22:01:35 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/29 13:31:26 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
+#include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string &target) : AForm("ShruberryCreationForm", 145, 137)
 {
@@ -30,7 +31,7 @@ ShrubberyCreationForm	&ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 ShrubberyCreationForm::~ShrubberyCreationForm(void)
 {
-	
+
 }
 
 //Member Functions
@@ -43,5 +44,20 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &b) const
 		throw (GradeTooLowException());
 	//Change this to print trees!!!!!
 	std::cout << "Yes form " << this->getName() << " is executing by " << b.getName() << std::endl;
-	
+	std::ofstream	outfile;
+	outfile.open(this->target + "_shrubberry");
+	if (outfile.is_open())
+	{
+		outfile << "     *     " << std::endl;
+		outfile << "    ***    " << std::endl;
+		outfile << "   *****   " << std::endl;
+		outfile << "  *******  " << std::endl;
+		outfile << " ********* " << std::endl;
+		outfile << "***********" << std::endl;
+		outfile << "     *     " << std::endl;
+		outfile << "     *     " << std::endl;
+		outfile << "------------" << std::endl;
+		outfile.close();
+	}
+
 }
