@@ -5,10 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/13 16:15:15 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/28 16:25:41 by andrferr         ###   ########.fr       */
+/*   Created: 2023/03/29 15:52:31 by andrferr          #+#    #+#             */
+/*   Updated: 2023/03/29 15:54:41 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
 
 #ifndef REPLACE_HPP
 # define REPLACE_HPP
@@ -22,10 +24,10 @@ class Replace
 		~Replace(void);
 
 		//Member Functions
-		std::string	ChangeLine(std::string str1, std::string str2);
+		std::string	changeLine(std::string str1, std::string str2);
 
 	private:
-		std::string line;
+		std::string	line;
 };
 
 #endif

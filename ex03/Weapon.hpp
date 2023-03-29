@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:07:21 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/28 16:22:50 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/29 15:49:22 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <iostream>
 
-class Weapon
+class	Weapon
 {
 	public:
 		Weapon(std::string str);
@@ -26,7 +26,7 @@ class Weapon
 		void		setType(std::string str);
 
 	private:
-	std::string	type;
+		std::string	type;
 
 };
 

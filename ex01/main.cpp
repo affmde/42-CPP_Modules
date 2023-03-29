@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 16:22:05 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/28 16:18:31 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/29 15:47:08 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(void)
 
 	horde = zombieHorde(amount, "Andre");
 	for(int i = 0; i < amount; i++)
-		horde[i].Announce();
+		horde[i].announce();
 	delete[] horde;
 	return (0);
 }

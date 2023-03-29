@@ -6,11 +6,11 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 16:15:04 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/28 16:25:58 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/29 15:55:25 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "replace.hpp"
+#include "Replace.hpp"
 #include <sstream>
 
 Replace::Replace(std::string line)
@@ -25,7 +25,7 @@ Replace::~Replace(void)
 
 //Member functions
 
-std::string	Replace::ChangeLine(std::string str1, std::string str2)
+std::string	Replace::changeLine(std::string str1, std::string str2)
 {
 	size_t	index;
 	size_t	found;

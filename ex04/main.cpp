@@ -6,17 +6,17 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 16:01:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/14 17:14:34 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/29 15:58:35 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <fstream>
-#include "replace.hpp"
+#include "Replace.hpp"
 
-int	CheckInputStrings(std::string str1, std::string str2)
+int	checkInputStrings(std::string str)
 {
-	if (str1.empty() || str2.empty())
+	if (str.empty())
 	{
 		std::cout << "Empty strings are not accepted." << std::endl;
 		return (1);
@@ -37,7 +37,7 @@ int	main(int argc, char **argv)
 		std::cout << "Wrong number of arguments" << std::endl;
 		return (1);
 	}
-	if (CheckInputStrings(argv[2], argv[3]))
+	if (checkInputStrings(argv[2]))
 		return (0);
 	infile.open(argv[1]);
 	if (infile.fail())
@@ -54,7 +54,7 @@ int	main(int argc, char **argv)
 			Replace replace(line);
 			if (outfile.is_open())
 			{
-				std::string out = replace.ChangeLine(argv[2], argv[3]);
+				std::string out = replace.changeLine(argv[2], argv[3]);
 				outfile << out << std::endl;
 			}
 		}

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:09:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/28 16:24:11 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/29 15:48:41 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class HumanB
 
 	private:
 		std::string	name;
-		Weapon	*weapon;
+		Weapon		*weapon;
 };
 
 

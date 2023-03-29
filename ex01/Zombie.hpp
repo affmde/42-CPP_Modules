@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 16:23:04 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/28 16:16:42 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/29 15:46:49 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ class Zombie
 		~Zombie(void);
 
 		//Member Functions
-		void	Announce(void);
-		void	SetName(std::string str);
-		std::string	GetName(void);
+		void		announce(void);
+		void		setName(std::string str);
+		std::string	getName(void);
 
 	private:
-		std::string name;
+		std::string	name;
 };
 
 #endif
