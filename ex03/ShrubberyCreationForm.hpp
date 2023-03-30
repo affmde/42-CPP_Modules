@@ -1,48 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/30 10:35:24 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/30 11:14:29 by andrferr         ###   ########.fr       */
+/*   Created: 2023/03/28 20:51:06 by andrferr          #+#    #+#             */
+/*   Updated: 2023/03/28 21:59:02 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRESIDENTIALPARDONFORM_HPP
-# define PRESIDENTIALPARDONFORM_HPP
+#ifndef SHRUBBERYCREATIONFORM_HPP
+# define SHRUBBERYCREATIONFORM_HPP
 
 #include <iostream>
 #include "AForm.hpp"
 
-
-class	PresidentialPardonForm : public AForm
+class	ShrubberyCreationForm : public AForm
 {
 	public:
-		PresidentialPardonForm(std::string &target);
-		PresidentialPardonForm(const PresidentialPardonForm&);
-		PresidentialPardonForm	&operator=(const PresidentialPardonForm&);
-		~PresidentialPardonForm(void);
+		ShrubberyCreationForm(std::string &target);
+		ShrubberyCreationForm(const ShrubberyCreationForm &);
+		ShrubberyCreationForm	&operator=(const ShrubberyCreationForm&);
+		~ShrubberyCreationForm(void);
 
 
 		//Exceptions
-		class	FormNotSigned : public std::exception{
+		class	FormNotSigned : std::exception{
 			public:
-				const char	*what() const throw(){
-					return ("Form was not graded yet");
+				const char *what(void) const throw(){
+					return ("Form is not signed yet");
 				};
 		};
-
+		
 		//Member Functions
-		void	execute(Bureaucrat	const &) const;
+		void	execute(Bureaucrat const & executor) const;
 
 	protected:
 
 
 	private:
-		std::string	target;
+		std::string target;
 
+	
 };
+
 
 #endif
