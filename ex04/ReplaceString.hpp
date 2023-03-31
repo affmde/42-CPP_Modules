@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   replace.hpp                                        :+:      :+:    :+:   */
+/*   ReplaceString.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/31 13:28:15 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/31 13:28:18 by andrferr         ###   ########.fr       */
+/*   Created: 2023/03/31 13:30:13 by andrferr          #+#    #+#             */
+/*   Updated: 2023/03/31 13:30:33 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 #include <iostream>
 
-class Replace
+class ReplaceString
 {
 	public:
-		Replace(std::string line);
-		~Replace(void);
+		ReplaceString(std::string line);
+		~ReplaceString(void);
 
 		//Member Functions
 		std::string	changeLine(std::string str1, std::string str2);

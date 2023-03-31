@@ -1,6 +1,6 @@
 NAME = club
 FLAGS = -Wall -Werror -Wextra
-SRCS = main.cpp replace.cpp
+SRCS = main.cpp ReplaceString.cpp
 OBJ = $(SRCS:.cpp=.o)
 
 

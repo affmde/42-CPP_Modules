@@ -6,13 +6,13 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 16:01:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/29 15:58:35 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/31 13:31:34 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <fstream>
-#include "Replace.hpp"
+#include "ReplaceString.hpp"
 
 int	checkInputStrings(std::string str)
 {
@@ -51,7 +51,7 @@ int	main(int argc, char **argv)
 	{
 		while(getline(infile, line))
 		{
-			Replace replace(line);
+			ReplaceString replace(line);
 			if (outfile.is_open())
 			{
 				std::string out = replace.changeLine(argv[2], argv[3]);

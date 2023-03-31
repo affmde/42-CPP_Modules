@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   replace.cpp                                        :+:      :+:    :+:   */
+/*   ReplaceString.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/13 16:15:04 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/29 15:55:25 by andrferr         ###   ########.fr       */
+/*   Created: 2023/03/31 13:30:51 by andrferr          #+#    #+#             */
+/*   Updated: 2023/03/31 13:31:20 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Replace.hpp"
+#include "ReplaceString.hpp"
 #include <sstream>
 
-Replace::Replace(std::string line)
+ReplaceString::ReplaceString(std::string line)
 {
 	this->line = line;
 }
 
-Replace::~Replace(void)
+ReplaceString::~ReplaceString(void)
 {
 
 }
 
 //Member functions
 
-std::string	Replace::changeLine(std::string str1, std::string str2)
+std::string	ReplaceString::changeLine(std::string str1, std::string str2)
 {
 	size_t	index;
 	size_t	found;
