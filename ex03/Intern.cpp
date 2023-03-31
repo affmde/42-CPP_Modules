@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:08:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/31 10:56:54 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/31 14:30:56 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,7 @@ AForm	*Intern::makeForm(std::string form_name, std::string &target)
 	int	val = -1;
 	for (int i = 0; i < 3; i++)
 		val = !possible_forms[i].compare(form_name) ? i : val;
-	std::cout << "val: " << val << std::endl;
-	AForm *new_form;
-	new_form = NULL;
+	AForm *new_form = NULL;
 	switch(val)
 	{
 		case 0:

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 11:18:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/28 21:27:32 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/31 14:10:29 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ class	Bureaucrat
 		void				incrementGrade(void);
 		void				decrementGrade(void);
 		void				signForm(AForm &);
+		void				executeForm(AForm const &);
 
 		class	GradeTooHighException : std::exception{
 			public:

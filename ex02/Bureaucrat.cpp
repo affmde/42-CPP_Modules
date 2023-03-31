@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 11:19:33 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/28 21:27:40 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/31 14:10:10 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,17 @@ void	Bureaucrat::signForm(AForm &form)
 			std::cout << this->name << " signed " << form.getName() << std::endl;
 		}
 	}
+}
+
+void	Bureaucrat::executeForm(AForm const &form)
+{
+	try{
+		form.execute(*this);
+		std::cout << this->getName() << " executed " << form.getName() << std::endl;
+	} catch(std::exception &e){
+		std::cout << e.what() << std::endl;
+	}
+
 }
 
 //Overload Function
