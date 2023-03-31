@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:08:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/30 11:59:47 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/31 10:56:54 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,39 @@ Intern	&Intern::operator=(const Intern &other)
 
 Intern::~Intern(void){}
 
-
-//Helper Functions
-
-int	getTypeOfForm(std::string form_name)
-{
-	if (form_name.find("shrubbery") != std::string::npos)
-	{
-		std::cout << "Find shrubbery" << std::endl;
-	}
-	return (0);
-}
-
-
 //Member Functions
 
 AForm	*Intern::makeForm(std::string form_name, std::string &target)
 {
-	AForm *newForm;
-	getTypeOfForm(form_name);
-	newForm = new ShrubberyCreationForm(target);
-	return (newForm);
+	std::string possible_forms[] = {
+		"ShrubberyCreationForm",
+		"RobotomyRequestForm",
+		"PresidentialPardonForm"
+	};
+
+	int	val = -1;
+	for (int i = 0; i < 3; i++)
+		val = !possible_forms[i].compare(form_name) ? i : val;
+	std::cout << "val: " << val << std::endl;
+	AForm *new_form;
+	new_form = NULL;
+	switch(val)
+	{
+		case 0:
+			new_form = new ShrubberyCreationForm(target);
+			std::cout << "Intern creates " << new_form->getName() << std::endl;
+			break;
+		case 1:
+			new_form  = new RobotomyRequestForm(target);
+			std::cout << "Intern creates " << new_form->getName() << std::endl;
+			break;
+		case 2:
+			new_form = new PresidentialPardonForm(target);
+			std::cout << "Intern creates " << new_form->getName() << std::endl;
+			break;
+		default:
+			std::cout << "Intern couln't create form. " << form_name << " is not recognized" << std::endl;
+
+	}
+	return (new_form);
 }

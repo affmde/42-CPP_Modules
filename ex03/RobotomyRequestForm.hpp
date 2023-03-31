@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 13:34:33 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/30 10:23:57 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/31 10:35:14 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ class	RobotomyRequestForm : public AForm
 		~RobotomyRequestForm(void);
 
 		//Exceptions
-		class	FormNotSigned : std::exception{
-			public:
-				const char *what(void) const throw(){
-					return ("Form is not signed yet");
-				};
-		};
+		// class	FormNotSigned : std::exception{
+		// 	public:
+		// 		const char *what(void) const throw(){
+		// 			return ("Form is not signed yet");
+		// 		};
+		// };
 
 		//Member Functions
 		void	execute(Bureaucrat const &) const;

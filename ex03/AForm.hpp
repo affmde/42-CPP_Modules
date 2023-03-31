@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 20:53:34 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/28 21:28:08 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/31 10:29:11 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,13 @@ class	AForm
 			public:
 				const char *what(void) const throw(){
 					return ("Too low expectations. Please increase it to 150 at least.");
+				};
+		};
+
+		class	FormNotSigned : public std::exception{
+			public:
+				const char	*what() const throw(){
+					return ("Form was not graded yet");
 				};
 		};
 

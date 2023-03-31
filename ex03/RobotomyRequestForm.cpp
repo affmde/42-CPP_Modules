@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 13:42:21 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/30 10:33:18 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/31 10:48:41 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	RobotomyRequestForm::execute(Bureaucrat const &b) const
 	std::srand(time(0));
 	int random = std::rand() % 100;
 	if (random < 50)
-		std::cout << this->target << " is informed that it has been robotomized successfully" << std::endl;
+		std::cout << this->target << " is informed that it has been robotomized successfully by " << b.getName() << std::endl;
 	else
 		std::cout << this->target << " is informed that robotomization has failed" << std::endl;
 
