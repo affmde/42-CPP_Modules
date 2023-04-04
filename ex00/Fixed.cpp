@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 13:32:50 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/20 14:16:43 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/04 15:03:24 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,6 @@
 Fixed::Fixed(void)
 {
 	this->number = 0;
-}
-
-Fixed::Fixed(int n)
-{
-	this->number = n;
 	std::cout << "Default constructor called" << std::endl;
 }
 
