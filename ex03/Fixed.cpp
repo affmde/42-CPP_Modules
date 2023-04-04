@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 13:32:50 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/17 15:26:11 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/04 16:45:27 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,31 @@
 
 Fixed::Fixed(void)
 {
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "Fixed Default constructor called" << std::endl;
 	this->fixed_point = 0;
 }
 
 Fixed::Fixed(int n)
 {
-	std::cout << "Int constructor called" << std::endl;
+	std::cout << "Fixed Int constructor called" << std::endl;
 	this->fixed_point = n << fractional_bits;
 }
 
 Fixed::Fixed(float f)
 {
-	std::cout << "Float constructor started" << std::endl;
+	std::cout << "Fixed Float constructor started" << std::endl;
 	this->fixed_point = roundf(f * (1 << fractional_bits));
 }
 
 Fixed::Fixed(const Fixed &fixed)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Fixed Copy constructor called" << std::endl;
 	*this = fixed;
 }
 
 Fixed & Fixed::operator=(const Fixed &fixed)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	std::cout << "Fixed Copy assignment operator called" << std::endl;
 	this->setRowBits(fixed.getRawBits());
 	return (*this);
 
@@ -47,7 +47,7 @@ Fixed & Fixed::operator=(const Fixed &fixed)
 
 Fixed::~Fixed(void)
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "Fixed Destructor called" << std::endl;
 }
 
 int	Fixed::getRawBits(void) const

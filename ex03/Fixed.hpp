@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 13:32:24 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/21 12:41:34 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/04 16:39:56 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,20 @@ class Fixed
 		Fixed(const int n);
 		Fixed(const float f);
 		Fixed(const Fixed &fixed);
-		Fixed &operator=(const Fixed&);
-		float	toFloat(void) const;
-		int		toInt(void) const;
 		~Fixed(void);
-		int		getRawBits(void) const;
-		void	setRowBits(int const raw);
+		Fixed &operator=(const Fixed&);
+
+		//Member Functions
+		float				toFloat(void) const;
+		int					toInt(void) const;
+		int					getRawBits(void) const;
+		void				setRowBits(int const raw);
+		static Fixed		&min(Fixed &a, Fixed &b);
+		static const Fixed	&min(const Fixed &a, const Fixed &b);
+		static Fixed		&max(Fixed &a, Fixed &b);
+		static const Fixed	&max(const Fixed &a, const Fixed &b);
+
+		//Operator Overloads
 		Fixed operator+(const Fixed &);
 		Fixed operator-(const Fixed &);
 		Fixed operator*(const Fixed &);
@@ -42,10 +50,6 @@ class Fixed
 		bool operator<=(const Fixed &);
 		bool operator==(const Fixed &);
 		bool operator!=(const Fixed &);
-		static Fixed	&min(Fixed &a, Fixed &b);
-		static const Fixed	&min(const Fixed &a, const Fixed &b);
-		static Fixed	&max(Fixed &a, Fixed &b);
-		static const Fixed	&max(const Fixed &a, const Fixed &b);
 
 	private:
 		int					fixed_point;
