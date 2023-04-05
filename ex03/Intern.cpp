@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:08:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/31 17:13:24 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/05 08:48:51 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,21 @@ AForm	*Intern::makeForm(std::string form_name, std::string &target)
 		"PresidentialPardonForm"
 	};
 
-	void	(Intern::*functions[])(std::string) = {};
-
+	//void	(Intern::*functions[])(std::string) = {};
+	AForm	*forms[] = {
+		new ShrubberyCreationForm(target),
+		new RobotomyRequestForm(target),
+		new PresidentialPardonForm(target)
+	};
+	
 	int	val = -1;
 	for (int i = 0; i < 3; i++)
 		val = !possible_forms[i].compare(form_name) ? i : val;
-	AForm *new_form = NULL;
+	if (val >= 0 && val <= 2)
+		return (forms[val]);
+	return (NULL);
+	
+	
 	// switch(val)
 	// {
 	// 	case 0:
@@ -62,5 +71,4 @@ AForm	*Intern::makeForm(std::string form_name, std::string &target)
 	// 		std::cout << "Intern couln't create form. " << form_name << " is not recognized" << std::endl;
 
 	// }
-	return (new_form);
 }
