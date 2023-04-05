@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:08:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/05 08:48:51 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/05 14:23:31 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,26 +33,34 @@ Intern::~Intern(void){}
 AForm	*Intern::makeForm(std::string form_name, std::string &target)
 {
 	std::string possible_forms[] = {
-		"ShrubberyCreationForm",
-		"RobotomyRequestForm",
-		"PresidentialPardonForm"
+		"Shrubbery creation",
+		"Robotomy request",
+		"Presidential pardon"
 	};
 
 	//void	(Intern::*functions[])(std::string) = {};
-	AForm	*forms[] = {
+	AForm	*forms[3] = {
 		new ShrubberyCreationForm(target),
 		new RobotomyRequestForm(target),
 		new PresidentialPardonForm(target)
 	};
-	
 	int	val = -1;
 	for (int i = 0; i < 3; i++)
 		val = !possible_forms[i].compare(form_name) ? i : val;
+	AForm *new_form = NULL;
 	if (val >= 0 && val <= 2)
-		return (forms[val]);
-	return (NULL);
-	
-	
+	{
+		new_form = forms[val];
+		std::cout << "Intern creates " << new_form->getName() << std::endl;
+	}
+	else
+		std::cout << "Intern couln't create form. " << form_name << " is not recognized" << std::endl;
+	for(int i = 0; i < 3; i++)
+			if (i != val)
+				delete forms[i];
+	return (new_form);
+
+
 	// switch(val)
 	// {
 	// 	case 0:
@@ -69,6 +77,5 @@ AForm	*Intern::makeForm(std::string form_name, std::string &target)
 	// 		break;
 	// 	default:
 	// 		std::cout << "Intern couln't create form. " << form_name << " is not recognized" << std::endl;
-
 	// }
 }

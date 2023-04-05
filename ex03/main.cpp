@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 20:31:35 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/31 16:54:04 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/05 12:14:31 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,18 @@ int	main(void)
 	Intern a;
 	Bureaucrat andre("Andre", 1);
 	std::string target = "home";
-	newForm = a.makeForm("RobotomyRequestForm", target);
+	newForm = a.makeForm("Robotomy request", target);
+	if (!newForm)
+		return (0);
 	try{
-		//newForm->beSigned(andre);
+		newForm->beSigned(andre);
 		andre.executeForm(*newForm);
 	} catch(AForm::GradeTooLowException &e){
 		std::cout << e.what() << std::endl;
 	} catch(AForm::FormNotSigned &e){
 		std::cout << e.what() << std::endl;
 	}
-	
+
 	delete newForm;
 	return (0);
 }
