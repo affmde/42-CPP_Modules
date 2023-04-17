@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 15:17:49 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/21 11:03:13 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/17 14:44:47 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,7 @@ int	main(void)
 	std::string enemy = "Asshole";
 	a.whoAmI();
 	a.attack(enemy);
+	a.takeDamage(20);
+
 	return (0);
 }

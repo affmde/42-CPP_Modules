@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:14:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/20 15:10:53 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/17 14:48:25 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,5 @@ void	ClapTrap::beRepaired(unsigned int amount)
 void	ClapTrap::takeDamage(unsigned int damage)
 {
 	this->hit_points -= damage;
+	std::cout << "ClapTrap " << this->name << " took " << damage << " hit points damage." << std::endl;
 }
