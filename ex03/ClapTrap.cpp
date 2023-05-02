@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:14:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/17 14:47:21 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/02 14:57:01 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	ClapTrap::attack(std::string &target)
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	if (amount > 0)
+	if (amount > 0 && this->energy_points > 0 && this->hit_points > 0)
 	{
 		this->energy_points--;
 		this->hit_points += amount;
