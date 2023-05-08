@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 14:19:59 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/08 08:35:53 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/08 09:22:11 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	this->attack_damage = 20;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(name)
+ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other)
 {
 	std::cout << "Scavtrap copy constructor called" << std::endl;
 	*this = other;
