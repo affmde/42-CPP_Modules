@@ -1,6 +1,6 @@
 NAME = fragtrap
 FLAGS = -Wall -Werror -Wextra
-SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp Fragtrap.cpp
+SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 OBJ = $(SRCS:.cpp=.o)
 
 
