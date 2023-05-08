@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 17:54:43 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/22 14:13:12 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/08 13:48:48 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ class Ice : public AMateria
 		~Ice(void);
 
 		//Member Functions
-		virtual void use(ICharacter &target);
-		virtual AMateria *clone(void) const;
+		virtual void		use(ICharacter &target);
+		virtual AMateria	*clone(void) const;
 
 	protected:
 

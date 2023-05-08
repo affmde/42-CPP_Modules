@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 12:33:21 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/21 15:39:22 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/08 13:46:34 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ class	Animal
 
 		//Member Funtions
 		virtual void	makeSound(void) const;
-		std::string getType(void) const;
+		std::string		getType(void) const;
 
 	protected:
-		std::string type;
+		std::string	type;
 
 	private:
 };

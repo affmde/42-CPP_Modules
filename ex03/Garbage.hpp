@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:09:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/24 10:19:44 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/08 13:48:37 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class	Garbage
 	protected:
 
 	private:
-		AMateria *materia_list;
+		AMateria	*materia_list;
 };
 
 

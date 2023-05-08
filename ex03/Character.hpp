@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 18:25:46 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/23 15:52:43 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/08 13:48:22 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,18 @@ class Character : public ICharacter
 		~Character(void);
 
 		//Member Functions
-		virtual std::string const &getName(void) const;
-		virtual void equip(AMateria* m);
-		virtual void unequip(int idx);
-		virtual void use(int idx, ICharacter& target);
+		virtual std::string const	&getName(void) const;
+		virtual void				equip(AMateria* m);
+		virtual void				unequip(int idx);
+		virtual void				use(int idx, ICharacter& target);
 
 	protected:
 
 
 	private:
-		Garbage garbage;
+		Garbage		garbage;
 		AMateria	*slots[4];
-		std::string name;
+		std::string	name;
 };
 
 

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 18:10:46 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/22 14:12:05 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/08 13:48:32 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ class	Cure : public AMateria
 		~Cure(void);
 
 		//Member Functions
-		virtual AMateria *clone() const;
-		virtual void use(ICharacter &target);
+		virtual AMateria	*clone() const;
+		virtual void		use(ICharacter &target);
 	protected:
 
 

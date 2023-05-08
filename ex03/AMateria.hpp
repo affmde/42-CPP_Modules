@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 17:50:04 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/23 13:25:51 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/08 13:47:47 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ class	AMateria
 		virtual ~AMateria(void);
 
 		//Member functions
-		std::string const getType(void) const;
-		virtual AMateria *clone(void) const = 0;
-		virtual void use(ICharacter &target);
-		AMateria	*next;
+		std::string const	getType(void) const;
+		virtual AMateria	*clone(void) const = 0;
+		virtual void		use(ICharacter &target);
+		AMateria			*next;
 
 	protected:
 		std::string	type;
