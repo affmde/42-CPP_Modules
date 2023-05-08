@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:52:45 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/08 11:12:23 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/08 11:19:48 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ class	ScavTrap : virtual public ClapTrap
 		~ScavTrap(void);
 
 		//Member Functions:
-		virtual void	attack(std::string &target);
-		void			guardGate(void);
-		
+		void	attack(std::string &target);
+		void	guardGate(void);
+
 	private:
 
 };
