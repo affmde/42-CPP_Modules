@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 18:25:46 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/08 13:48:22 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/09 13:44:46 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ class Character : public ICharacter
 
 		//Member Functions
 		virtual std::string const	&getName(void) const;
-		virtual void				equip(AMateria* m);
+		virtual void				equip(AMateria *m);
 		virtual void				unequip(int idx);
-		virtual void				use(int idx, ICharacter& target);
+		virtual void				use(int idx, ICharacter &target);
 
 	protected:
 

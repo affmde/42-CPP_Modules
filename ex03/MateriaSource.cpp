@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 16:04:24 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/23 11:01:25 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/09 13:56:54 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	MateriaSource::learnMateria(AMateria *materia)
 		if (this->materias[i] == NULL)
 		{
 			this->materias[i] = materia;
-			std::cout << "Materia saved successfully on materialSource" << std::endl;
+			std::cout << "Materia saved successfully on materiaSource" << std::endl;
 			return ;
 		}
 	}

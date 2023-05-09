@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 15:52:19 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/08 13:49:26 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/09 13:47:40 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class	IMateriaSource
 	public:
 		virtual				~IMateriaSource() {}
 		virtual void		learnMateria(AMateria*) = 0;
-		virtual AMateria*	createMateria(std::string const & type) = 0;
+		virtual AMateria	*createMateria(std::string const & type) = 0;
 };
 
 

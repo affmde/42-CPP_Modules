@@ -6,14 +6,14 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 13:05:59 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/21 17:44:22 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/09 11:12:36 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CAT_HPP
 # define CAT_HPP
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 
 class	Cat : public AAnimal
 {

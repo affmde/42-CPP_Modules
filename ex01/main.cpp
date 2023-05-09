@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 12:28:23 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/23 16:52:00 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/09 11:08:42 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,22 @@
 int	main(void)
 {
 	/*Test for constructor logs*/
-	// int	nbr_of_animals = 2;
-	// Animal **animals;
-	// animals = new Animal *[nbr_of_animals];
+	int	nbr_of_animals = 3;
+	Animal **animals;
+	animals = new Animal *[nbr_of_animals];
 
-	// for (int i = 0; i < nbr_of_animals; i++)
-	// {
-	// 	if (i % 2 == 0)
-	// 		animals[i] = new Dog();
-	// 	else
-	// 		animals[i] = new Cat();
-	// }
-	// for (int i = 0; i < nbr_of_animals; i++)
-	// 	delete animals[i];
-	// delete animals;
+	for (int i = 0; i < nbr_of_animals; i++)
+	{
+		if (i % 2 == 0)
+			animals[i] = new Dog();
+		else
+			animals[i] = new Cat();
+	}
+	for (int i = 0; i < nbr_of_animals; i++)
+		std::cout << animals[i]->getType() << std::endl;
+	for (int i = 0; i < nbr_of_animals; i++)
+		delete animals[i];
+	delete animals;
 
 
 	/*Test of assignment and checking if idea functions worked*/
@@ -39,7 +41,7 @@ int	main(void)
 	// std::cout << "A: " << a.getIdeaAt(0) << std::endl;
 	// Cat b = a;
 	// std::cout << "B: " << b.getIdeaAt(0) << std::endl;
-	// b.addIdeaAt(0, "Now i changed");
+	// a.addIdeaAt(0, "Now i changed");
 	// std::cout << "A: my idea is " << a.getIdeaAt(0) << std::endl;
 	// std::cout << "B: My idea is " << b.getIdeaAt(0) << std::endl;
 

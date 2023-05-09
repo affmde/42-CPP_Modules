@@ -6,11 +6,11 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 12:39:33 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/21 17:44:30 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/09 11:12:41 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 
 class	Dog : public AAnimal
 {

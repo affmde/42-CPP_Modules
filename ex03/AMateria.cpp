@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 18:01:25 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/23 15:15:09 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/09 13:06:01 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	AMateria::use(ICharacter &target)
 	(void)target;
 }
 
-std::string	const AMateria::getType(void) const
+std::string	const &AMateria::getType(void) const
 {
 	return (this->type);
 }

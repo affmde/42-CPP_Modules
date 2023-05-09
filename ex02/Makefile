@@ -1,6 +1,6 @@
 NAME = animal
 FLAGS = -Wall -Werror -Wextra
-SRCS = main.cpp Cat.cpp Dog.cpp Animal.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
+SRCS = main.cpp Cat.cpp Dog.cpp AAnimal.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
 OBJ = $(SRCS:.cpp=.o)
 
 

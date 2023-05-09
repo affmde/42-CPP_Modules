@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 12:28:23 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/23 16:35:40 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/09 11:13:42 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 int	main(void)
 {
 	/*Basic Test*/
-	// Dog a;
-	// a.makeSound();
-	// a.addIdeaAt(1, "I am a dog");
-	// std::cout << a.getIdeaAt(1) << std::endl;
-	// Dog b(a);
-	// std::cout << "i am B and " << b.getIdeaAt(1) << std::endl;
+	Dog a;
+	a.makeSound();
+	a.addIdeaAt(1, "I am a dog");
+	std::cout << a.getIdeaAt(1) << std::endl;
+	Dog b(a);
+	std::cout << "i am B and " << b.getIdeaAt(1) << std::endl;
 
 	/*Not possible to Instantiate Animal. Should give error*/
 	// AAnimal a;
