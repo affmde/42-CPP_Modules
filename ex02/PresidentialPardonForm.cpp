@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 10:38:20 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/30 11:14:37 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/10 14:56:40 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,8 @@ PresidentialPardonForm::~PresidentialPardonForm(void){}
 
 //Member Functions
 
-void	PresidentialPardonForm::execute(Bureaucrat const &b) const
+void	PresidentialPardonForm::form_execute() const
 {
-	if (b.getGrade() > this->getReqExecGrade())
-		throw (GradeTooLowException());
-	if (b.getGrade() > this->getReqExecGrade())
-		throw(FormNotSigned());
 	std::cout << this->target << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }
 

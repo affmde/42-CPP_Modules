@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 21:12:08 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/29 13:33:47 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/10 15:05:52 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,8 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void)
 
 //Member Functions
 
-void	ShrubberyCreationForm::execute(Bureaucrat const &b) const
+void	ShrubberyCreationForm::form_execute(void) const
 {
-	if (this->getIsSigned() == false)
-		throw (FormNotSigned());
-	if (b.getGrade() > this->getReqExecGrade())
-		throw (GradeTooLowException());
-	//Change this to print trees!!!!!
-	std::cout << "Yes form " << this->getName() << " is executing by " << b.getName() << std::endl;
 	std::ofstream	outfile;
 	outfile.open(this->target + "_shrubbery");
 	if (outfile.is_open())
@@ -59,5 +53,4 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &b) const
 		outfile << "------------" << std::endl;
 		outfile.close();
 	}
-
 }

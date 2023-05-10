@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 20:31:35 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/30 10:59:53 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/10 15:23:34 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,57 +22,69 @@ int	main(void)
 	std::string target = "Home";
 	a = new ShrubberyCreationForm(target);
 
-	Bureaucrat andre("Andre", 1);
-	andre.signForm(*a);
 	try
 	{
-		a->execute(andre);
+		Bureaucrat andre("Andre", 180);
+		andre.signForm(*a);
+		andre.executeForm(*a);
 	}
-	catch(ShrubberyCreationForm::FormNotSigned &e)
+	catch(AForm::FormNotSigned &e)
 	{
+		std::cout << e.what() << std::endl;
+	}
+	catch(AForm::GradeTooHighException &e){
+		std::cout << e.what() << std::endl;
+	}
+	catch(AForm::GradeTooLowException &e){
+		std::cout << e.what() << std::endl;
+	}
+	catch(Bureaucrat::GradeTooHighException &e){
+		std::cout << e.what() << std::endl;
+	}
+	catch(Bureaucrat::GradeTooLowException &e){
 		std::cout << e.what() << std::endl;
 	}
 	delete a;}
 
 
 	/*Testing RobotomyRequestForm*/
-	{std::string bTarget = "Robot machine Form";
-	Bureaucrat andre("Andre", 1);
-	AForm *b;
+	// {std::string bTarget = "Robot machine Form";
+	// Bureaucrat andre("Andre", 1);
+	// AForm *b;
 
-	b = new RobotomyRequestForm(bTarget);
-	try
-	{
-		b->beSigned(andre);
-		b->execute(andre);
-	}
-	catch(const RobotomyRequestForm::GradeTooLowException& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	catch(const RobotomyRequestForm::FormNotSigned& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	delete b;}
+	// b = new RobotomyRequestForm(bTarget);
+	// try
+	// {
+	// 	b->beSigned(andre);
+	// 	b->execute(andre);
+	// }
+	// catch(const RobotomyRequestForm::GradeTooLowException& e)
+	// {
+	// 	std::cerr << e.what() << '\n';
+	// }
+	// catch(const RobotomyRequestForm::FormNotSigned& e)
+	// {
+	// 	std::cerr << e.what() << '\n';
+	// }
+	// delete b;}
 
 
 	/*Testing PresidentialPardonForm*/
-	{std::string target = "President Asshole";
-	Bureaucrat andre("Andre", 1);
-	AForm	*a = new PresidentialPardonForm(target);
-	try
-	{
-		a->execute(andre);
-	}
-	catch(const PresidentialPardonForm::GradeTooLowException& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	catch(const PresidentialPardonForm::FormNotSigned& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	delete a;}
-	return (0);
+	// {std::string target = "President Asshole";
+	// Bureaucrat andre("Andre", 1);
+	// AForm	*a = new PresidentialPardonForm(target);
+	// try
+	// {
+	// 	a->execute(andre);
+	// }
+	// catch(const PresidentialPardonForm::GradeTooLowException& e)
+	// {
+	// 	std::cerr << e.what() << '\n';
+	// }
+	// catch(const PresidentialPardonForm::FormNotSigned& e)
+	// {
+	// 	std::cerr << e.what() << '\n';
+	// }
+	// delete a;}
+	// return (0);
 }

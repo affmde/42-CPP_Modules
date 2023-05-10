@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 11:18:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/31 14:10:29 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/10 14:59:01 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,14 @@ class	Bureaucrat
 		void				signForm(AForm &);
 		void				executeForm(AForm const &);
 
+		//Exceptons
 		class	GradeTooHighException : std::exception{
 			public:
-				virtual const char	*what(void) const throw(){
-					return ("Error: You need to lower your expectations. You are too confidente now. Maximum accepted is 1");
-				}
+				virtual const char	*what() const throw();
 		};
 		class	GradeTooLowException : std::exception{
 			public:
-				virtual const char	*what(void) const throw(){
-					return ("Error: Dont be so humble. You can increase your expectations. Increase it to a minimum of 150");
-				}
+				virtual const char	*what(void) const throw();
 		};
 
 	protected:

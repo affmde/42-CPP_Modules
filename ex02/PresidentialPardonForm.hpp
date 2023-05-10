@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 10:35:24 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/30 11:14:29 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/10 14:56:36 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,8 @@ class	PresidentialPardonForm : public AForm
 		PresidentialPardonForm	&operator=(const PresidentialPardonForm&);
 		~PresidentialPardonForm(void);
 
-
-		//Exceptions
-		class	FormNotSigned : public std::exception{
-			public:
-				const char	*what() const throw(){
-					return ("Form was not graded yet");
-				};
-		};
-
 		//Member Functions
-		void	execute(Bureaucrat	const &) const;
+		void	form_execute(void) const;
 
 	protected:
 

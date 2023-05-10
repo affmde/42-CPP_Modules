@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 20:51:06 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/28 21:59:02 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/10 14:56:31 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,8 @@ class	ShrubberyCreationForm : public AForm
 		ShrubberyCreationForm	&operator=(const ShrubberyCreationForm&);
 		~ShrubberyCreationForm(void);
 
-
-		//Exceptions
-		class	FormNotSigned : std::exception{
-			public:
-				const char *what(void) const throw(){
-					return ("Form is not signed yet");
-				};
-		};
-		
 		//Member Functions
-		void	execute(Bureaucrat const & executor) const;
+		void	form_execute(void) const;
 
 	protected:
 
@@ -42,7 +33,7 @@ class	ShrubberyCreationForm : public AForm
 	private:
 		std::string target;
 
-	
+
 };
 
 
