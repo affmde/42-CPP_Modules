@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 20:53:34 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/31 10:29:11 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/10 15:28:11 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,15 @@ class	AForm
 
 		class	GradeTooHighException : std::exception {
 			public:
-				const char *what(void) const throw(){
-					return ("You have too high expectations. Maximum expectation is 1.");
-				};
+				const char *what(void) const throw();
 		};
 		class	GradeTooLowException : std::exception {
 			public:
-				const char *what(void) const throw(){
-					return ("Too low expectations. Please increase it to 150 at least.");
-				};
+				const char *what(void) const throw();
 		};
-
-		class	FormNotSigned : public std::exception{
+		class	FormNotSigned : std::exception{
 			public:
-				const char	*what() const throw(){
-					return ("Form was not graded yet");
-				};
+				const char *what(void) const throw();
 		};
 
 		//Member Functions
@@ -54,9 +47,10 @@ class	AForm
 		int					getReqSignGrade(void) const;
 		int					getReqExecGrade(void) const;
 		void				beSigned(Bureaucrat	&);
-		virtual void		execute(Bureaucrat const & executor) const = 0;
+		void				execute(Bureaucrat const & executor) const;
 
 	protected:
+		virtual void		form_execute(void) const = 0;
 
 
 	private:

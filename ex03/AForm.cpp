@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 20:55:41 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/28 21:28:40 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/10 15:29:09 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,23 @@ AForm::~AForm(void)
 	std::cout << "AForm destructor called" << std::endl;
 }
 
+//Exceptions
+
+const char	*AForm::GradeTooHighException::what() const throw()
+{
+	return ("Error: Too high exception.");
+}
+
+const char	*AForm::GradeTooLowException::what() const throw()
+{
+	return ("Error: Too low exception.");
+}
+
+const char	*AForm::FormNotSigned::what() const throw()
+{
+	return ("Error: Form is not signed yet");
+}
+
 
 //Member Functions
 
@@ -79,9 +96,13 @@ void		AForm::beSigned(Bureaucrat &b)
 	}
 }
 
-void		AForm::execute(Bureaucrat const &execute) const
+void		AForm::execute(Bureaucrat const &executor) const
 {
-	(void)execute;
+	if (this->getIsSigned() == false)
+		throw (FormNotSigned());
+	if (executor.getGrade() > this->getReqExecGrade())
+		throw (GradeTooLowException());
+	form_execute();
 }
 
 

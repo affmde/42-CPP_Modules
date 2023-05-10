@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 21:12:08 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/31 10:17:39 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/10 15:05:52 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string &target) : AForm("Shrub
 	this->target = target;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other) : AForm("ShruberryCreationForm", other.getReqSignGrade(), other.getReqExecGrade())
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other) : AForm("STILL CHANGE THIS NAME", other.getReqSignGrade(), other.getReqExecGrade())
 {
 	*this = other;
 }
@@ -36,14 +36,8 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void)
 
 //Member Functions
 
-void	ShrubberyCreationForm::execute(Bureaucrat const &b) const
+void	ShrubberyCreationForm::form_execute(void) const
 {
-	if (this->getIsSigned() == false)
-		throw (FormNotSigned());
-	if (b.getGrade() > this->getReqExecGrade())
-		throw (GradeTooLowException());
-	//Change this to print trees!!!!!
-	std::cout << "Form " << this->getName() << " is executing by " << b.getName() << std::endl;
 	std::ofstream	outfile;
 	outfile.open(this->target + "_shrubbery");
 	if (outfile.is_open())
@@ -59,5 +53,4 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &b) const
 		outfile << "------------" << std::endl;
 		outfile.close();
 	}
-
 }

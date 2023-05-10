@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 13:42:21 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/05 08:56:36 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/10 14:56:20 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,13 @@ RobotomyRequestForm::~RobotomyRequestForm(void){}
 
 //Member Functions
 
-void	RobotomyRequestForm::execute(Bureaucrat const &b) const
+void	RobotomyRequestForm::form_execute() const
 {
-	if (b.getGrade() > this->getReqExecGrade())
-		throw (GradeTooLowException());
-	if (this->getIsSigned() == false)
-		throw (FormNotSigned());
 	std::cout << "GRGRGRGRGRGRGRGRGR I am so noisy!!!" << std::endl;
 	std::srand(time(0));
 	int random = std::rand() % 100;
 	if (random < 50)
-		std::cout << this->target << " is informed that it has been robotomized successfully by " << b.getName() << std::endl;
+		std::cout << this->target << " is informed that it has been robotomized successfully" << std::endl;
 	else
 		std::cout << this->target << " is informed that robotomization has failed" << std::endl;
 
