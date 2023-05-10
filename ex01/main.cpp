@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 11:17:58 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/28 20:16:53 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/10 14:25:15 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,40 +66,40 @@ int	main(void)
 
 
 	/*Testing bad constructor values*/
-	// try
-	// {
-	// 	Form a("New assignment", 20, 0);
-	// 	std::cout << a.getReqSignGrade() << std::endl;
-	// }
-	// catch(const Form::GradeTooHighException& e)
-	// {
-	// 	std::cerr << e.what() << '\n';
-	// }
-	// catch(const Form::GradeTooLowException& e)
-	// {
-	// 	std::cerr << e.what() << '\n';
-	// }
-
-	/*Testing bureaucrat sign form*/
-	Bureaucrat andre("Andre", 2);
 	try
 	{
-		Form a("Sign football player", 3, 1);
-		std::cout << "Form: " << a.getName() << " signed status: " << a.getIsSigned() << std::endl;
-		andre.signForm(a);
-		std::cout << "Form: " << a.getName() << " signed status: " << a.getIsSigned() << std::endl;
+		Form a("New assignment", 20, 0);
+		std::cout << a.getReqSignGrade() << std::endl;
 	}
-	catch(Form::GradeTooHighException &e)
+	catch(const Form::GradeTooHighException& e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << '\n';
 	}
-	catch(Form::GradeTooLowException &e)
+	catch(const Form::GradeTooLowException& e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << '\n';
 	}
-	catch(Bureaucrat::GradeTooLowException &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
+
+	/*Testing bureaucrat sign form*/
+	// Bureaucrat andre("Andre", 2);
+	// try
+	// {
+	// 	Form a("Sign football player", 3, 1);
+	// 	std::cout << "Form: " << a.getName() << " signed status: " << a.getIsSigned() << std::endl;
+	// 	andre.signForm(a);
+	// 	std::cout << "Form: " << a.getName() << " signed status: " << a.getIsSigned() << std::endl;
+	// }
+	// catch(Form::GradeTooHighException &e)
+	// {
+	// 	std::cout << e.what() << std::endl;
+	// }
+	// catch(Form::GradeTooLowException &e)
+	// {
+	// 	std::cout << e.what() << std::endl;
+	// }
+	// catch(Bureaucrat::GradeTooLowException &e)
+	// {
+	// 	std::cout << e.what() << std::endl;
+	// }
 	return (0);
 }

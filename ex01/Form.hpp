@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 10:29:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/28 20:08:56 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/10 14:24:36 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,11 @@ class	Form
 
 		class	GradeTooHighException : std::exception {
 			public:
-				const char *what(void) const throw(){
-					return ("You have too high expectations. Maximum expectation is 1.");
-				};
+				const char *what(void) const throw();
 		};
 		class	GradeTooLowException : std::exception {
 			public:
-				const char *what(void) const throw(){
-					return ("Too low expectations. Please increase it to 150 at least.");
-				};
+				const char *what(void) const throw();
 		};
 
 		//Member Functions

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 11:19:33 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/28 20:10:10 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/10 14:22:10 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,18 @@ Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &other)
 Bureaucrat::~Bureaucrat(void)
 {
 	std::cout << "Bureaucrat destructor called" << std::endl;
+}
+
+//Exceptions
+
+const char	*Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return ("Error: You need to lower your expectations. You are too confidente now. Maximum accepted is 1");
+}
+
+const char	*Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return ("Error: Dont be so humble. You can increase your expectations. Increase it to a minimum of 150");
 }
 
 //Member Functions

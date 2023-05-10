@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 13:40:28 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/28 20:17:06 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/10 14:24:28 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,18 @@ Form	&Form::operator=(const Form &other)
 Form::~Form(void)
 {
 	std::cout << "Form destructor called" << std::endl;
+}
+
+//Exceptions
+
+const char	*Form::GradeTooHighException::what() const throw()
+{
+	return ("You have too high expectations. Maximum expectation is 1.");
+}
+
+const char	*Form::GradeTooLowException::what() const throw()
+{
+	return ("Too low expectations. Please increase it to 150 at least.");
 }
 
 
