@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 20:31:35 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/10 16:53:25 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/10 17:03:47 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(void)
 	if (!newForm)
 		return (0);
 	try{
-		newForm->beSigned(andre);
+		andre.signForm(*newForm);
 		andre.executeForm(*newForm);
 	} catch(AForm::GradeTooLowException &e){
 		std::cout << e.what() << std::endl;
