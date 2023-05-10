@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 18:27:20 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/23 16:25:14 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/10 13:02:54 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ std::string const &Character::getName(void) const
 
 void	Character::equip(AMateria* m)
 {
+	if (!m)
+		return ;
 	for (int i = 0; i < 4; i++)
 	{
 		if (this->slots[i] == NULL)

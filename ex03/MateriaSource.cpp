@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 16:04:24 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/09 13:56:54 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/10 13:02:10 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,8 @@ AMateria	*MateriaSource::createMateria(std::string const &type)
 {
 	for (int i = 0; i < 4; i++)
 	{
-		if(this->materias[i]->getType() == type)
+		if(this->materias[i] && this->materias[i]->getType() == type)
 		{
-			if (!type.compare("ice"))
-				return (this->materias[i]->clone());
-			else
 				return (this->materias[i]->clone());
 		}
 	}
