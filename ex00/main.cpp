@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 11:17:58 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/28 11:29:44 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/10 14:16:37 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,26 @@
 int	main(void)
 {
 	/*Testing the increase function exception*/
-	// try
-	// {
-	// 	Bureaucrat a("Andre", 1);
-	// 	a.incrementGrade();
-	// }
-	// catch(const Bureaucrat::GradeToHighException& e)
-	// {
-	// 	std::cout << e.what() << std::endl;
-	// }
+	try
+	{
+		Bureaucrat a("Andre", 1);
+		a.incrementGrade();
+	}
+	catch(const Bureaucrat::GradeTooHighException& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 
 	/*Testing the decrese exception*/
-	// try
-	// {
-	// 	Bureaucrat a("Andre",150);
-	// 	a.decrementGrade();
-	// }
-	// catch(const Bureaucrat::GradeToLowException& e)
-	// {
-	// 	std::cout << e.what() << std::endl;
-	// }
+	try
+	{
+		Bureaucrat a("Andre",150);
+		a.decrementGrade();
+	}
+	catch(const Bureaucrat::GradeTooLowException& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 
 
 
