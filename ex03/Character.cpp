@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 18:27:20 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/10 13:02:54 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:40:09 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,12 @@ Character::Character(const Character &other)
 {
 	std::cout << "Character copy constructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
-		this->slots[i] = other.slots[i];
+	{
+		if (other.slots[i] == NULL)
+			this->slots[i] = NULL;
+		else
+			this->slots[i] = other.slots[i]->clone();
+	}
 	this->name = other.name;
 }
 
@@ -57,7 +62,10 @@ Character::~Character(void)
 {
 	std::cout << "Character destructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
-		delete this->slots[i];
+	{
+		if (this->slots[i])
+			delete this->slots[i];
+	}
 }
 
 //Member Functions
@@ -102,7 +110,7 @@ void	Character::use(int idx, ICharacter& target)
 		return ;
 	if (!this->slots[idx])
 	{
-		std::cout << "That slots is empty" << std::endl;
+		std::cout << "That slot is empty" << std::endl;
 		return ;
 	}
 	this->slots[idx]->use(target);

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:11:50 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/23 15:50:11 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:33:49 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ void	Garbage::deleteList()
 	{
 		tmp = this->materia_list->next;
 		std::cout << "deleting " << this->materia_list->getType() << std::endl;
-		delete this->materia_list;
+		if (this->materia_list)
+			delete this->materia_list;
 		this->materia_list = tmp;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 17:49:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/10 13:04:28 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:39:26 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,26 @@ int	main(void)
 	// delete src;
 
 	/*testing creating invalid Materia*/
-	IMateriaSource* src = new MateriaSource();
-	ICharacter* me = new Character("me");
-	AMateria* tmp;
-	tmp = src->createMateria("banana");
-	me->equip(tmp);
-	ICharacter* bob = new Character("bob");
-	me->use(0, *bob);
-	delete bob;
-	delete me;
-	delete src;
+	// IMateriaSource* src = new MateriaSource();
+	// ICharacter* me = new Character("me");
+	// AMateria* tmp;
+	// tmp = src->createMateria("banana");
+	// me->equip(tmp);
+	// ICharacter* bob = new Character("bob");
+	// me->use(0, *bob);
+	// delete bob;
+	// delete me;
+	// delete src;
+
+
+	/*Testing Character deep copy constructor*/
+	Character a("A");
+	a.equip(new Ice());
+	Character b(a);
+	a.use(0, a);
+	b.use(0, b);
+	Character c(b);
+	b.use(0, a);
 
 	/*Testing copy assignment of materias*/
 	// MateriaSource *src = new MateriaSource();
