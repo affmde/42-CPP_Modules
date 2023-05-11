@@ -1,27 +1,28 @@
 
 #Color scheme
-COLOUR_GREEN=\033[0;32m
-COLOUR_RED=\033[0;31m
+COLOUR_GREEN=\033[1;32m
+COLOUR_RED=\033[1;31m
+COLOUR_YELLOW=\033[0;33m
 COLOUR_BLUE=\033[0;34m
 COLOUR_END=\033[0m
 
 NAME = scalar
 
 #Flags
-FLAGS = -Wall -Werror -Wextra -std=c++98 -I.
+FLAGS = -Wall -Werror -Wextra -I.
 CC = c++
 INCS = ScalarConverter.hpp
-OBJS = ScalarConverter.o main.o
+OBJS = ScalarConverter.o main.o helper.o
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(CC) -o $@ $^ $(FLAGS)
+	@$(CC) -o $@ $^ $(FLAGS) -std=c++98
 	@echo "$(COLOUR_GREEN)$@ created$(COLOUR_END)"
 
 %.o: %.cpp $(INCS)
 	@$(CC) -c -o $@ $< $(FLAGS)
-	@echo "$(COLOUR_BLUE)$@ created$(COLOUR_END)"
+	@echo "$(COLOUR_YELLOW)$@ created$(COLOUR_END)"
 
 
 clean:

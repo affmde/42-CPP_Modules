@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 11:04:24 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/11 11:09:02 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/11 13:27:06 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 int	main(int argc, char **argv)
 {
-	(void)argc;
-	(void)argv;
-	std::cout << "WORKING FINE" << std::endl;
+	if (argc != 2)
+	{
+		std::cout << "Invalid input" << std::endl;
+		return (0);
+	}
+	ScalarConverter::converter(argv[1]);
 	return (0);
 }

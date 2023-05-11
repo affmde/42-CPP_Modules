@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   helper.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/10 17:17:13 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/11 11:57:47 by andrferr         ###   ########.fr       */
+/*   Created: 2023/05/11 11:56:32 by andrferr          #+#    #+#             */
+/*   Updated: 2023/05/11 17:11:03 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_HPP
-# define SCALARCONVERTER_HPP
+#ifndef HELPER_HPP
+# define HELPER_HPP
 
 #include <iostream>
-#include "helper.hpp"
+#include <ctype.h>
 
-class	ScalarConverter
-{
-	public:
-
-		//Member Functions
-		static void	converter(std::string);
-
-	protected:
-
-	private:
-		ScalarConverter(void);
-		ScalarConverter(const ScalarConverter&);
-		ScalarConverter	&operator=(const ScalarConverter&);
-		~ScalarConverter(void);
-
-};
+int		string_detector(std::string str);
+void	converterFromFloat(float f);
+void	converterFromInt(int i);
+void	converterFromDouble(double d);
+void	converterFromChar(char c);
+void	convertInfinity(void);
 
 #endif
