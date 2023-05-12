@@ -12,7 +12,7 @@ NAME = scalar
 FLAGS = -Wall -Werror -Wextra -I.
 CC = c++
 INCS = ScalarConverter.hpp
-OBJS = ScalarConverter.o main.o helper.o
+OBJS = ScalarConverter.o main.o
 
 all: $(NAME)
 

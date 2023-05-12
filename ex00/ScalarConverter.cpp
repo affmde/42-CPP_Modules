@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 17:16:55 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/11 17:11:39 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/12 20:17:37 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 #include <sstream>
 #include <string>
 
-ScalarConverter::ScalarConverter(void){}
+ScalarConverter::ScalarConverter(void)
+{
+	ScalarConverter::_type = 0;
+}
 
 ScalarConverter::ScalarConverter(const ScalarConverter &other)
 {
@@ -23,52 +26,260 @@ ScalarConverter::ScalarConverter(const ScalarConverter &other)
 
 ScalarConverter	&ScalarConverter::operator=(const ScalarConverter &other)
 {
-	(void)other;
+	_type = other._type;
 	return (*this);
 }
 
 ScalarConverter::~ScalarConverter(void){}
 
 
+//Static variables instantialization
+int		ScalarConverter::_type = 0;
+char	ScalarConverter::_charValue = ' ';
+int		ScalarConverter::_intValue = 0;
+float	ScalarConverter::_floatValue = 0;
+double	ScalarConverter::_doubleValue = 0;
+bool	ScalarConverter::_charLimit = false;
+bool	ScalarConverter::_intLimit = false;
+bool	ScalarConverter::_floatLimit = false;
+bool	ScalarConverter::_doubleLimit = false;
+
 //Member Functions
 
 void	ScalarConverter::converter(std::string str)
 {
-	int	type = string_detector(str);
-	switch (type)
+	_getType(str);
+	_checkLimits(str);
+	switch(_type)
 	{
 		case 1:
-			try{
-				char c = str[0];
-				converterFromChar(c);
-			}catch(std::exception &e){}
+			_convertFromChar(str);
 			break;
 		case 2:
-		{
-			try{
-				int i  = std::stoi(str);
-				converterFromInt(i);
-			}catch(std::exception &e){}
-		}
+			_convertFromInt(str);
 			break;
 		case 3:
-		{
-			try{
-				float f = std::stof(str);
-				converterFromFloat(f);
-			}catch(std::exception &e){}
+			_convertFromFloat(str);
 			break;
-		}
 		case 4:
-			try{
-				double d = std::stod(str);
-				converterFromDouble(d);
-			}catch(std::exception &e){}
+			_convertFromFloat(str);
 			break;
 		case 5:
-			convertInfinity();
+			_printPseudoLiteral(str);
 			break;
 		default:
-			std::cout << "Invalid input" << std::endl;
+			std::cout << "invalid input" << std::endl;
 	}
+	if (_type > 0 && _type < 5)
+	{
+		_printChar(_charValue);
+		_printInt(_intValue);
+		_printFloat(_floatValue);
+		_printDouble(_doubleValue);
+	}
+	
+}
+
+bool	ScalarConverter::_isChar(std::string str)
+{
+	if (str.length() == 1 && str[1] == '\0' && std::isprint(str[0]) && !std::isdigit(str[0]))
+		return (true);
+	return (false);
+}
+
+bool	ScalarConverter::_isInt(std::string str)
+{
+	int		i = 0;
+	
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	while (str[i])
+		if (!std::isdigit(str[i++]))
+			return (false);
+	return (true);
+}
+
+bool	ScalarConverter::_isFloat(std::string str)
+{
+	int		i = 0;
+	bool	hasDot = false;
+
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i])
+	{
+		if (!std::isdigit(str[i]) && str[i] != '.' && str[i] != 'f')
+			return (false);
+		if (str[i] == '.' && hasDot)
+			return (false);
+		if (str[i] == 'f' && (str[i + 1] != '\0' || !hasDot))
+			return (false);
+		if (str[i] == '.')
+			hasDot = true;
+		i++;
+	}
+	if (str[i - 1] == 'f')
+		return (true);
+	return (false);
+}
+
+bool	ScalarConverter::_isDouble(std::string str)
+{
+	int		i = 0;
+	bool	hasDot = false;
+
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i])
+	{
+		if (!std::isdigit(str[i]) && str[i] != '.')
+			return (false);
+		if (str[i] == '.' && hasDot)
+			return (false);
+		if (str[i] == '.')
+			hasDot = true;
+		i++;
+	}
+	return (true);
+}
+
+bool	ScalarConverter::_isPseudoLiteral(std::string str)
+{
+	std::string pseudoLiteralsArray[] = {
+		"+inff",
+		"-inff",
+		"nanf",
+		"+inf",
+		"-inf",
+		"nan"
+	};
+	for (int i = 0; i < 6; i++)
+	{
+		if (pseudoLiteralsArray[i] == str)
+			return (true);
+	}
+	return (false);
+}
+
+void	ScalarConverter::_getType(std::string str)
+{
+	if (_isChar(str))
+		_type = CHAR;
+	else if (_isInt(str))
+		_type = INT;
+	else if (_isFloat(str))
+		_type = FLOAT;
+	else if (_isDouble(str))
+		_type = DOUBLE;
+	else if (_isPseudoLiteral(str))
+		_type = PSEUDOLITERAL;
+}
+
+void	ScalarConverter::_checkLimits(std::string str)
+{
+	double val = std::strtod(str.c_str(), NULL);
+	if (val < 0 || val > 127)
+		_charLimit = true;
+	if (val < INT_MIN || val > INT_MAX)
+		_intLimit = true;
+	if (val < -FLT_MAX|| val > FLT_MAX)
+		_floatLimit = true;
+	if ((val < -DBL_MAX || val > DBL_MAX))
+		_doubleLimit = true;
+}
+
+void	ScalarConverter::_convertFromChar(std::string str)
+{
+	_charValue = str[0];
+	_intValue = static_cast<int>(_charValue);
+	_floatValue = static_cast<float>(_charValue);
+	_doubleValue = static_cast<double>(_charValue);
+}
+
+void	ScalarConverter::_convertFromInt(std::string str)
+{
+	_intValue = atoi(str.c_str());
+	_charValue = static_cast<char>(_intValue);
+	_floatValue = static_cast<float>(_intValue);
+	_doubleValue = static_cast<double>(_intValue);
+}
+
+void	ScalarConverter::_convertFromFloat(std::string str)
+{
+	char * a = 
+	_floatValue = std::atof(str.c_str());
+	std::cout << "float: " << _floatValue << std::endl;
+	_charValue = static_cast<char>(_floatValue);
+	_intValue = static_cast<int>(_floatValue);
+	_doubleValue = static_cast<double>(_floatValue);
+}
+
+void	ScalarConverter::_convertFromDouble(std::string str)
+{
+	_doubleValue = std::strtod(str.c_str(), NULL);
+	_charValue = static_cast<char>(_doubleValue);
+	_intValue = static_cast<int>(_doubleValue);
+	_floatValue = static_cast<float>(_doubleValue);
+}
+
+void	ScalarConverter::_printChar(char c)
+{
+	if (!std::isprint(c))
+		std::cout << "char: Not printable" << std::endl;
+	else if (_charLimit)
+		std::cout << "char: impossible" << std::endl;
+	else
+		std::cout << "char: " << c << std::endl;
+}
+
+void	ScalarConverter::_printInt(int val)
+{
+	if (_intLimit)
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout << "int: " << val << std::endl;
+}
+
+void	ScalarConverter::_printFloat(float f)
+{
+	if (_floatLimit)
+		std::cout << "float: impossible" << std::endl;
+	else if (f - static_cast<int>(f) == 0)
+		std::cout << "float: " << f << ".0f" << std::endl;
+	else
+		std::cout << "float: " << f << "f" << std::endl;
+}
+
+void	ScalarConverter::_printDouble(double d)
+{
+	if (_doubleLimit)
+		std::cout << "double: impossible" << std::endl;
+	else if (d - static_cast<int>(d) == 0)
+		std::cout << "double: " << d << ".0" << std::endl;
+	else
+		std::cout << "double: " << d << std::endl;
+}
+
+void	ScalarConverter::_printPseudoLiteral(std::string str)
+{
+	std::string pseudoLiteralsArray[] = {
+		"+inff",
+		"-inff",
+		"nanf",
+		"+inf",
+		"-inf",
+		"nan"
+	};
+	for (int i = 0; i < 6; i++)
+	{
+		if (pseudoLiteralsArray[i] == str)
+		{
+			if (i >=0 && i <= 2)
+				str[str.length() - 1] = '\0';
+		}
+	}
+	std::cout << "char: impossible" << std::endl;
+	std::cout << "int: impossible" << std::endl;
+	std::cout << "float: " << str << "f" << std::endl;
+	std::cout << "double: " << str << std::endl;
 }
