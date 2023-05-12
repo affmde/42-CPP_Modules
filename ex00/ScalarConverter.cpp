@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 17:16:55 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/12 20:17:37 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/12 20:22:15 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,9 +206,7 @@ void	ScalarConverter::_convertFromInt(std::string str)
 
 void	ScalarConverter::_convertFromFloat(std::string str)
 {
-	char * a = 
 	_floatValue = std::atof(str.c_str());
-	std::cout << "float: " << _floatValue << std::endl;
 	_charValue = static_cast<char>(_floatValue);
 	_intValue = static_cast<int>(_floatValue);
 	_doubleValue = static_cast<double>(_floatValue);
