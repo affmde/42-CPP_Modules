@@ -6,13 +6,14 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 17:16:55 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/12 20:22:15 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/12 20:30:47 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 #include <sstream>
 #include <string>
+#include <iomanip>
 
 ScalarConverter::ScalarConverter(void)
 {
@@ -48,6 +49,7 @@ bool	ScalarConverter::_doubleLimit = false;
 
 void	ScalarConverter::converter(std::string str)
 {
+	std::cout << std::fixed << std::setprecision(1); //https://stackoverflow.com/questions/33317895/static-cast-int-to-float-no-decimals
 	_getType(str);
 	_checkLimits(str);
 	switch(_type)
@@ -242,8 +244,6 @@ void	ScalarConverter::_printFloat(float f)
 {
 	if (_floatLimit)
 		std::cout << "float: impossible" << std::endl;
-	else if (f - static_cast<int>(f) == 0)
-		std::cout << "float: " << f << ".0f" << std::endl;
 	else
 		std::cout << "float: " << f << "f" << std::endl;
 }
@@ -252,8 +252,6 @@ void	ScalarConverter::_printDouble(double d)
 {
 	if (_doubleLimit)
 		std::cout << "double: impossible" << std::endl;
-	else if (d - static_cast<int>(d) == 0)
-		std::cout << "double: " << d << ".0" << std::endl;
 	else
 		std::cout << "double: " << d << std::endl;
 }
