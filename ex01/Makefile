@@ -11,8 +11,8 @@ NAME = serialize
 #Flags
 FLAGS = -Wall -Werror -Wextra -I.
 CC = c++
-INCS = ScalarConverter.hpp
-OBJS = Serializer.o main.o Data.o main.o
+INCS = Serializer.hpp Data.hpp
+OBJS = Serializer.o main.o Data.o
 
 all: $(NAME)
 
