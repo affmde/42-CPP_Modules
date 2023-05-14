@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 11:33:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/14 12:33:06 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/14 15:56:56 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,16 @@ void	identify(Base *p)
 
 void	identify(Base &other)
 {
-	
+	try{dynamic_cast<A&>(other);std::cout << "A" << std::endl;}catch(std::exception &e){}
+	try{dynamic_cast<B&>(other);std::cout << "B" << std::endl;}catch(std::exception &e){}
+	try{dynamic_cast<C&>(other);std::cout << "C" << std::endl;}catch(std::exception &e){}
 }
 
 int	main(void)
 {
 	Base *a = generate();
+	Base &b = *a;
 	identify(a);
+	identify(b);
 	return (0);
 }
