@@ -23,10 +23,6 @@ $(NAME): $(OBJS)
 %.o: %.cpp $(INCS)
 	@$(CC) -c -o $@ $< $(FLAGS)
 	@echo "$(COLOUR_GREEN)[OK]$(COLOUR_END)	$(COLOUR_YELLOW)$@ created$(COLOUR_END)"
-
-%.o: %.tpp $(INCS)
-	@$(CC) -c -o $@ $< $(FLAGS)
-	@echo "$(COLOUR_GREEN)[OK]$(COLOUR_END)	$(COLOUR_YELLOW)$@ created$(COLOUR_END)"
 	
 clean:
 	@rm -f $(OBJS)
