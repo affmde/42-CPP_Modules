@@ -6,12 +6,12 @@ COLOUR_YELLOW=\033[0;33m
 COLOUR_BLUE=\033[0;34m
 COLOUR_END=\033[0m
 
-NAME = array
+NAME = easyfind
 
 #Flags
 FLAGS = -Wall -Werror -Wextra -I.
 CC = c++
-INCS = Array.hpp
+INCS = easyfind.hpp
 OBJS = main.o
 
 all: $(NAME)
