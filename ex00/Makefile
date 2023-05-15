@@ -6,13 +6,13 @@ COLOUR_YELLOW=\033[0;33m
 COLOUR_BLUE=\033[0;34m
 COLOUR_END=\033[0m
 
-NAME = base
+NAME = templates
 
 #Flags
 FLAGS = -Wall -Werror -Wextra -I.
 CC = c++
-INCS = Base.hpp A.hpp B.hpp C.hpp
-OBJS = main.o Base.o
+INCS = templates.hpp
+OBJS = main.o
 
 all: $(NAME)
 
