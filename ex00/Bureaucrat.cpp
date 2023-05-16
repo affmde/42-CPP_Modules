@@ -6,17 +6,11 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 11:19:33 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/10 14:16:16 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/16 14:54:23 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-
-Bureaucrat::Bureaucrat(void) : name("Unknown")
-{
-	std::cout << "Bureaucat default constructor called" << std::endl;
-	this->grade = 150;
-}
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : name(name)
 {
@@ -60,6 +54,7 @@ const char	*Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return ("Error: Dont be so humble. You can increase your expectations. Increase it to a minimum of 150");
 }
+
 //Member Functions
 
 int	Bureaucrat::getGrade(void) const

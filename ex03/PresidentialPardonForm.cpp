@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 10:38:20 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/10 14:56:40 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/16 15:17:39 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ PresidentialPardonForm::PresidentialPardonForm(std::string &target) : AForm("Pre
 	this->target = target;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &other)
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &other) : AForm("PresidentialPardonForm", 25, 5)
 {
 	*this = other;
 }

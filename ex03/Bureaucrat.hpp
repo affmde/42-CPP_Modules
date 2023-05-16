@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 11:18:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/31 10:39:46 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/16 14:55:43 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ class AForm;
 class	Bureaucrat
 {
 	public:
-		Bureaucrat(void);
-		Bureaucrat(const Bureaucrat&);
 		Bureaucrat(std::string name, int grade);
+		Bureaucrat(const Bureaucrat&);
 		Bureaucrat	&operator=(const Bureaucrat&);
 		~Bureaucrat(void);
 
@@ -49,9 +48,6 @@ class	Bureaucrat
 					return ("Error: Dont be so humble. You can increase your expectations. Increase it to a minimum of 150");
 				}
 		};
-
-	protected:
-
 
 	private:
 		const std::string	name;

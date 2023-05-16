@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 20:51:06 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/10 14:56:31 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/16 14:44:48 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,6 @@ class	ShrubberyCreationForm : public AForm
 
 		//Member Functions
 		void	form_execute(void) const;
-
-	protected:
-
 
 	private:
 		std::string target;

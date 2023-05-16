@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 20:53:34 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/10 15:28:11 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/16 14:55:31 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ class Bureaucrat;
 class	AForm
 {
 	public:
-		AForm(void);
 		AForm(std::string name, int min_grade_sign, int req_grade_exec);
 		AForm(const AForm&);
 		AForm	&operator=(const AForm&);

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:05:58 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/10 16:03:15 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/16 14:45:01 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,6 @@ class	Intern
 
 		//Member Functions
 		AForm	*makeForm(std::string form_name, std::string &target);
-
-	protected:
-
-	private:
 
 };
 

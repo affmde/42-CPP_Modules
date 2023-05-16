@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 13:34:33 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/10 14:56:27 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/16 14:45:07 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,6 @@ class	RobotomyRequestForm : public AForm
 
 		//Member Functions
 		void	form_execute(void) const;
-
-	protected:
-
-
 
 	private:
 		std::string target;

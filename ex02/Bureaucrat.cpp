@@ -6,17 +6,11 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 11:19:33 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/10 15:07:37 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/16 14:54:34 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-
-Bureaucrat::Bureaucrat(void) : name("Unknown")
-{
-	std::cout << "Bureaucat default constructor called" << std::endl;
-	this->grade = 150;
-}
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : name(name)
 {

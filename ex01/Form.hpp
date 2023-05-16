@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 10:29:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/10 14:24:36 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/16 14:53:28 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ class Bureaucrat;
 class	Form
 {
 	public:
-		Form(void);
 		Form(std::string name, int min_grade_sign, int req_grade_exec);
 		Form(const Form&);
 		Form	&operator=(const Form&);
@@ -42,9 +41,6 @@ class	Form
 		int			getReqSignGrade(void) const;
 		int			getReqExecGrade(void) const;
 		void		beSigned(Bureaucrat	&);
-
-	protected:
-
 
 	private:
 		const std::string	name;

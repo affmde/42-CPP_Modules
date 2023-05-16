@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 21:12:08 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/10 15:05:52 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/16 15:18:27 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string &target) : AForm("Shrub
 	this->target = target;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other) : AForm("STILL CHANGE THIS NAME", other.getReqSignGrade(), other.getReqExecGrade())
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other) : AForm(other.getName(), other.getReqSignGrade(), other.getReqExecGrade())
 {
 	*this = other;
 }

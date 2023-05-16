@@ -6,17 +6,11 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 20:55:41 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/10 17:03:21 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/16 14:55:28 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
-
-AForm::AForm(void) : name("Unknown"), req_exec_grade(10), req_sign_grade(20)
-{
-	std::cout << "AForm default constructor called" << std::endl;
-	this->is_signed = false;
-}
 
 AForm::AForm(std::string name, int min_grade_sign, int min_grade_exec) : name(name), req_exec_grade(min_grade_exec), req_sign_grade(min_grade_sign)
 {
