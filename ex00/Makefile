@@ -6,13 +6,13 @@ COLOUR_YELLOW=\033[0;33m
 COLOUR_BLUE=\033[0;34m
 COLOUR_END=\033[0m
 
-NAME = mutantstack
+NAME = btc
 
 #Flags
 FLAGS = -Wall -Werror -Wextra -I.
 CC = c++
-INCS = MutantStack.hpp
-OBJS = main.o
+INCS = BitcoinExchange.hpp
+OBJS = main.o BitcoinExchange.o
 
 all: $(NAME)
 
@@ -23,7 +23,7 @@ $(NAME): $(OBJS)
 %.o: %.cpp $(INCS)
 	@$(CC) -c -o $@ $< $(FLAGS)
 	@echo "$(COLOUR_GREEN)[OK]$(COLOUR_END)	$(COLOUR_YELLOW)$@ created$(COLOUR_END)"
-	
+
 clean:
 	@rm -f $(OBJS)
 	@echo "$(COLOUR_BLUE)objects deleted$(COLOUR_END)"
