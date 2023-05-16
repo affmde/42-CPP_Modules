@@ -1,19 +1,35 @@
-NAME = animal
-FLAGS = -Wall -Werror -Wextra
-SRCS = main.cpp Cat.cpp Dog.cpp AAnimal.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
-OBJ = $(SRCS:.cpp=.o)
+#Color scheme
+COLOUR_GREEN=\033[1;32m
+COLOUR_RED=\033[1;31m
+COLOUR_YELLOW=\033[0;33m
+COLOUR_BLUE=\033[0;34m
+COLOUR_END=\033[0m
 
+NAME = animal
+
+#Flags
+FLAGS = -Wall -Werror -Wextra -I.
+CC = c++
+INCS = AAnimal.hpp Brain.hpp Cat.hpp Dog.hpp WrongAnimal.hpp WrongCat.hpp
+OBJS = main.o AAnimal.o Brain.o Cat.o Dog.o WrongAnimal.o WrongCat.o
 
 all: $(NAME)
 
-$(NAME): $(SRCS)
-	c++ $(FLAGS) -o $(NAME) $(SRCS) -std=c++98
+$(NAME): $(OBJS)
+	@$(CC) -o $@ $^ $(FLAGS) -std=c++98
+	@echo "$(COLOUR_GREEN)✓	$@ created$(COLOUR_END)"
+
+%.o: %.cpp $(INCS)
+	@$(CC) -c -o $@ $< $(FLAGS)
+	@echo "$(COLOUR_GREEN)[OK]$(COLOUR_END)	$(COLOUR_YELLOW)$@ created$(COLOUR_END)"
 
 clean:
-	rm -f $(OBJ)
+	@rm -f $(OBJS)
+	@echo "$(COLOUR_BLUE)objects deleted$(COLOUR_END)"
 
-fclean:
-	rm -f $(NAME)
+fclean: clean
+	@rm -f $(NAME)
+	@echo "$(COLOUR_RED)$(NAME) removed$(COLOUR_END)"
+
 
 re: fclean all
-
