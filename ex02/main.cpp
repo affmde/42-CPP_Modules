@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 11:33:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/14 15:56:56 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/17 13:36:23 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 Base	*generate(void)
 {
 	Base *base;
-	
+
 	srand(time(NULL));
-	int	random = rand() %3;
+	int	random = rand() % 3;
 	switch (random)
 	{
 		case 0:
@@ -39,26 +39,32 @@ Base	*generate(void)
 
 void	identify(Base *p)
 {
-	A *a = dynamic_cast<A*>(p);
-	if (a)
+	if (!p)
+		return ;
+	if(dynamic_cast<A*>(p))
 		std::cout << "A" << std::endl;
-	B *b = dynamic_cast<B*>(p);
-		if (b)
+	else if(dynamic_cast<B*>(p))
 		std::cout << "B" << std::endl;
-	C *c= dynamic_cast<C*>(p);
-	if (c)
+	else if(dynamic_cast<C*>(p))
 		std::cout << "C" << std::endl;
 }
 
 void	identify(Base &other)
 {
-	try{dynamic_cast<A&>(other);std::cout << "A" << std::endl;}catch(std::exception &e){}
-	try{dynamic_cast<B&>(other);std::cout << "B" << std::endl;}catch(std::exception &e){}
-	try{dynamic_cast<C&>(other);std::cout << "C" << std::endl;}catch(std::exception &e){}
+	try{(void)dynamic_cast<A&>(other);std::cout << "A" << std::endl;}catch(std::exception &e){}
+	try{(void)dynamic_cast<B&>(other);std::cout << "B" << std::endl;}catch(std::exception &e){}
+	try{(void)dynamic_cast<C&>(other);std::cout << "C" << std::endl;}catch(std::exception &e){}
 }
 
 int	main(void)
 {
+	/*Test 1*/
+	{
+		Base *a = generate();
+		identify(a);
+		identify(*a);
+	}
+	/*Testing assignment*/
 	Base *a = generate();
 	Base &b = *a;
 	identify(a);
