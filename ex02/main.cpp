@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 11:33:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/17 13:36:23 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/18 08:48:13 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,13 @@ int	main(void)
 		Base *a = generate();
 		identify(a);
 		identify(*a);
+		delete a;
 	}
 	/*Testing assignment*/
 	Base *a = generate();
 	Base &b = *a;
 	identify(a);
 	identify(b);
+	delete a;
 	return (0);
 }

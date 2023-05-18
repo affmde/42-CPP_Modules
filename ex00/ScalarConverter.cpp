@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 17:16:55 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/12 20:30:47 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/18 08:49:55 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,7 +242,7 @@ void	ScalarConverter::_printInt(int val)
 
 void	ScalarConverter::_printFloat(float f)
 {
-	if (_floatLimit)
+	if (_floatLimit || _intLimit)
 		std::cout << "float: impossible" << std::endl;
 	else
 		std::cout << "float: " << f << "f" << std::endl;
@@ -250,7 +250,7 @@ void	ScalarConverter::_printFloat(float f)
 
 void	ScalarConverter::_printDouble(double d)
 {
-	if (_doubleLimit)
+	if (_doubleLimit || _floatLimit || _intLimit)
 		std::cout << "double: impossible" << std::endl;
 	else
 		std::cout << "double: " << d << std::endl;
