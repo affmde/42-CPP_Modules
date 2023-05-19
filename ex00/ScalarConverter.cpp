@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 17:16:55 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/18 08:49:55 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/19 09:59:59 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	ScalarConverter::converter(std::string str)
 		_printFloat(_floatValue);
 		_printDouble(_doubleValue);
 	}
-	
+
 }
 
 bool	ScalarConverter::_isChar(std::string str)
@@ -92,7 +92,7 @@ bool	ScalarConverter::_isChar(std::string str)
 bool	ScalarConverter::_isInt(std::string str)
 {
 	int		i = 0;
-	
+
 	if (str[i] == '+' || str[i] == '-')
 		i++;
 	while (str[i])
@@ -242,7 +242,7 @@ void	ScalarConverter::_printInt(int val)
 
 void	ScalarConverter::_printFloat(float f)
 {
-	if (_floatLimit || _intLimit)
+	if (_floatLimit || (_intLimit && _type == INT))
 		std::cout << "float: impossible" << std::endl;
 	else
 		std::cout << "float: " << f << "f" << std::endl;
@@ -250,7 +250,7 @@ void	ScalarConverter::_printFloat(float f)
 
 void	ScalarConverter::_printDouble(double d)
 {
-	if (_doubleLimit || _floatLimit || _intLimit)
+	if (_doubleLimit || (_floatLimit && _type == FLOAT) || (_intLimit && _type == INT))
 		std::cout << "double: impossible" << std::endl;
 	else
 		std::cout << "double: " << d << std::endl;
