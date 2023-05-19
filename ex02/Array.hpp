@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 12:41:56 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/15 14:41:54 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/19 16:34:18 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,17 @@ class	Array
 					throw (BadIndexException());
 				return (this->array[index]);
 		}
+
+		const T	&operator[](int	index) const{
+				if (index < 0 || index >= (int)this->nbr_elements)
+					throw (BadIndexException());
+				return (this->array[index]);
+		}
+
 		~Array(void){
 			delete[] this->array;
 		}
-		
+
 		//Member Functions
 		unsigned int	size(void){
 			return (this->nbr_elements);
@@ -62,7 +69,7 @@ class	Array
 					return ("Bad Index. Tip: Check the size of the array.");
 				};
 		};
-	
+
 	private:
 		T				*array;
 		unsigned int	nbr_elements;

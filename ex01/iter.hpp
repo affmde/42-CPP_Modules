@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 12:11:22 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/15 12:36:20 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/19 14:25:36 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define ITER_HPP
 
 template <typename T>
-void	iter(T *array, unsigned int length, void (*f)(T&))
+void	iter(T *array, unsigned int length, void (*f)(T const &))
 {
 	unsigned int	i = 0;
 	while (i < length)

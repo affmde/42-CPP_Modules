@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 12:38:06 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/15 14:42:32 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/19 16:37:03 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,20 @@ int	main(void)
 		std::cout << e.what() << std::endl;
 	}
 
+	/*TEST READ CONST ELEMENT AT INDEX*/
+	std::cout << "----------------READ CONST ELEMENT AT INDEX TEST-------------------------------" << std::endl;
+	{
+		try{
+			int index = 0;
+			const Array<int> arr(2);
+			std::cout << "val: " << arr[index] << std::endl;
+
+		} catch(Array<float>::BadIndexException &e){
+			std::cout << e.what() << std::endl;
+		}
+	}
+
+
 	/*TEST COPY ASSIGNMENT OPERATOR*/
 	std::cout << "----------------COPY ASSIGNMENT OPERATOR TEST-------------------------------" << std::endl;
 	try{
@@ -93,3 +107,26 @@ int	main(void)
 	}
 	return (0);
 }
+
+
+// class Awesome
+// {
+// 	public:
+// 	Awesome( void ) : _n( 42 ) { return; }
+// 	int get( void ) const { return this->_n; }
+// 	void	set( int n) {_n = n;}
+// 	private:
+// 	int _n;
+// };
+// std::ostream & operator<<( std::ostream & o, Awesome const & rhs ) { o << rhs.get(); return o; }
+
+// int main() {
+// 	try{
+// 		Array<Awesome> a(3);
+// 		a[2].set(24);
+// 		std::cout << a[2].get() << std::endl;
+// 	} catch(Array<Awesome>::BadIndexException &e) {
+// 		std::cout << e.what() << std::endl;
+// 	}
+// 	return 0;
+// }
