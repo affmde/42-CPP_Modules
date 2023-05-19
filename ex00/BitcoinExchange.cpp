@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 12:18:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/17 17:30:19 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/19 18:15:19 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	BitcoinExchange::lineParse(void)
 	this->_line.erase(0, this->_date.length() + del.length());
 
 	this->_data.insert(std::pair<std::string, std::string>(this->_date, this->_line));
+	std::cout << this->_date << "    " << this->_line << std::endl;
 }
 
 void	BitcoinExchange::printMap(void)
@@ -65,25 +66,24 @@ void	BitcoinExchange::printMap(void)
 		std::cout << (*it).first << " => " << (*it).second << std::endl;
 }
 
-void	BitcoinExchange::getDateValues(std::string &key)
+void	BitcoinExchange::dateStringToIntConverter(std::string &key, int &day, int &month, int &year)
 {
 	size_t	pos = 0;
 	int		ref = 0;
 	while ((pos = key.find("-")) != std::string::npos)
 	{
 		if (ref == 0)
-			this->_year = std::atoi(key.substr(0, pos).c_str());
+			year = std::atoi(key.substr(0, pos).c_str());
 		else if (ref == 1)
-			this->_month = std::atoi(key.substr(0, pos).c_str());
+			month = std::atoi(key.substr(0, pos).c_str());
 		ref++;
 		key.erase(0, key.find("-") + 1);
 	}
-	this->_day = std::atoi(key.c_str());
-	this->_value = std::atol(this->_line.c_str());
+	day = std::atoi(key.c_str());
 }
 
 
-bool	BitcoinExchange::isLineValid(void)
+bool	BitcoinExchange::isDateValid(void)
 {
 	std::string symbol = "-";
 	if (this->_year < 0)
@@ -92,9 +92,20 @@ bool	BitcoinExchange::isLineValid(void)
 		return (false);
 	}
 	if (this->_month < 1 || this->_month > 12)
+	{
+		this->message = "wrong input => " + this->_date;
 		return (false);
+	}
 	if (this->_day < 0 || this->_day > 31)
+	{
+		this->message = "wrong input => " + this->_date;
 		return (false);
+	}
+	return (true);
+}
+
+bool	BitcoinExchange::isValueValid(void)
+{
 	if (this->_value < 0)
 	{
 		this->message = "not a positive number.";
@@ -102,7 +113,7 @@ bool	BitcoinExchange::isLineValid(void)
 	}
 	if (this->_value > 1000)
 	{
-		this->message = "Error: too large a number.";
+		this->message = "too large a number.";
 		return (false);
 	}
 	return (true);
@@ -124,11 +135,60 @@ void	BitcoinExchange::readInputFile(void)
 	}
 	while (std::getline(inputFile, line))
 	{
-		date = line.substr(0, line.find(del));
-		line = line.erase(0, date.length() + 1);
+		date = line.substr(0, line.find(del) - 1);
+		line = line.erase(0, date.length() + 1 + 1);
 		std::multimap<std::string, std::string>::iterator it;
 		it = this->_data.find(date);
-		//if (it != this->_data.end())
-			std::cout << (*it).first << std::endl;
+		dateStringToIntConverter(date, this->_day, this->_month, this->_year);
+		this->_value = std::atof(line.c_str());
+		std::cout << "Value: " << this->_value << "				: ";
+		if (!isDateValid() || !isValueValid())
+		{
+			std::cout << "Error: " << this->message << std::endl;
+			continue;
+		}
+		if (it != this->_data.end())
+			printInfo((*it).first, (*it).second);
+		else
+		{
+			findClosestDate(it);
+			printInfo(this->_date, std::to_string(this->_value));
+		}
 	}
+}
+
+void	BitcoinExchange::printInfo(std::string date, std::string value)
+{
+	std::cout << "this value: " << this->_value << "string value: " << value << std::endl;
+	std::cout << date << " => " << this->_value << " = " << this->_value * std::atof(value.c_str()) << std::endl;
+}
+
+void	BitcoinExchange::findClosestDate(std::multimap<std::string, std::string>::iterator &it)
+{
+	--it;
+	while (it != this->_data.begin())
+	{
+		--it;
+		if (isEarlierDate(it))
+			break;
+	}
+}
+
+bool	BitcoinExchange::isEarlierDate(std::multimap<std::string, std::string>::iterator &it)
+{
+	int	day;
+	int	month;
+	int	year;
+
+	std::string date = (*it).first;
+	dateStringToIntConverter(date, day, month, year);
+	if (year < this->_year)
+		return (true);
+	if (year <= this->_year && month < this->_month)
+		return (true);
+	if (year <= this->_year && month <= this->_month && day < this->_day)
+		return (true);
+	std::string symbol = "-";
+	this->_date = std::to_string(year) + symbol + std::to_string(month) + symbol + std::to_string(day);
+	return (false);
 }
