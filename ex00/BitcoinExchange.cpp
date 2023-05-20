@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 12:18:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/19 18:15:19 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/20 10:02:04 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	BitcoinExchange::lineParse(void)
 	this->_line.erase(0, this->_date.length() + del.length());
 
 	this->_data.insert(std::pair<std::string, std::string>(this->_date, this->_line));
-	std::cout << this->_date << "    " << this->_line << std::endl;
+	//std::cout << this->_date << "    " << this->_line << std::endl;
 }
 
 void	BitcoinExchange::printMap(void)
@@ -66,7 +66,7 @@ void	BitcoinExchange::printMap(void)
 		std::cout << (*it).first << " => " << (*it).second << std::endl;
 }
 
-void	BitcoinExchange::dateStringToIntConverter(std::string &key, int &day, int &month, int &year)
+void	BitcoinExchange::dateStringToIntConverter(std::string key, int &day, int &month, int &year)
 {
 	size_t	pos = 0;
 	int		ref = 0;
@@ -77,9 +77,9 @@ void	BitcoinExchange::dateStringToIntConverter(std::string &key, int &day, int &
 		else if (ref == 1)
 			month = std::atoi(key.substr(0, pos).c_str());
 		ref++;
-		key.erase(0, key.find("-") + 1);
+		key = key.substr(pos + 1);
 	}
-	day = std::atoi(key.c_str());
+	try{day = std::stoi(key);}catch(std::exception &e){day = -1;}
 }
 
 
@@ -88,17 +88,18 @@ bool	BitcoinExchange::isDateValid(void)
 	std::string symbol = "-";
 	if (this->_year < 0)
 	{
-		this->message = "wrong input => " + this->_date;
+		this->message = "bad input => " + this->_date;
 		return (false);
 	}
+	//std::cout << "month: " << this->_month << std::endl;
 	if (this->_month < 1 || this->_month > 12)
 	{
-		this->message = "wrong input => " + this->_date;
+		this->message = "bad input => " + this->_date;
 		return (false);
 	}
 	if (this->_day < 0 || this->_day > 31)
 	{
-		this->message = "wrong input => " + this->_date;
+		this->message = "bad input => " + this->_date;
 		return (false);
 	}
 	return (true);
@@ -133,34 +134,30 @@ void	BitcoinExchange::readInputFile(void)
 		std::cout << "Error: could not open the file." << std::endl;
 		return ;
 	}
+	std::getline(inputFile, line);
 	while (std::getline(inputFile, line))
 	{
-		date = line.substr(0, line.find(del) - 1);
+		date = line.substr(0, line.find(del));
 		line = line.erase(0, date.length() + 1 + 1);
-		std::multimap<std::string, std::string>::iterator it;
-		it = this->_data.find(date);
 		dateStringToIntConverter(date, this->_day, this->_month, this->_year);
+		this->_date = convertToDate();
 		this->_value = std::atof(line.c_str());
-		std::cout << "Value: " << this->_value << "				: ";
 		if (!isDateValid() || !isValueValid())
 		{
 			std::cout << "Error: " << this->message << std::endl;
 			continue;
 		}
-		if (it != this->_data.end())
-			printInfo((*it).first, (*it).second);
-		else
-		{
+		std::multimap<std::string, std::string>::iterator it;
+		it = this->_data.find(this->_date);
+		if (it == this->_data.end())
 			findClosestDate(it);
-			printInfo(this->_date, std::to_string(this->_value));
-		}
+		printInfo(this->_date, (*it).second);
 	}
 }
 
-void	BitcoinExchange::printInfo(std::string date, std::string value)
+void	BitcoinExchange::printInfo(std::string date, std::string rate)
 {
-	std::cout << "this value: " << this->_value << "string value: " << value << std::endl;
-	std::cout << date << " => " << this->_value << " = " << this->_value * std::atof(value.c_str()) << std::endl;
+	std::cout << date << " => " << this->_value << " = " << this->_value * std::atof(rate.c_str()) << std::endl;
 }
 
 void	BitcoinExchange::findClosestDate(std::multimap<std::string, std::string>::iterator &it)
@@ -188,7 +185,26 @@ bool	BitcoinExchange::isEarlierDate(std::multimap<std::string, std::string>::ite
 		return (true);
 	if (year <= this->_year && month <= this->_month && day < this->_day)
 		return (true);
-	std::string symbol = "-";
-	this->_date = std::to_string(year) + symbol + std::to_string(month) + symbol + std::to_string(day);
 	return (false);
+}
+
+std::string	BitcoinExchange::convertToDate(void)
+{
+	std::string date;
+	std::string	year;
+	std::string	month;
+	std::string	day;
+
+	year = std::to_string(this->_year);
+	if (this->_month < 10)
+		month = "0" + std::to_string(this->_month);
+	else
+		month = std::to_string(this->_month);
+	if (this->_day < 10)
+		day = "0" + std::to_string(this->_day);
+	else
+		day = std::to_string(this->_day);
+	date = year + "-" + month + "-" + day;
+	return (date);
+	
 }

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 12:17:46 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/19 17:01:13 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/20 09:59:46 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,17 @@ class	BitcoinExchange
 		int									_day;
 		float								_value;
 		//Member Functions
-		void	readDataFile(void);
-		void	readInputFile(void);
-		void	lineParse(void);
-		void	dateStringToIntConverter(std::string&, int&, int&, int&);
-		bool	isDateValid(void);
-		bool	isValueValid(void);
-		void	printMap(void);
-		void	printInfo(std::string, std::string);
-		void	findClosestDate(std::multimap<std::string, std::string>::iterator &);
-		bool	isEarlierDate(std::multimap<std::string, std::string>::iterator &);
+		void		readDataFile(void);
+		void		readInputFile(void);
+		void		lineParse(void);
+		void		dateStringToIntConverter(std::string, int&, int&, int&);
+		bool		isDateValid(void);
+		bool		isValueValid(void);
+		void		printMap(void);
+		void		printInfo(std::string, std::string);
+		void		findClosestDate(std::multimap<std::string, std::string>::iterator &);
+		bool		isEarlierDate(std::multimap<std::string, std::string>::iterator &);
+		std::string	convertToDate(void);
 };
 
 #endif
