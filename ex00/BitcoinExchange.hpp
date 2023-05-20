@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 12:17:46 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/20 09:59:46 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/20 14:41:09 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,32 @@ class	BitcoinExchange
 		//Member functions
 		void	execute(void);
 
+		//Exceptions
+		class	BadInputException : std::exception{
+			public:
+				const char	*what(void) const throw();
+		};
+		class	NotAPositiveNumberException : std::exception{
+			public:
+				const char	*what(void) const throw();
+		};
+		class	TooLargeNumberException : std::exception{
+			public:
+				const char	*what(void) const throw();
+		};
+		class	BadValueException : std::exception{
+			public:
+				const char	*what(void) const throw();
+		};
+		class	NoDataException : std::exception{
+			public:
+				const char	*what(void) const throw();
+		};
+
 	private:
 		std::string							_filename;
 		std::string							_line;
 		std::multimap<std::string,std::string>	_data;
-		std::string							message;
 		std::string							_date;
 		int									_year;
 		int									_month;

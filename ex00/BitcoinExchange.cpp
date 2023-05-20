@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 12:18:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/20 10:02:04 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/20 14:43:55 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,31 @@ BitcoinExchange	&BitcoinExchange::operator=(const BitcoinExchange &other)
 }
 BitcoinExchange::~BitcoinExchange(void){}
 
+//Exceptions
+const char	*BitcoinExchange::BadInputException::what(void) const throw()
+{
+	return ("Error: bad input => ");
+}
+
+const char	*BitcoinExchange::NotAPositiveNumberException::what(void) const throw()
+{
+	return ("Error: not a positive number.");
+}
+
+const char	*BitcoinExchange::TooLargeNumberException::what(void) const throw()
+{
+	return ("Error: too large a number.");
+}
+
+const char	*BitcoinExchange::BadValueException::what(void) const throw()
+{
+	return ("Error: bad value.");
+}
+
+const char	*BitcoinExchange::NoDataException::what(void) const throw()
+{
+	return ("No data available for that date.");
+}
 
 //Member Functions
 
@@ -53,11 +78,10 @@ void	BitcoinExchange::readDataFile(void)
 void	BitcoinExchange::lineParse(void)
 {
 	std::string	del = ",";
-	this->_date = this->_line.substr(0, this->_line.find(del));
-	this->_line.erase(0, this->_date.length() + del.length());
+	std::string key = this->_line.substr(0, this->_line.find(del));
+	std::string value = this->_line.erase(0, key.length() + del.length());
 
-	this->_data.insert(std::pair<std::string, std::string>(this->_date, this->_line));
-	//std::cout << this->_date << "    " << this->_line << std::endl;
+	this->_data.insert(std::pair<std::string, std::string>(key, value));
 }
 
 void	BitcoinExchange::printMap(void)
@@ -70,6 +94,7 @@ void	BitcoinExchange::dateStringToIntConverter(std::string key, int &day, int &m
 {
 	size_t	pos = 0;
 	int		ref = 0;
+	std::string original = key;
 	while ((pos = key.find("-")) != std::string::npos)
 	{
 		if (ref == 0)
@@ -77,9 +102,14 @@ void	BitcoinExchange::dateStringToIntConverter(std::string key, int &day, int &m
 		else if (ref == 1)
 			month = std::atoi(key.substr(0, pos).c_str());
 		ref++;
-		key = key.substr(pos + 1);
+		key.erase(0, pos + 1);
 	}
-	try{day = std::stoi(key);}catch(std::exception &e){day = -1;}
+	day = std::atoi(key.c_str());
+	if (!year || !month || !day)
+	{
+		this->_date = original;
+		throw (BadInputException());
+	}
 }
 
 
@@ -87,36 +117,20 @@ bool	BitcoinExchange::isDateValid(void)
 {
 	std::string symbol = "-";
 	if (this->_year < 0)
-	{
-		this->message = "bad input => " + this->_date;
-		return (false);
-	}
-	//std::cout << "month: " << this->_month << std::endl;
+		throw (BadInputException());
 	if (this->_month < 1 || this->_month > 12)
-	{
-		this->message = "bad input => " + this->_date;
-		return (false);
-	}
+		throw (BadInputException());
 	if (this->_day < 0 || this->_day > 31)
-	{
-		this->message = "bad input => " + this->_date;
-		return (false);
-	}
+		throw (BadInputException());
 	return (true);
 }
 
 bool	BitcoinExchange::isValueValid(void)
 {
 	if (this->_value < 0)
-	{
-		this->message = "not a positive number.";
-		return (false);
-	}
+		throw (NotAPositiveNumberException());
 	if (this->_value > 1000)
-	{
-		this->message = "too large a number.";
-		return (false);
-	}
+		throw (TooLargeNumberException());
 	return (true);
 }
 
@@ -137,21 +151,34 @@ void	BitcoinExchange::readInputFile(void)
 	std::getline(inputFile, line);
 	while (std::getline(inputFile, line))
 	{
-		date = line.substr(0, line.find(del));
-		line = line.erase(0, date.length() + 1 + 1);
-		dateStringToIntConverter(date, this->_day, this->_month, this->_year);
-		this->_date = convertToDate();
-		this->_value = std::atof(line.c_str());
-		if (!isDateValid() || !isValueValid())
-		{
-			std::cout << "Error: " << this->message << std::endl;
+		if (line.length() == 0)
 			continue;
+		try{
+			date = line.substr(0, line.find(del));
+			line = line.erase(0, date.length() + 1 + 1);
+			dateStringToIntConverter(date, this->_day, this->_month, this->_year);
+			this->_date = convertToDate();
+			this->_value = std::atof(line.c_str());
+			isDateValid();
+			isValueValid();
+			if (line.length() < 1)
+				throw (BadValueException());
+			std::multimap<std::string, std::string>::iterator it;
+			it = this->_data.find(this->_date);
+			if (it == this->_data.end())
+				findClosestDate(it);
+			printInfo(this->_date, (*it).second);	
+		}catch(BadInputException &e){
+			std::cerr << e.what() << this->_date << std::endl;
+		}catch(NotAPositiveNumberException &e){
+			std::cerr << e.what() << std::endl;
+		}catch(TooLargeNumberException &e){
+			std::cerr << e.what() << std::endl;
+		}catch(BadValueException &e){
+			std::cerr << e.what() << std::endl;
+		}catch(NoDataException &e){
+			std::cerr << e.what() << std::endl;
 		}
-		std::multimap<std::string, std::string>::iterator it;
-		it = this->_data.find(this->_date);
-		if (it == this->_data.end())
-			findClosestDate(it);
-		printInfo(this->_date, (*it).second);
 	}
 }
 
@@ -169,6 +196,8 @@ void	BitcoinExchange::findClosestDate(std::multimap<std::string, std::string>::i
 		if (isEarlierDate(it))
 			break;
 	}
+	if (it == this->_data.begin())
+		throw (NoDataException());
 }
 
 bool	BitcoinExchange::isEarlierDate(std::multimap<std::string, std::string>::iterator &it)
