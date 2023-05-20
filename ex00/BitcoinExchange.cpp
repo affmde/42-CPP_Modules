@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 12:18:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/20 14:43:55 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/20 14:57:01 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,18 @@ BitcoinExchange::BitcoinExchange(std::string filename)
 }
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &other)
 {
-	this->_filename = other._filename;
+	*this = other;
 }
 BitcoinExchange	&BitcoinExchange::operator=(const BitcoinExchange &other)
 {
 	this->_filename = other._filename;
+	this->_data = other._data;
+	this->_date = other._date;
+	this->_day = other._day;
+	this->_line = other._line;
+	this->_month = other._month;
+	this->_value = other._value;
+	this->_year = other._year;
 	return (*this);
 }
 BitcoinExchange::~BitcoinExchange(void){}
