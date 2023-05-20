@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 18:17:13 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/17 13:38:17 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/20 08:38:00 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@ int	main(void)
 
 	uintptr_t val = Serializer::serialize(&a);
 	std::cout << val << std::endl;
-	Serializer::deserialize(val);
-	std::cout << a.getNumber() << std::endl;
-	std::cout << a.getString() << std::endl;
+	std::cout << Serializer::deserialize(val)->getNumber() << std::endl;
+	std::cout << Serializer::deserialize(val)->getString() << std::endl;
 
 	return (0);
 }
