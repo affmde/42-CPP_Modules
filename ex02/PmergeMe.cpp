@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 11:09:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/21 11:27:48 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/21 15:51:09 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 PmergeMe::PmergeMe(int argc, char **argv)
 {
-	int	i = 0;
+	int	i = 1;
 	while (i < argc)
 	{
+		this->_arg += " ";
 		this->_arg += argv[i];
 		i++;
 	}
+	std::cout << this->_arg << std::endl;
 }
 PmergeMe::PmergeMe(const PmergeMe &other){*this = other;}
 PmergeMe	&PmergeMe::operator=(const PmergeMe &other)
