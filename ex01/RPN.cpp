@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 14:46:34 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/20 19:23:45 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/21 10:51:13 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,35 +33,38 @@ RPN	&RPN::operator=(const RPN &other)
 RPN::~RPN(void){}
 
 //Exceptions
-
+const char	*RPN::BadInputException::what(void) const throw(){
+	return ("Error");
+}
 
 //Member Functions
 
 void	RPN::execute(void)
 {
-	parseArg();
-	execution();
+	try{
+		isArgValid();
+		execution();
+	} catch(BadInputException &e){
+		std::cout << e.what() << std::endl;
+	}
 }
 
-void	RPN::parseArg(void)
+void	RPN::execution(void)
 {
 	std::string	expression;
 	std::string	operand;
 	size_t		pos;
 	
-	int	i = this->_arg.length() - 1;
-	while (i >= 0)
+	int	i = 0;
+	while (i < (int)this->_arg.length())
 	{
 		if (std::isdigit(this->_arg[i]))
 			this->_stack.push(this->_arg[i] - '0');
-		i--;
-	}
-	while (i < (int)this->_arg.length())
-	{
-		if ((pos = this->_operands.find(this->_arg[i])) != std::string::npos)
-			this->_operators += this->_arg[i];
+		else if ((pos = this->_operands.find(this->_arg[i])) != std::string::npos)
+			stackOperations(this->_arg[i]);
 		i++;
 	}
+	std::cout << this->_stack.top() << std::endl;
 }
 
 int	RPN::calculate(int &a, int&b, char &c)
@@ -76,24 +79,33 @@ int	RPN::calculate(int &a, int&b, char &c)
 		return (a * b);
 }
 
-void	RPN::execution(void)
+void	RPN::stackOperations(char c)
+{
+	int	a;
+	int	b;
+	int	result;
+
+	if (this->_stack.size() < 2)
+		throw (BadInputException());
+	b = this->_stack.top();
+	this->_stack.pop();
+	a = this->_stack.top();
+	this->_stack.pop();
+	result = calculate(a, b, c);
+	this->_stack.push(result);
+}
+
+bool	RPN::isArgValid(void)
 {
 	int	i = 0;
-	int	a = this->_stack.top();
-	this->_stack.pop();
-	int	b = this->_stack.top();
-	this->_stack.pop();
-	this->_value = calculate(a, b, this->_operators[i]);
-	i++;
-	std::cout << "a: " << a << " b: " << b << " total: " << this->_value << std::endl;
-	while (!this->_stack.empty())
+	int	len = this->_arg.length();
+
+	while (i < len)
 	{
-		a = this->_value;
-		b = this->_stack.top();
-		this->_stack.pop();
-		this->_value = calculate(a, b, this->_operators[i]);
-		std::cout << "a: " << a << " b: " << b << " total: " << this->_value << std::endl;
+		if (this->_arg[i] != '+' && this->_arg[i] != '-' && this->_arg[i] != '*' && this->_arg[i] != '/' && 
+			this->_arg[i] != ' ' && !std::isdigit(this->_arg[i]))
+			throw (BadInputException());
 		i++;
 	}
-	std::cout << this->_value << std::endl;
+	return (true);
 }
