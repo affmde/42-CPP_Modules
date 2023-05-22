@@ -6,12 +6,14 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 12:11:22 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/19 14:25:36 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/22 14:05:21 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ITER_HPP
 # define ITER_HPP
+
+#include <iostream>
 
 template <typename T>
 void	iter(T *array, unsigned int length, void (*f)(T const &))
@@ -25,15 +27,10 @@ void	iter(T *array, unsigned int length, void (*f)(T const &))
 }
 
 template <typename T>
-void	multiplyByTwo(T &n)
+void	display(T const &n)
 {
-	n *= 2;
+	std::cout << n;
 }
-template<typename T>
-void	toUpperCase(T &n)
-{
-		if (n >= 97 && n <= 122)
-			n -= 32;
-}
+
 
 #endif

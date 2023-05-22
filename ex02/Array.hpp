@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 12:41:56 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/19 16:34:18 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/22 14:11:10 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <iostream>
 
-template <class T>
+template <typename T>
 class	Array
 {
 	public:

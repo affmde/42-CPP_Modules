@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 12:38:06 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/19 16:37:03 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/22 14:18:35 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(void)
 {
 	Array<int> a(3);
-	a[0] = 3;
+	//a[0] = 3;
 	for (unsigned int i = 0; i < a.size(); i++)
 	{
 		std::cout << a[i] << std::endl;
