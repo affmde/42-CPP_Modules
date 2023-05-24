@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 16:43:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/15 21:55:15 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/24 10:21:52 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ Span::Span(const Span &other)
 Span	&Span::operator=(const Span &other)
 {
 	this->_max = other._max;
+	this->_elements = other._elements;
 	return (*this);
 }
 

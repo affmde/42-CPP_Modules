@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 14:52:24 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/15 15:48:03 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/24 10:20:39 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ typename T::iterator easyfind(T	&container, int n){
 	if (it != end)
 		return (it);
 	throw (NotFoundException());
-	return (end);
 }
 
 
