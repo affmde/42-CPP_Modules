@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 16:43:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/24 10:21:52 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/24 17:19:29 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	Span::addNumber(std::vector<int>::iterator start, std::vector<int>::iterato
 unsigned int	Span::shortestSpan(void)
 {
 	if (this->_elements.size() < 2)
-		throw (SpanFullException());
+		throw (NotEnoughElementsExceptions());
 	std::sort(this->_elements.begin(), this->_elements.end());
 	int	dif = 2147483647;
 	for (unsigned int i = 0; i < this->_max - 1; i++)
@@ -75,7 +75,7 @@ unsigned int	Span::longestSpan(void)
 	std::vector<int>::iterator	min;
 
 	if (this->_elements.size() < 2)
-		throw (SpanFullException());
+		throw (NotEnoughElementsExceptions());
 	max = std::max_element(this->_elements.begin(), this->_elements.end());
 	min = std::min_element(this->_elements.begin(), this->_elements.end());
 	return (*max - *min);
