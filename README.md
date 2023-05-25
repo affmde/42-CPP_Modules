@@ -1,4 +1,7 @@
 
+
+<div align="center">
+
 # 42 - CPP Modules
 
 <img alt="mac" src="https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=apple&logoColor=white"/>
@@ -11,7 +14,7 @@
 <img alt="total files" src="https://img.shields.io/github/directory-file-count/affmde/42-CPP_Modules"/>
 <img alt="repo size" src="https://img.shields.io/github/repo-size/affmde/42-CPP_Modules"/>
 <img alt="commits per month" src="https://img.shields.io/github/commit-activity/m/affmde/42-CPP_Modules"/>
-
+</div>
 
 ---
 
