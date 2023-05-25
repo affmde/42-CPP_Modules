@@ -9,7 +9,7 @@ COLOUR_END=\033[0m
 NAME = PmergeMe
 
 #Flags
-FLAGS = -Wall -Werror -Wextra -I.
+FLAGS = -Wall -Werror -Wextra -I. -g
 CC = c++
 INCS = PmergeMe.hpp
 OBJS = main.o PmergeMe.o
@@ -31,6 +31,5 @@ clean:
 fclean: clean
 	@rm -f $(NAME)
 	@echo "$(COLOUR_RED)$(NAME) removed$(COLOUR_END)"
-
 
 re: fclean all

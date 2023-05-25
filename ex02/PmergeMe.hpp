@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 10:59:18 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/25 10:04:31 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/25 17:17:01 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <iostream>
 #include <vector>
-#include <list>
+#include <deque>
 #include <sys/time.h>
 
 class	PmergeMe
@@ -39,24 +39,27 @@ class	PmergeMe
 		std::string			_arg;
 		std::string			_sortedArg;
 		std::vector<int>	_vector;
-		std::list<int>		_list;
+		std::deque<int>		_deque;
 		int					_nbrElements;
 		unsigned long		_vectorStartTime;
 		unsigned long		_vectorEndTime;
-		unsigned long		_listStartTime;
-		unsigned long		_listEndTime;
+		unsigned long		_dequeStartTime;
+		unsigned long		_dequeEndTime;
 
 		//Member Functions
 		void			handleVector(void);
-		void			handleList(void);
+		void			handleDeque(void);
 		void			printOutput(void);
 		void			populateVector(void);
-		void			populateList(void);
+		void			populateDeque(void);
 		bool			isArgValid(void);
-		void			sortVector(void);
-		void			sortList(void);
 		unsigned long	getTime();
-
+		void			vectorInsertMergeSort(int start, int end);
+		void			vectorMerge(int start, int middle, int end);
+		void			vectorInsert(int start, int end);
+		void			dequeInsertMergeSort(int start, int end);
+		void			dequeMerge(int start, int middle, int end);
+		void			dequeInsert(int start, int end);
 };
 
 #endif
