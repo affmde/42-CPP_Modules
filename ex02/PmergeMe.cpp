@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 11:09:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/22 16:40:13 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/25 10:07:31 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,79 @@ const char	*PmergeMe::BadInputException::what(void) const throw()
 //Member Functions
 void	PmergeMe::execute(void)
 {
-	assignValueToContainers();
 	try{
-		isArgValid();
-		sortVector();
-		sortList();
+		handleVector();
+		handleList();
+		printOutput();
 	} catch(BadInputException &e){
 		std::cout << e.what() << std::endl;
 	}
+}
+
+void	PmergeMe::handleVector(void)
+{
+	this->_vectorStartTime = getTime();
+	populateVector();
+	isArgValid();
+	sortVector();
+	this->_vectorEndTime = getTime();
+}
+
+void	PmergeMe::handleList(void)
+{
+	this->_listStartTime = getTime();
+	populateList();
+	isArgValid();
+	sortList();
+	this->_listEndTime = getTime();
+}
+
+void	PmergeMe::printOutput(void)
+{
+	std::cout << "Before:" << this->_arg << std::endl;
+	std::cout << "After: " << this->_sortedArg << std::endl;
+}
+
+void	PmergeMe::populateVector(void)
+{
+	std::string	value;
+	std::string	str;
+	size_t		pos;
+
+	str = this->_arg;
+	while ((pos = str.find(" ")) != std::string::npos)
+	{
+		value = str.substr(0, pos);
+		if (value.length() < 1)
+		{
+			str = str.erase(0, pos + 1);
+			continue;
+		}
+		this->_vector.push_back(std::atoi(value.c_str()));
+		str = str.erase(0, pos + 1);
+	}
+	this->_nbrElements = this->_vector.size();
+}
+
+void	PmergeMe::populateList(void)
+{
+	std::string	value;
+	std::string	str;
+	size_t		pos;
+
+	str = this->_arg;
+	while ((pos = str.find(" ")) != std::string::npos)
+	{
+		value = str.substr(0, pos);
+		if (value.length() < 1)
+		{
+			str = str.erase(0, pos + 1);
+			continue;
+		}
+		this->_list.push_back(std::atoi(value.c_str()));
+		str = str.erase(0, pos + 1);
+	}
+	this->_nbrElements = this->_vector.size();
 }
 
 bool	PmergeMe::isArgValid(void)
@@ -77,26 +142,6 @@ bool	PmergeMe::isArgValid(void)
 	return (true);
 }
 
-void	PmergeMe::assignValueToContainers(void)
-{
-	std::string	value;
-	size_t		pos;
-
-	while ((pos = this->_arg.find(" ")) != std::string::npos)
-	{
-		value = this->_arg.substr(0, pos);
-		if (value.length() < 1)
-		{
-			this->_arg = this->_arg.erase(0, pos + 1);
-			continue;
-		}
-		this->_vector.push_back(std::atoi(value.c_str()));
-		this->_list.push_back(std::atoi(value.c_str()));
-		this->_arg = this->_arg.erase(0, pos + 1);
-	}
-	this->_nbrElements = this->_vector.size();
-}
-
 void	PmergeMe::sortVector(void)
 {
 	int	i, key, j;
@@ -112,10 +157,18 @@ void	PmergeMe::sortVector(void)
 		this->_vector[j + 1] = key;
 	}
 	for (int i = 0; i < this->_nbrElements; i++)
-		std::cout << this->_vector[i] << std::endl;
+		this->_sortedArg += this->_vector[i] + "";
 }
 
 void	PmergeMe::sortList(void)
 {
 	
+}
+
+unsigned long	PmergeMe::getTime(void)
+{
+	timeval	time;
+	
+	gettimeofday(&time, NULL);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }

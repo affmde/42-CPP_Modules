@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 10:59:18 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/22 16:34:29 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/25 10:04:31 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,25 @@ class	PmergeMe
 
 	private:
 		std::string			_arg;
+		std::string			_sortedArg;
 		std::vector<int>	_vector;
 		std::list<int>		_list;
 		int					_nbrElements;
-		timeval				_vectorStartTime;
-		timeval				_vectorEndTime;
-		timeval				_listStartTime;
-		timeval				_listEndTime;
+		unsigned long		_vectorStartTime;
+		unsigned long		_vectorEndTime;
+		unsigned long		_listStartTime;
+		unsigned long		_listEndTime;
 
 		//Member Functions
-		bool	isArgValid(void);
-		void	assignValueToContainers(void);
-		void	sortVector(void);
-		void	sortList(void);
+		void			handleVector(void);
+		void			handleList(void);
+		void			printOutput(void);
+		void			populateVector(void);
+		void			populateList(void);
+		bool			isArgValid(void);
+		void			sortVector(void);
+		void			sortList(void);
+		unsigned long	getTime();
 
 };
 
