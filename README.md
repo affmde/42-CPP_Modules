@@ -35,18 +35,18 @@ Core!
 
 ## **_Contents_** ##
 
-| Module       | Subject   |
-| -------------  |:-------------:
-| 00             | Namespaces, classes, member functions, stdio streams, initialization lists, static, const, and some other basic stuf|
-| 01      |Memory allocation, pointers to members, references, switch statement|
-| 02  |Ad-hoc polymorphism, operator overloading and Orthodox Canonical class form|
-| 03  |Inheritance|
-| 04  |Subtype polymorphism, abstract classes, interfaces|
-| 05  |Repetition and Exceptions|
-| 06  |C++ casts|
-| 07  |C++ templates|
-| 08  |Templated containers, iterators, algorithms|
-| 09  |STL|
+| Module       | Subject   |  Grade |
+| -------------  |:-------------: | :--:|
+| 00             | Namespaces, classes, member functions, stdio streams, initialization lists, static, const, and some other basic stuf| ![grade](https://badge42.vercel.app/api/v2/cl10eh4l9000609jpe6hwaodr/project/2670510) |
+| 01      |Memory allocation, pointers to members, references, switch statement|![grade](https://badge42.vercel.app/api/v2/cl10eh4l9000609jpe6hwaodr/project/2670510)|
+| 02  |Ad-hoc polymorphism, operator overloading and Orthodox Canonical class form|![grade](https://badge42.vercel.app/api/v2/cl10eh4l9000609jpe6hwaodr/project/2670510)|
+| 03  |Inheritance|![grade](https://badge42.vercel.app/api/v2/cl10eh4l9000609jpe6hwaodr/project/2670510)
+| 04  |Subtype polymorphism, abstract classes, interfaces|![grade](https://badge42.vercel.app/api/v2/cl10eh4l9000609jpe6hwaodr/project/2670510)|
+| 05  |Repetition and Exceptions|![grade](https://badge42.vercel.app/api/v2/cl10eh4l9000609jpe6hwaodr/project/2670510)|
+| 06  |C++ casts|![grade](https://badge42.vercel.app/api/v2/cl10eh4l9000609jpe6hwaodr/project/2670510)|
+| 07  |C++ templates|![grade](https://badge42.vercel.app/api/v2/cl10eh4l9000609jpe6hwaodr/project/2670510)|
+| 08  |Templated containers, iterators, algorithms|In development|
+| 09  |STL|In development|
 <br><br>
 
 ## **_Requirements_**
