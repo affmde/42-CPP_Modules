@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 16:43:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/25 16:55:47 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/06/06 11:05:09 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,6 @@ const char	*Span::NotEnoughElementsExceptions::what() const throw(){
 	return ("Not enough elements in Span to compare");
 }
 
-const char	*Span::TooLongRangeException::what() const throw(){
-	return ("Your range is too large and will not fit the span. Try to decrease the range of elements");
-}
 
 //Member Functions
 
@@ -56,10 +53,8 @@ void	Span::addNumber(int n)
 
 void	Span::addNumber(std::vector<int>::iterator start, std::vector<int>::iterator end)
 {
-	unsigned int len = end - start;
-	if (this->_elements.size() + len > this->_max)
-		throw (TooLongRangeException());
-	this->_elements.insert(this->_elements.end(), start, end);
+	for (; start != end; ++start)
+		addNumber(*start);
 }
 
 unsigned int	Span::shortestSpan(void)

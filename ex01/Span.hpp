@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 15:55:02 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/25 16:54:16 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/06/06 10:38:15 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,6 @@ class	Span
 				const char	*what() const throw();
 		};
 		class NotEnoughElementsExceptions : std::exception{
-			public:
-				const char	*what() const throw();
-		};
-		class TooLongRangeException : std::exception{
 			public:
 				const char	*what() const throw();
 		};
