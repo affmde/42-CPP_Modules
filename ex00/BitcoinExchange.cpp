@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 12:18:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/20 14:57:01 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/06/06 12:34:04 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,7 +174,7 @@ void	BitcoinExchange::readInputFile(void)
 			it = this->_data.find(this->_date);
 			if (it == this->_data.end())
 				findClosestDate(it);
-			printInfo(this->_date, (*it).second);	
+			printInfo(this->_date, (*it).second);
 		}catch(BadInputException &e){
 			std::cerr << e.what() << this->_date << std::endl;
 		}catch(NotAPositiveNumberException &e){
@@ -231,16 +231,25 @@ std::string	BitcoinExchange::convertToDate(void)
 	std::string	month;
 	std::string	day;
 
-	year = std::to_string(this->_year);
+	year = numberToString(this->_year);
 	if (this->_month < 10)
-		month = "0" + std::to_string(this->_month);
+		month = "0" + numberToString(this->_month);
 	else
-		month = std::to_string(this->_month);
+		month = numberToString(this->_month);
 	if (this->_day < 10)
-		day = "0" + std::to_string(this->_day);
+		day = "0" + numberToString(this->_day);
 	else
-		day = std::to_string(this->_day);
+		day = numberToString(this->_day);
 	date = year + "-" + month + "-" + day;
 	return (date);
-	
+
+}
+
+std::string	BitcoinExchange::numberToString(int num)
+{
+	std::ostringstream	str;
+	std::string			ret;
+	str << num;
+	ret = str.str();
+	return (ret);
 }

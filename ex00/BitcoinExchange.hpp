@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 12:17:46 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/20 14:41:09 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/06/06 12:33:18 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <iostream>
 #include <fstream>
 #include <map>
+#include <sstream>
 
 class	BitcoinExchange
 {
@@ -59,6 +60,7 @@ class	BitcoinExchange
 		int									_month;
 		int									_day;
 		float								_value;
+
 		//Member Functions
 		void		readDataFile(void);
 		void		readInputFile(void);
@@ -70,6 +72,7 @@ class	BitcoinExchange
 		void		printInfo(std::string, std::string);
 		void		findClosestDate(std::multimap<std::string, std::string>::iterator &);
 		bool		isEarlierDate(std::multimap<std::string, std::string>::iterator &);
+		std::string	numberToString(int);
 		std::string	convertToDate(void);
 };
 
