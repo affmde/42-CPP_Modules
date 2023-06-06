@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 11:09:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/25 17:45:01 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/06/06 09:17:35 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,131 +161,117 @@ unsigned long	PmergeMe::getTime(void)
 
 void	PmergeMe::vectorInsertMergeSort(int start, int end)
 {
-	if (end - start > 10)
+	if (start < end)
 	{
-		int	middle = (start + end) / 2;
-		vectorInsertMergeSort(start, middle);
-		vectorInsertMergeSort(middle + 1, end);
-		vectorMerge(start, middle, end);
+		if (end - start > 5)
+		{
+			int	middle = start + (end - start) / 2;
+			vectorInsertMergeSort(start, middle);
+			vectorInsertMergeSort(middle + 1, end);
+			vectorMerge(start, middle, end);
+		}
+		else
+			vectorInsert(start, end);
 	}
-	else
-		vectorInsert(start, end);
 }
 
 void	PmergeMe::vectorMerge(int start, int middle, int end)
 {
-	std::vector<int>::iterator a = this->_vector.begin() + start;
-	std::vector<int>::iterator b = this->_vector.begin() + middle + 1;
-	std::vector<int>::iterator c = this->_vector.begin() + end + 1;
-	std::vector<int> leftVec(a, b);
-	std::vector<int> rightVec(b, c);
-	int	n1 = middle - start + 1;
-	int	n2 = end - middle;
-	int	right_index = 0;
-	int	left_index = 0;
+	int i, j, k;
+	int n1 = middle - start + 1;
+	int n2 = end - middle;
 
-	for (int i = start; i < end - start + 1; i++)
-	{
-		if (right_index == n2)
-		{
-			this->_vector[i] = leftVec[left_index];
-			left_index++;
-		}
-		else if (left_index == n1)
-		{
-			this->_vector[i] = rightVec[right_index];
-			right_index++;
-		}
-		else if (rightVec[right_index] > leftVec[left_index])
-		{
-			this->_vector[i] = leftVec[left_index];
-			left_index++;
-		}
+	std::vector<int> left(n1), right(n2);
+
+	for (i = 0; i < n1; ++i)
+		left[i] = this->_vector[start + i];
+	for (j = 0; j < n2; ++j)
+		right[j] = this->_vector[middle + 1 + j];
+
+	i = 0;
+	j = 0;
+	k = start;
+	while (i < n1 && j < n2) {
+		if (left[i] <= right[j])
+			this->_vector[k++] = left[i++];
 		else
-		{
-			this->_vector[i] = rightVec[right_index];
-			right_index++;
-		}
+			this->_vector[k++] = right[j++];
 	}
+	while (i < n1)
+		this->_vector[k++] = left[i++];
+
+	while (j < n2)
+		this->_vector[k++] = right[j++];
 }
 
 void	PmergeMe::vectorInsert(int start, int end)
 {
-	for (int i = start; i < end; i++)
-	{
-		int temp = this->_vector[i + 1];
-		int j = i + 1;
-		while (j > start && this->_vector[j - 1] > temp)
-		{
-			this->_vector[j] = this->_vector[j - 1];
-			j--;
-		}
-		this->_vector[j] = temp;
+	for (int i = start + 1; i <= end; ++i) {
+		int tmp = this->_vector[i];
+		int j = i - 1;
+		for (; j >= start && this->_vector[j] > tmp; --j)
+			this->_vector[j + 1] = this->_vector[j];
+		this->_vector[j + 1] = tmp;
 	}
 }
 
 
 void	PmergeMe::dequeInsertMergeSort(int start, int end)
 {
-	if (end - start > 5)
+	if (start > end)
 	{
-		int	middle = (start + end) / 2;
-		dequeInsertMergeSort(start, middle);
-		dequeInsertMergeSort(middle + 1, end);
-		dequeMerge(start, middle, end);
+		if (end - start > 5)
+		{
+			int	middle = start + (end - start) / 2;
+			dequeInsertMergeSort(start, middle);
+			dequeInsertMergeSort(middle + 1, end);
+			dequeMerge(start, middle, end);
+		}
+		else
+			dequeInsert(start, end);
 	}
-	else
-		dequeInsert(start, end);
 }
 
 void	PmergeMe::dequeMerge(int start, int middle, int end)
 {
-	std::deque<int>::iterator a = this->_deque.begin() + start;
-	std::deque<int>::iterator b = this->_deque.begin() + middle + 1;
-	std::deque<int>::iterator c = this->_deque.begin() + end + 1;
-	std::deque<int> leftDeque(a, b);
-	std::deque<int> rightDeque(b, c);
-	int	n1 = middle - start + 1;
-	int	n2 = end - middle;
-	int	right_index = 0;
-	int	left_index = 0;
-
-	for (int i = start; i < end - start; i++)
-	{
-		if (right_index == n2)
-		{
-			this->_deque[i] = leftDeque[left_index];
-			left_index++;
+	int i, j, k;
+		int n1 = middle - start + 1;
+		int n2 = end - middle;
+	
+		std::deque<int> left(n1), right(n2);
+	
+		for (i = 0; i < n1; ++i)
+			left[i] = this->_deque[start + i];
+		for (j = 0; j < n2; ++j)
+			right[j] = this->_deque[middle + 1 + j];
+	
+		i = 0;
+		j = 0;
+		k = start;
+		while (i < n1 && j < n2) {
+			if (left[i] <= right[j])
+				this->_deque[k++] = left[i++];
+			else
+				this->_deque[k++] = right[j++];
 		}
-		else if (left_index == n1)
-		{
-			this->_deque[i] = rightDeque[right_index];
-			right_index++;
-		}
-		else if (rightDeque[right_index] > leftDeque[left_index])
-		{
-			this->_deque[i] = leftDeque[left_index];
-			left_index++;
-		}
-		else
-		{
-			this->_deque[i] = rightDeque[right_index];
-			right_index++;
-		}
-	}
+		while (i < n1)
+			this->_deque[k++] = left[i++];
+	
+		while (j < n2)
+			this->_deque[k++] = right[j++];
 }
 
 void	PmergeMe::dequeInsert(int start, int end)
 {
-	for (int i = start; i < end; i++)
+	for (int i = start + 1; i <= end; i++)
 	{
-		int temp = this->_deque[i + 1];
-		int j = i + 1;
-		while (j > start && this->_deque[j - 1] > temp)
+		int temp = this->_deque[i];
+		int j = i - 1;
+		while (j >= start && this->_deque[j] > temp)
 		{
-			this->_deque[j] = this->_deque[j - 1];
+			this->_deque[j + 1] = this->_deque[j];
 			j--;
 		}
-		this->_deque[j] = temp;
+		this->_deque[j + 1] = temp;
 	}
 }
