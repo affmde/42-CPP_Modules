@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 11:09:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/06/06 12:30:28 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/06/06 12:41:00 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,79 +57,6 @@ void	PmergeMe::execute(void)
 	}
 }
 
-void	PmergeMe::handleVector(void)
-{
-	this->_vectorStartTime = getTime();
-	this->_vector = createVector();
-	vectorInsertMergeSort(0, this->_vector.size() - 1);
-	this->_vectorEndTime = getTime();
-}
-
-void	PmergeMe::handleDeque(void)
-{
-	this->_dequeStartTime = getTime();
-	this->_deque = createDeque();
-	dequeInsertMergeSort(0, this->_deque.size() - 1);
-	this->_dequeEndTime = getTime();
-}
-
-void	PmergeMe::printOutput(void)
-{
-	unsigned int	vector_time = this->_vectorEndTime - this->_vectorStartTime;
-	unsigned int	deque_time = this->_dequeEndTime - this->_dequeStartTime;
-	std::cout << "Before: " << this->_arg << std::endl;
-	std::cout << "After: " << this->_sortedArg;
-	for (int i = 0; i < this->_nbrElements; i++)
-		std::cout << this->_vector[i] << " ";
-	std::cout << std::endl;
-	std::cout << "Time to process a range of " << this->_nbrElements << " elements with std::vector: " << vector_time << " microseconds" << std::endl;
-	std::cout << "Time to process a range of " << this->_nbrElements << " elements with std::deque: " << deque_time << " microseconds" << std::endl;
-}
-
-std::vector<int>	PmergeMe::createVector(void)
-{
-	std::string	value;
-	std::string	str;
-	std::vector<int>	v;
-	size_t		pos;
-
-	str = this->_arg;
-	while ((pos = str.find(" ")) != std::string::npos)
-	{
-		value = str.substr(0, pos);
-		if (value.length() < 1)
-		{
-			str = str.erase(0, pos + 1);
-			continue;
-		}
-		v.push_back(std::atoi(value.c_str()));
-		str = str.erase(0, pos + 1);
-	}
-	return (v);
-}
-
-std::deque<int>	PmergeMe::createDeque(void)
-{
-	std::string	value;
-	std::string	str;
-	std::deque<int> deque;
-	size_t		pos;
-
-	str = this->_arg;
-	while ((pos = str.find(" ")) != std::string::npos)
-	{
-		value = str.substr(0, pos);
-		if (value.length() < 1)
-		{
-			str = str.erase(0, pos + 1);
-			continue;
-		}
-		deque.push_back(std::atoi(value.c_str()));
-		str = str.erase(0, pos + 1);
-	}
-	return (deque);
-}
-
 bool	PmergeMe::isArgValid(void)
 {
 	for (int j = 0; j < (int)this->_arg.length(); j++)
@@ -159,12 +86,36 @@ bool	PmergeMe::isArgValid(void)
 	return (true);
 }
 
-unsigned long	PmergeMe::getTime(void)
-{
-	timeval	time;
+//Vector Functions
 
-	gettimeofday(&time, NULL);
-	return (1000000 * time.tv_sec + time.tv_usec);
+void	PmergeMe::handleVector(void)
+{
+	this->_vectorStartTime = getTime();
+	this->_vector = createVector();
+	vectorInsertMergeSort(0, this->_vector.size() - 1);
+	this->_vectorEndTime = getTime();
+}
+
+std::vector<int>	PmergeMe::createVector(void)
+{
+	std::string	value;
+	std::string	str;
+	std::vector<int>	v;
+	size_t		pos;
+
+	str = this->_arg;
+	while ((pos = str.find(" ")) != std::string::npos)
+	{
+		value = str.substr(0, pos);
+		if (value.length() < 1)
+		{
+			str = str.erase(0, pos + 1);
+			continue;
+		}
+		v.push_back(std::atoi(value.c_str()));
+		str = str.erase(0, pos + 1);
+	}
+	return (v);
 }
 
 void	PmergeMe::vectorInsertMergeSort(int start, int end)
@@ -223,6 +174,39 @@ void	PmergeMe::vectorInsert(int start, int end)
 	}
 }
 
+// Deque Functions
+
+void	PmergeMe::handleDeque(void)
+{
+	this->_dequeStartTime = getTime();
+	this->_deque = createDeque();
+	dequeInsertMergeSort(0, this->_deque.size() - 1);
+	this->_dequeEndTime = getTime();
+}
+
+
+
+std::deque<int>	PmergeMe::createDeque(void)
+{
+	std::string	value;
+	std::string	str;
+	std::deque<int> deque;
+	size_t		pos;
+
+	str = this->_arg;
+	while ((pos = str.find(" ")) != std::string::npos)
+	{
+		value = str.substr(0, pos);
+		if (value.length() < 1)
+		{
+			str = str.erase(0, pos + 1);
+			continue;
+		}
+		deque.push_back(std::atoi(value.c_str()));
+		str = str.erase(0, pos + 1);
+	}
+	return (deque);
+}
 
 void	PmergeMe::dequeInsertMergeSort(int start, int end)
 {
@@ -284,6 +268,21 @@ void	PmergeMe::dequeInsert(int start, int end)
 	}
 }
 
+//Helper Function
+
+
+void	PmergeMe::printOutput(void)
+{
+	unsigned int	vector_time = this->_vectorEndTime - this->_vectorStartTime;
+	unsigned int	deque_time = this->_dequeEndTime - this->_dequeStartTime;
+	std::cout << "Before: " << this->_arg << std::endl;
+	std::cout << "After: " << this->_sortedArg;
+	for (int i = 0; i < this->_nbrElements; i++)
+		std::cout << this->_vector[i] << " ";
+	std::cout << std::endl;
+	std::cout << "Time to process a range of " << this->_nbrElements << " elements with std::vector: " << vector_time << " microseconds" << std::endl;
+	std::cout << "Time to process a range of " << this->_nbrElements << " elements with std::deque: " << deque_time << " microseconds" << std::endl;
+}
 
 std::string	PmergeMe::numberToString(int num)
 {
@@ -292,4 +291,12 @@ std::string	PmergeMe::numberToString(int num)
 	str << num;
 	ret = str.str();
 	return (ret);
+}
+
+unsigned long	PmergeMe::getTime(void)
+{
+	timeval	time;
+
+	gettimeofday(&time, NULL);
+	return (1000000 * time.tv_sec + time.tv_usec);
 }
