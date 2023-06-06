@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 11:09:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/06/06 09:17:35 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/06/06 12:30:28 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ const char	*PmergeMe::BadInputException::what(void) const throw()
 void	PmergeMe::execute(void)
 {
 	try{
+		isArgValid();
 		handleVector();
 		handleDeque();
 		printOutput();
@@ -59,8 +60,7 @@ void	PmergeMe::execute(void)
 void	PmergeMe::handleVector(void)
 {
 	this->_vectorStartTime = getTime();
-	populateVector();
-	isArgValid();
+	this->_vector = createVector();
 	vectorInsertMergeSort(0, this->_vector.size() - 1);
 	this->_vectorEndTime = getTime();
 }
@@ -68,8 +68,7 @@ void	PmergeMe::handleVector(void)
 void	PmergeMe::handleDeque(void)
 {
 	this->_dequeStartTime = getTime();
-	populateDeque();
-	isArgValid();
+	this->_deque = createDeque();
 	dequeInsertMergeSort(0, this->_deque.size() - 1);
 	this->_dequeEndTime = getTime();
 }
@@ -87,10 +86,11 @@ void	PmergeMe::printOutput(void)
 	std::cout << "Time to process a range of " << this->_nbrElements << " elements with std::deque: " << deque_time << " microseconds" << std::endl;
 }
 
-void	PmergeMe::populateVector(void)
+std::vector<int>	PmergeMe::createVector(void)
 {
 	std::string	value;
 	std::string	str;
+	std::vector<int>	v;
 	size_t		pos;
 
 	str = this->_arg;
@@ -102,16 +102,17 @@ void	PmergeMe::populateVector(void)
 			str = str.erase(0, pos + 1);
 			continue;
 		}
-		this->_vector.push_back(std::atoi(value.c_str()));
+		v.push_back(std::atoi(value.c_str()));
 		str = str.erase(0, pos + 1);
 	}
-	this->_nbrElements = this->_vector.size();
+	return (v);
 }
 
-void	PmergeMe::populateDeque(void)
+std::deque<int>	PmergeMe::createDeque(void)
 {
 	std::string	value;
 	std::string	str;
+	std::deque<int> deque;
 	size_t		pos;
 
 	str = this->_arg;
@@ -123,17 +124,24 @@ void	PmergeMe::populateDeque(void)
 			str = str.erase(0, pos + 1);
 			continue;
 		}
-		this->_deque.push_back(std::atoi(value.c_str()));
+		deque.push_back(std::atoi(value.c_str()));
 		str = str.erase(0, pos + 1);
 	}
-	this->_nbrElements = this->_vector.size();
+	return (deque);
 }
 
 bool	PmergeMe::isArgValid(void)
 {
+	for (int j = 0; j < (int)this->_arg.length(); j++)
+		if (!std::isdigit(this->_arg[j]) && this->_arg[j] != ' ')
+			throw (BadInputException());
+	std::vector<int> v = createVector();
+	this->_nbrElements = v.size();
 	std::vector<int>::const_iterator it;
-	for (it = this->_vector.begin(); it != this->_vector.end(); ++it)
+	this->_arg = "";
+	for (it = v.begin(); it != v.end(); ++it)
 	{
+		this->_arg += (numberToString(*it) + " ");
 		if (*it < 0)
 			throw (BadInputException());
 	}
@@ -237,14 +245,14 @@ void	PmergeMe::dequeMerge(int start, int middle, int end)
 	int i, j, k;
 		int n1 = middle - start + 1;
 		int n2 = end - middle;
-	
+
 		std::deque<int> left(n1), right(n2);
-	
+
 		for (i = 0; i < n1; ++i)
 			left[i] = this->_deque[start + i];
 		for (j = 0; j < n2; ++j)
 			right[j] = this->_deque[middle + 1 + j];
-	
+
 		i = 0;
 		j = 0;
 		k = start;
@@ -256,7 +264,7 @@ void	PmergeMe::dequeMerge(int start, int middle, int end)
 		}
 		while (i < n1)
 			this->_deque[k++] = left[i++];
-	
+
 		while (j < n2)
 			this->_deque[k++] = right[j++];
 }
@@ -274,4 +282,14 @@ void	PmergeMe::dequeInsert(int start, int end)
 		}
 		this->_deque[j + 1] = temp;
 	}
+}
+
+
+std::string	PmergeMe::numberToString(int num)
+{
+	std::ostringstream	str;
+	std::string			ret;
+	str << num;
+	ret = str.str();
+	return (ret);
 }

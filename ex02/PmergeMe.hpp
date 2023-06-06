@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 10:59:18 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/25 17:17:01 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/06/06 12:28:53 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <vector>
 #include <deque>
 #include <sys/time.h>
+#include <sstream>
 
 class	PmergeMe
 {
@@ -50,8 +51,8 @@ class	PmergeMe
 		void			handleVector(void);
 		void			handleDeque(void);
 		void			printOutput(void);
-		void			populateVector(void);
-		void			populateDeque(void);
+		std::vector<int>	createVector(void);
+		std::deque<int>		createDeque(void);
 		bool			isArgValid(void);
 		unsigned long	getTime();
 		void			vectorInsertMergeSort(int start, int end);
@@ -60,6 +61,7 @@ class	PmergeMe
 		void			dequeInsertMergeSort(int start, int end);
 		void			dequeMerge(int start, int middle, int end);
 		void			dequeInsert(int start, int end);
+		std::string		numberToString(int);
 };
 
 #endif

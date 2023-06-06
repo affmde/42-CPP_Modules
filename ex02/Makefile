@@ -9,7 +9,7 @@ COLOUR_END=\033[0m
 NAME = PmergeMe
 
 #Flags
-FLAGS = -Wall -Werror -Wextra -I. -g
+FLAGS = -Wall -Werror -Wextra -I.
 CC = c++
 INCS = PmergeMe.hpp
 OBJS = main.o PmergeMe.o
