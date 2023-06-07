@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 14:46:54 by andrferr          #+#    #+#             */
-/*   Updated: 2023/06/07 11:17:20 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/06/07 11:44:47 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,8 @@ int	main(int argc, char **argv)
 	}
 	std::string arg;
 	int	i = 0;
-	while (i < argc)
-	{
+	while (++i < argc)
 		arg += argv[i];
-		i++;
-	}
 	RPN a(arg);
 	a.execute();
 	return (0);
