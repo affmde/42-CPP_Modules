@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 12:18:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/06/06 12:34:04 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/06/07 11:03:00 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,8 +132,10 @@ bool	BitcoinExchange::isDateValid(void)
 	return (true);
 }
 
-bool	BitcoinExchange::isValueValid(void)
+bool	BitcoinExchange::isValueValid(std::string line)
 {
+	if (this->_value == 0 && line[0] != '0')
+		throw (BadValueException());
 	if (this->_value < 0)
 		throw (NotAPositiveNumberException());
 	if (this->_value > 1000)
@@ -163,11 +165,15 @@ void	BitcoinExchange::readInputFile(void)
 		try{
 			date = line.substr(0, line.find(del));
 			line = line.erase(0, date.length() + 1 + 1);
+			int i = 0;
+			while (line[i] == ' ')
+				line = line.erase(0, 1);
 			dateStringToIntConverter(date, this->_day, this->_month, this->_year);
 			this->_date = convertToDate();
 			this->_value = std::atof(line.c_str());
+			std::string tmp = numberToString(this->_value);
 			isDateValid();
-			isValueValid();
+			isValueValid(line);
 			if (line.length() < 1)
 				throw (BadValueException());
 			std::multimap<std::string, std::string>::iterator it;

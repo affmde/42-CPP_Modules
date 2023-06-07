@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 12:17:46 by andrferr          #+#    #+#             */
-/*   Updated: 2023/06/06 12:33:18 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/06/07 10:54:57 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ class	BitcoinExchange
 		void		lineParse(void);
 		void		dateStringToIntConverter(std::string, int&, int&, int&);
 		bool		isDateValid(void);
-		bool		isValueValid(void);
+		bool		isValueValid(std::string);
 		void		printMap(void);
 		void		printInfo(std::string, std::string);
 		void		findClosestDate(std::multimap<std::string, std::string>::iterator &);
