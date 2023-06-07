@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 12:18:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/06/07 11:03:00 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/06/07 12:27:43 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	BitcoinExchange::lineParse(void)
 
 void	BitcoinExchange::printMap(void)
 {
-	for (std::multimap<std::string, std::string>::iterator it = this->_data.begin(); it  != this->_data.end(); ++it)
+	for (std::map<std::string, std::string>::iterator it = this->_data.begin(); it  != this->_data.end(); ++it)
 		std::cout << (*it).first << " => " << (*it).second << std::endl;
 }
 
@@ -176,7 +176,7 @@ void	BitcoinExchange::readInputFile(void)
 			isValueValid(line);
 			if (line.length() < 1)
 				throw (BadValueException());
-			std::multimap<std::string, std::string>::iterator it;
+			std::map<std::string, std::string>::iterator it;
 			it = this->_data.find(this->_date);
 			if (it == this->_data.end())
 				findClosestDate(it);
@@ -200,7 +200,7 @@ void	BitcoinExchange::printInfo(std::string date, std::string rate)
 	std::cout << date << " => " << this->_value << " = " << this->_value * std::atof(rate.c_str()) << std::endl;
 }
 
-void	BitcoinExchange::findClosestDate(std::multimap<std::string, std::string>::iterator &it)
+void	BitcoinExchange::findClosestDate(std::map<std::string, std::string>::iterator &it)
 {
 	--it;
 	while (it != this->_data.begin())
@@ -213,7 +213,7 @@ void	BitcoinExchange::findClosestDate(std::multimap<std::string, std::string>::i
 		throw (NoDataException());
 }
 
-bool	BitcoinExchange::isEarlierDate(std::multimap<std::string, std::string>::iterator &it)
+bool	BitcoinExchange::isEarlierDate(std::map<std::string, std::string>::iterator &it)
 {
 	int	day;
 	int	month;

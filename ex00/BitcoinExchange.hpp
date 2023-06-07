@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 12:17:46 by andrferr          #+#    #+#             */
-/*   Updated: 2023/06/07 10:54:57 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/06/07 12:27:09 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ class	BitcoinExchange
 	private:
 		std::string							_filename;
 		std::string							_line;
-		std::multimap<std::string,std::string>	_data;
+		std::map<std::string,std::string>	_data;
 		std::string							_date;
 		int									_year;
 		int									_month;
@@ -70,8 +70,8 @@ class	BitcoinExchange
 		bool		isValueValid(std::string);
 		void		printMap(void);
 		void		printInfo(std::string, std::string);
-		void		findClosestDate(std::multimap<std::string, std::string>::iterator &);
-		bool		isEarlierDate(std::multimap<std::string, std::string>::iterator &);
+		void		findClosestDate(std::map<std::string, std::string>::iterator &);
+		bool		isEarlierDate(std::map<std::string, std::string>::iterator &);
 		std::string	numberToString(int);
 		std::string	convertToDate(void);
 };
