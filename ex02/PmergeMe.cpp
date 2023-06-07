@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 11:09:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/06/06 12:41:00 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/06/07 12:15:30 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,17 +72,6 @@ bool	PmergeMe::isArgValid(void)
 		if (*it < 0)
 			throw (BadInputException());
 	}
-	//ALLOW REPEATED ELEMENTS??
-	// std::vector<int>::const_iterator dup;
-	// for (it = this->_vector.begin(); it != this->_vector.end(); ++it)
-	// {
-	// 	std::vector<int>::const_iterator cpy = it;
-	// 	for (dup = ++cpy; dup != this->_vector.end(); ++dup)
-	// 	{
-	// 		if (*dup == *it)
-	// 			throw (BadInputException());
-	// 	}
-	// }
 	return (true);
 }
 
@@ -98,8 +87,7 @@ void	PmergeMe::handleVector(void)
 
 std::vector<int>	PmergeMe::createVector(void)
 {
-	std::string	value;
-	std::string	str;
+	std::string	value, str;
 	std::vector<int>	v;
 	size_t		pos;
 
@@ -188,8 +176,7 @@ void	PmergeMe::handleDeque(void)
 
 std::deque<int>	PmergeMe::createDeque(void)
 {
-	std::string	value;
-	std::string	str;
+	std::string	value, str;
 	std::deque<int> deque;
 	size_t		pos;
 
@@ -227,30 +214,30 @@ void	PmergeMe::dequeInsertMergeSort(int start, int end)
 void	PmergeMe::dequeMerge(int start, int middle, int end)
 {
 	int i, j, k;
-		int n1 = middle - start + 1;
-		int n2 = end - middle;
+	int n1 = middle - start + 1;
+	int n2 = end - middle;
 
-		std::deque<int> left(n1), right(n2);
+	std::deque<int> left(n1), right(n2);
 
-		for (i = 0; i < n1; ++i)
-			left[i] = this->_deque[start + i];
-		for (j = 0; j < n2; ++j)
-			right[j] = this->_deque[middle + 1 + j];
+	for (i = 0; i < n1; ++i)
+		left[i] = this->_deque[start + i];
+	for (j = 0; j < n2; ++j)
+		right[j] = this->_deque[middle + 1 + j];
 
-		i = 0;
-		j = 0;
-		k = start;
-		while (i < n1 && j < n2) {
-			if (left[i] <= right[j])
-				this->_deque[k++] = left[i++];
-			else
-				this->_deque[k++] = right[j++];
-		}
-		while (i < n1)
+	i = 0;
+	j = 0;
+	k = start;
+	while (i < n1 && j < n2) {
+		if (left[i] <= right[j])
 			this->_deque[k++] = left[i++];
-
-		while (j < n2)
+		else
 			this->_deque[k++] = right[j++];
+	}
+	while (i < n1)
+		this->_deque[k++] = left[i++];
+
+	while (j < n2)
+		this->_deque[k++] = right[j++];
 }
 
 void	PmergeMe::dequeInsert(int start, int end)
