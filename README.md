@@ -45,7 +45,7 @@ Core!
 | 05  |Repetition and Exceptions|![grade](https://badge42.vercel.app/api/v2/cl10eh4l9000609jpe6hwaodr/project/2670510)|
 | 06  |C++ casts|![grade](https://badge42.vercel.app/api/v2/cl10eh4l9000609jpe6hwaodr/project/2670510)|
 | 07  |C++ templates|![grade](https://badge42.vercel.app/api/v2/cl10eh4l9000609jpe6hwaodr/project/2670510)|
-| 08  |Templated containers, iterators, algorithms|In development|
+| 08  |Templated containers, iterators, algorithms|![grade](https://badge42.vercel.app/api/v2/cl10eh4l9000609jpe6hwaodr/project/2670510)|
 | 09  |STL|In development|
 <br><br>
 
