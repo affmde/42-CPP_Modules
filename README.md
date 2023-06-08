@@ -18,11 +18,11 @@
 
 ---
 
-## **_Description_**
+## ![description icon](https://cdn-icons-png.flaticon.com/32/2644/2644332.png)  **_Description_**
 This project is composed from 10 different modules. Each module is made to teach some concept  from the CPP language.
 <br><br>
 
-## **_Goals_**
+## ![goals icon](https://cdn-icons-png.flaticon.com/32/3077/3077054.png) **_Goals_**
 The goal of these modules is to introduce you to Object-Oriented Programming.
 This will be the starting point of your C++ journey. Many languages are recommended
 to learn OOP. We decided to choose C++ since it’s derived from your old friend C.
@@ -33,7 +33,7 @@ become a proficient C++ developer, it’s up to you to go further after the 42 C
 Core!
 <br><br>
 
-## **_Contents_** ##
+## ![contents icon](https://cdn-icons-png.flaticon.com/32/2503/2503644.png) **_Contents_** ##
 
 | Module       | Subject   |  Grade |
 | -------------  |:-------------: | :--:|
@@ -49,11 +49,11 @@ Core!
 | 09  |STL|In development|
 <br><br>
 
-## **_Requirements_**
+## ![requirements](https://cdn-icons-png.flaticon.com/32/3079/3079162.png) **_Requirements_**
 As this program is coded in Cpp, you will need a compiler as gcc.
 <br><br>
 
-## **_How to run it_**
+## ![run it](https://cdn-icons-png.flaticon.com/32/189/189638.png) **_How to run it_**
 First clone the repo:
 ```
 $ git clone https://github.com/affmde/42-CPP_Modules.git
