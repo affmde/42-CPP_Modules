@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 12:18:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/06/07 12:27:43 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/06/08 12:43:21 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ const char	*BitcoinExchange::NoDataException::what(void) const throw()
 void	BitcoinExchange::execute(void)
 {
 	readDataFile();
+	//printMap();
 	readInputFile();
 }
 
@@ -77,6 +78,7 @@ void	BitcoinExchange::readDataFile(void)
 		std::cout << "Error: could not open the file." << std::endl;
 		return ;
 	}
+	std::getline(file, this->_line);
 	while (std::getline(file, this->_line))
 		lineParse();
 	file.close();
@@ -205,11 +207,11 @@ void	BitcoinExchange::findClosestDate(std::map<std::string, std::string>::iterat
 	--it;
 	while (it != this->_data.begin())
 	{
-		--it;
 		if (isEarlierDate(it))
 			break;
+		--it;
 	}
-	if (it == this->_data.begin())
+	if (it == this->_data.begin() && !isEarlierDate(it))
 		throw (NoDataException());
 }
 
