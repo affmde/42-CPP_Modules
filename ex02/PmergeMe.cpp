@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 11:09:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/06/07 12:15:30 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/06/09 12:38:08 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ const char	*PmergeMe::BadInputException::what(void) const throw()
 void	PmergeMe::execute(void)
 {
 	try{
+		if (this->_arg.length() <= 1)
+			return ;
 		isArgValid();
 		handleVector();
 		handleDeque();

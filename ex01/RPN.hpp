@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 14:46:15 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/21 10:35:04 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/06/09 12:32:22 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,14 @@ class	RPN
 			public:
 				const char	*what(void) const throw();
 		};
+		class	DivisionByZeroException : std::exception{
+			public:
+				const char	*what(void) const throw();
+		};
 
 		//Member Functions
 		void	execute(void);
-		
+
 	private:
 		std::string			_arg;
 		int					_value;

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 14:46:34 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/21 11:15:38 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/06/09 12:35:13 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ const char	*RPN::BadInputException::what(void) const throw(){
 	return ("Error");
 }
 
+const char	*RPN::DivisionByZeroException::what(void) const throw(){
+	return ("Error: division by 0 is not allowed. Check your expression.");
+}
+
 //Member Functions
 
 void	RPN::execute(void)
@@ -46,6 +50,8 @@ void	RPN::execute(void)
 		execution();
 	} catch(BadInputException &e){
 		std::cout << e.what() << std::endl;
+	} catch(DivisionByZeroException &e){
+		std::cerr << e.what() << std::endl;
 	}
 }
 
@@ -54,7 +60,7 @@ void	RPN::execution(void)
 	std::string	expression;
 	std::string	operand;
 	size_t		pos;
-	
+
 	int	i = 0;
 	while (i < (int)this->_arg.length())
 	{
@@ -74,7 +80,11 @@ int	RPN::calculate(int &a, int&b, char &c)
 	else if (c == '-')
 		return (a - b);
 	else if (c == '/')
+	{
+		if (b == 0)
+			throw (DivisionByZeroException());
 		return (a / b);
+	}
 	else
 		return (a * b);
 }
@@ -102,7 +112,7 @@ bool	RPN::isArgValid(void)
 
 	while (i < len)
 	{
-		if (this->_arg[i] != '+' && this->_arg[i] != '-' && this->_arg[i] != '*' && this->_arg[i] != '/' && 
+		if (this->_arg[i] != '+' && this->_arg[i] != '-' && this->_arg[i] != '*' && this->_arg[i] != '/' &&
 			this->_arg[i] != ' ' && !std::isdigit(this->_arg[i]))
 			throw (BadInputException());
 		i++;
